@@ -1,0 +1,278 @@
+/* 
+    Program created by Uverit
+    Do not copy or distribute
+    https://www.fiverr.com/new_horizon_web
+*/
+
+    /* Media breakpoints */
+    /* Width: 1400, 1024, 768, 540, 440, 320  */
+
+    /* Nav Dots */
+
+.dot:nth-child(7){
+    background-color:var(--color1);
+}
+
+.navarrow:nth-child(1):hover ~ .dots .dot:nth-child(6){
+    background-color:var(--color3);
+}
+
+.navarrow:nth-child(2):hover ~ .dots .dot:nth-child(1){
+    background-color:var(--color3);
+}
+
+    /* Content */
+
+.content{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+}
+
+.content-inner{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:25px;
+    position:relative;
+    min-height:350px;
+}
+
+    /* Heading */
+
+.heading-examples{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    gap:25px;
+    position:relative;
+    margin-bottom:50px;
+}
+
+.line{
+    width:3px;
+    border-radius:5px;
+    height:inherit;
+    background-color:rgb(0,0,0,0.2);
+}
+
+.fontface{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+}
+
+.fontface h3{
+    width:auto;
+}
+
+.floor{
+    width:100%;
+    height:5px;
+    border-radius:5px;
+    background-color:var(--ucp2);
+}
+
+    /* Heading - media */
+
+@media screen and (max-width:768px){
+    
+    .heading-examples{
+        flex-direction:column;
+        align-items:center;
+        gap:25px;
+    }
+    
+    .line{
+        width:95%;
+        height:3px;
+    }
+    
+    .fontface{
+        width:100%;
+    }
+    
+}
+
+    /* Sections */
+
+.font-examples{
+    display:flex;
+    gap:50px;
+}
+
+.section{
+    flex:1;
+    padding:20px;
+    background-color:var(--bg5);
+    box-shadow:0 0 1px 1px var(--ucp1);
+    border-radius:8px;
+    display:flex;
+    flex-direction:column;
+}
+
+.section .heading h3{
+    width:auto;
+    text-align:left;
+    font-family:ucf1;
+}
+
+.section p{
+    font-family:ucf2;
+}
+
+.section p:nth-child(1){
+    margin-top:12px;
+}
+
+.section p a{
+    color:var(--ucp2);
+}
+
+.section p a:visited{
+    color:var(--ucp4);
+}
+
+        /* Section1 */
+
+.section1 .heading{
+    overflow:hidden;
+    position:relative;
+    align-self:flex-start;
+    width:100%;
+    margin-bottom:15px;
+}
+
+.section1 .heading h3{
+    background-color:var(--ucp2);
+    display:inline-block;
+    position:relative;
+    padding:5px 0;
+    padding-left:25px;
+    padding-right:30px;
+    color:white;
+    border-radius:8px 0 0 8px;
+    text-shadow:0 0 1px darkgray;
+}
+
+.section1 .heading h3::after{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:40px;
+    background-color:var(--ucp2);
+    transform:rotate(45deg);
+    margin-left:-20px;
+}
+
+.section1 .floor{
+    position:absolute;
+    height:5px;
+    width:calc(100% - 10px);
+    background-color:var(--ucp2);
+    bottom:0;
+    right:0;
+    border-radius:3px;
+}
+
+.font-btn{
+    align-self:flex-end;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:45px;
+    width:125px;
+    border-radius:12px;
+    border:solid 5px var(--ucp2);
+    font-size:20px;
+    font-family:ucf1;
+    transition:0.15s;
+    cursor:pointer;
+    margin-top:8px;
+}
+
+.font-btn:hover{
+    background-color:var(--ucp2);
+    color:white;
+}
+
+        /* Section2 */
+
+.section2 .heading{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.section2 .floor{
+    min-width:180px;
+    width:30%;
+    height:5px;
+    border-radius:3px;
+}
+
+.section2 .floor:nth-child(1){
+    transform:translate(-10%, 0);
+    background-image:linear-gradient(to right,var(--ucp4),var(--ucp2));
+}
+
+.section2 .floor:nth-of-type(2){
+    transform:translate(10%, 0);
+    background-image:linear-gradient(to right,var(--ucp2),var(--ucp4));
+}
+
+.section2 .heading h3{
+    text-align:center;
+}
+
+.section2 .line{
+    width:100%;
+    height:5px;
+    background-color:rgb(0,0,0,0.2);
+    border-radius:5px;
+    margin:15px 0 5px 0;
+}
+
+.section2{
+    align-items:center;
+}
+
+.section2 .credits{
+    display:flex;
+    flex-direction:column;
+}
+
+.section2 .font-credits:after{
+    content:var(--company-name);
+    font-family:ucf1;
+    color:black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

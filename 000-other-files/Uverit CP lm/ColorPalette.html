@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang=en>
+        
+    <head>
+        <title>Uverit Color Palette</title>
+        <meta name="description" content="Program developed by Uverit to show the brand's color palette. Copying is not allowed.">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="shortcut icon" href="resources/images/uverit-favicon-bbg.svg" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="resources/styles/general.css">
+        <link rel="stylesheet" type="text/css" href="resources/styles/ColorPalette.css">
+        
+        <script src="resources/scripts/jquery.js"></script>
+        
+        <script src="resources/scripts/UCPscriptPack.js" defer></script>
+    </head>
+        
+    <body>
+        
+        <div class="hidden-contents">
+            <div class="ucp1"></div>
+            <div class="ucp2"></div>
+            <div class="ucp3"></div>
+            <div class="ucp4"></div>
+            <div class="ucp5"></div>
+            <p class="ucptxt1"></p>
+            <p class="ucptxt2"></p>
+            <p class="ucptxt3"></p>
+            <p class="ucptxt4"></p>
+            <p class="ucptxt5"></p>
+        </div>
+        
+        <nav>
+            <div class="wrapper navwrapper">
+                
+                <div class="logo">
+                    <a href="ColorPalette.html" rel="noreferrer">
+                       <img src="resources/images/uverit-w.svg" alt="Uverit logo">
+                    </a>
+                    <h1>Color Palette</h1>
+                </div>
+                
+                <div class="navigation">
+                    
+                    <a href="resources/pages/FontsInUse.html" class="navarrow">
+                        <p class="arrow2">&#10094;</p>
+                    </a>
+                    
+                    <a href="resources/pages/ColorMeaning.html" class="navarrow">
+                        <p class="arrow2">&#10095;</p>
+                    </a>
+                    
+                    <div class="dots">
+                        <a href="ColorPalette.html" class="dot" rel="noreferrer"></a>
+                        <a href="resources/pages/ColorMeaning.html" class="dot" rel="noreferrer"></a>
+                        <a href="resources/pages/ColorChart.html" class="dot" rel="noreferrer"></a>
+                        <a href="resources/pages/ColorLayout.html" class="dot" rel="noreferrer"></a>
+                        <a href="resources/pages/ColorTips.html" class="dot" rel="noreferrer"></a>
+                        <a href="resources/pages/Typefaces.html" class="dot" rel="noreferrer"></a>
+                        <a href="resources/pages/FontsInUse.html" class="dot" rel="noreferrer"></a>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </nav>
+        
+        <div class="gradbg">
+            <div class="gradimg"></div>
+        </div>
+
+        <main class="wrapper">
+        <div class="elements">
+        
+            <div class="space pdfPrint"></div>
+            
+            <div class="pdf" onclick="printDiv()" title="Save to PDF or print">
+                <div class="pdf-inner">
+                    <p>Save</p>
+                    <img src="resources/images/pdf-icon.svg" alt="PDF icon">
+                </div>
+            </div>
+            
+            <div class="print-logo pdfPrint">
+                <img src="resources/images/uverit-b.svg" alt="Uverit logo pdf black">
+            </div>
+            
+            <div class="content-header-div pdfPrint">
+                <div class="content-header">
+                    <h1>Color Palette</h1>
+                    <h2 class="company-name"></h2>
+                    <div class="content-header-border"></div>
+                </div>
+            </div>
+
+            <div class="content pdfPrint">
+
+                <div class="space-s"></div>
+                
+                <div class="cards">
+                    
+                    <div class="card">
+                        <div class="use">
+                            <p>Secondary</p>
+                        </div>
+                        <div class="use-help"></div>
+                        
+                        <div class="color ucp1"></div>
+                        <h4 class="ucptxt1"></h4>
+                        <div class="card-text">
+                            <div class="color-model">
+                                <p>HEX</p>
+                                <p class="ucp1-hex"></p>
+                            </div>
+                            <div class="color-model">
+                                <p>RGB</p>
+                                <p class="ucp1-rgb"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="use">
+                            <p>Main</p>
+                        </div>
+                        <div class="use-help"></div>
+                        
+                        <div class="color ucp2"></div>
+                        <h4 class="ucptxt2"></h4>
+                        <div class="card-text">
+                            <div class="color-model">
+                                <p>HEX</p>
+                                <p class="ucp2-hex"></p>
+                            </div>
+                            <div class="color-model">
+                                <p>RGB</p>
+                                <p class="ucp2-rgb"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="break2"></div>
+                    
+                    <div class="card">
+                        <div class="use">
+                            <p>Background</p>
+                        </div>
+                        <div class="use-help"></div>
+                        
+                        <div class="color ucp3"></div>
+                        <h4 class="ucptxt3"></h4>
+                        <div class="card-text">
+                            <div class="color-model">
+                                <p>HEX</p>
+                                <p class="ucp3-hex"></p>
+                            </div>
+                            <div class="color-model">
+                                <p>RGB</p>
+                                <p class="ucp3-rgb"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="break1"></div>
+                    
+                    <div class="card">
+                        <div class="use">
+                            <p>Accent</p>
+                        </div>
+                        <div class="use-help"></div>
+                        
+                        <div class="color ucp4"></div>
+                        <h4 class="ucptxt4"></h4>
+                        <div class="card-text">
+                            <div class="color-model">
+                                <p>HEX</p>
+                                <p class="ucp4-hex"></p>
+                            </div>
+                            <div class="color-model">
+                                <p>RGB</p>
+                                <p class="ucp4-rgb"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="break3"></div>
+                    
+                    <div class="card">
+                        <div class="use">
+                            <p>Secondary Accent</p>
+                        </div>
+                        <div class="use-help"></div>
+                        
+                        <div class="color ucp5"></div>
+                        <h4 class="ucptxt5"></h4>
+                        <div class="card-text">
+                            <div class="color-model">
+                                <p>HEX</p>
+                                <p class="ucp5-hex"></p>
+                            </div>
+                            <div class="color-model">
+                                <p>RGB</p>
+                                <p class="ucp5-rgb"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="space"></div>
+            </div>
+            
+        </div>
+        </main>
+        
+        <footer>
+            <div class="wrapper">
+                
+                <div class="footertext">
+                    
+                    <div class="uverit">
+                        <h4>Uverit Color Palette</h4>
+                        <p>© All rights reserved, do not distribute</p>
+                        <p class="version"></p>
+                    </div>
+                    
+                    <a href="https://www.fiverr.com/new_horizon_web" target="_blank" class="fiverr">
+                        <div class="fiverrimg">
+                            <img src="resources/images/fiicon.png" alt="Fiverr icon">
+                        </div>
+                        <div class="fiverrtext">
+                            <h5>Uverit on Fiverr</h5>
+                            <div class="fiverrfloor"></div>
+                        </div>
+                    </a>
+                    
+                </div>
+            
+                <div class="footerscroll">
+                    <div class="scrolltop" onclick="scrollToTop()">
+                        <img src="resources/images/double-arrow.png" class="doublearrows" alt="double arrow scroll">
+                        <img src="resources/images/uverit%20favicon-w.svg" class="uveritlogo" alt="Uverit favicon scroll">
+                    </div>
+                </div>
+                
+            </div>
+        </footer>
+
+    </body>
+        
+</html>
+        
+        
+        
+        
+        
+        
+        
+        
+     
+        
+        
+        
+        

@@ -1,0 +1,907 @@
+/* 
+    Program created by Uverit
+    Do not copy or distribute
+    https://www.fiverr.com/new_horizon_web
+*/
+
+    /* Media breakpoints */
+    /* Width: 1440, 1024, 768, 540, 440, 320  */
+
+    /* Color Palette */
+
+:root {
+    --company-name:"Uverit";   /* Company name */
+    
+    --ucp1:#62D2FD;     /* color1 */
+    --ucp2:#07ABDB;     /* color2 */
+    --ucp3:#F8FAFE;     /* color3 */
+    --ucp4:#CC1EEC;     /* color4 */
+    --ucp5:#BF4FFF;     /* color5 */
+    
+    --ucptxt1:"Malibu";
+    --ucptxt2:"Cerulean";
+    --ucptxt3:"Ghost White";
+    --ucptxt4:"Neon Purple";
+    --ucptxt5:"Tyrian Purple";
+    
+    --ucpgradient:linear-gradient(to right,var(--ucp1),var(--ucp2),var(--ucp3),var(--ucp4),var(--ucp5));    /* gradient1 */
+    --ucpgradient2:linear-gradient(to right,var(--ucp1),var(--ucp2),var(--ucp4),var(--ucp5));    /* gradient2 */
+    
+    --ucf1:"Quicksand";
+    --ucf2:"Roboto";
+}
+
+    /* Fonts */
+
+@font-face{
+    src:url(../fonts/client/Quicksand-VariableFont_wght.ttf);
+    font-family:ucf1;
+}
+
+@font-face{
+    src:url(../fonts/client/Roboto-Regular.ttf);
+    font-family:ucf2;
+}
+
+    /* Fonts - classes */
+
+.ucf1t:after{
+    content:var(--ucf1);
+}
+.ucf2t:after{
+    content:var(--ucf2);
+}
+
+.ucf1{
+    font-family:ucf1;
+}
+.ucf1b{
+    font-family:ucf1;
+    font-weight:800;
+}
+.ucf1i{
+    font-family:ucf1;
+    font-style:italic;
+}
+.ucf1bi{
+    font-family:ucf1;
+    font-style:italic;
+    font-weight:800;
+}
+
+.ucf2{
+    font-family:ucf2;
+}
+.ucf2b{
+    font-family:ucf2;
+    font-weight:800;
+}
+.ucf2i{
+    font-family:ucf2;
+    font-style:italic;
+}
+.ucf2bi{
+    font-family:ucf2;
+    font-style:italic;
+    font-weight:800;
+}
+
+    /* Color Palette - classes */
+
+.ucp1{
+    background-color:var(--ucp1);
+}
+.ucp2{
+    background-color:var(--ucp2);
+}
+.ucp3{
+    background-color:var(--ucp3);
+}
+.ucp4{
+    background-color:var(--ucp4);
+}
+.ucp5{
+    background-color:var(--ucp5);
+}
+
+.ucptxt1:after{
+    content:var(--ucptxt1);
+}
+.ucptxt2:after{
+    content:var(--ucptxt2);
+}
+.ucptxt3:after{
+    content:var(--ucptxt3);
+}
+.ucptxt4:after{
+    content:var(--ucptxt4);
+}
+.ucptxt5:after{
+    content:var(--ucptxt5);
+}
+
+.company-name::after{
+    content:var(--company-name);
+    font-family:ucf1;
+}
+.hidden-contents{
+    display:none;
+}
+
+    /* Program Code */
+
+:root {
+    --version:"version b1.1.0";  /* Uverit Color Palette Version */
+    
+    --color1: #07abdb;      /* Primary */
+    --color2: #02141E;      /* Secondary */
+    --color2t: rgb(2,20,30,0.95);  /* Secondary - half transparent */
+    --color3: #90E5FF;      /* Accent 1 */
+    --color4: #0580A4;      /* Accent 2 */
+    --color5: #181818;      /* Accent 3 */
+    
+    --bg1: #F4F6F8;         /* Background-color 1 */
+    --bg2: #636E75;         /* Background-color 2 */    
+    --bg3: #9AA7B1;         /* Background-color 3 */             
+    --bg4: rgb(248,252,254,0.9);    /* Background-color 4 */    
+    --bg5: rgb(255,255,255,0.85);    /* Background-color 5 */
+    
+    --txt1: #000000;        /* Text color 1 */    
+    --txt2: #444;        /* Text color 2 */
+}
+
+.version::after{
+    content:var(--version);
+}
+
+    /* Sizes */
+
+:root {
+    --wrapperPadding1: 40px;    /* Desktop Padding */
+    --wrapperPadding2: 20px;    /* Mobile Padding */
+}
+
+    /* Scrollbar */
+
+::-webkit-scrollbar{
+    width:6px;
+}
+
+::-webkit-scrollbar-track{
+    background:var(--color2);
+}
+
+::-webkit-scrollbar-thumb{
+    background:var(--color1);
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:var(--color4);
+}
+
+::-webkit-resizer{
+    background:var(--color1);
+}
+
+::-webkit-scrollbar-corner{
+    background:var(--color1);
+}
+
+
+    /* Basic settings */
+
+        /* Page */
+
+*{
+    margin:0;
+    padding:0;
+    font-family:font2;
+    -webkit-tap-highlight-color: transparent;
+    list-style: none;
+}
+
+*:focus{
+    outline:0 !important;
+}
+
+body{
+    width:100%;
+    overflow-x:hidden;
+}
+
+main{
+    transition:0.15s;
+    position:relative;
+}
+
+.elements{
+    width:calc(100% - 40px);
+    background-color:var(--bg4);
+    min-height:500px;
+    box-shadow:0 0 10px 1px var(--bg3);
+    backdrop-filter:blur(2px);
+    margin:40px 0;
+    padding:0 20px;
+    border-radius:20px;
+}
+
+        /* Fonts */
+
+@font-face{
+    src:url(../fonts/Quicksand-VariableFont_wght.ttf);
+    font-family:font1;
+}
+
+@font-face{
+    src:url(../fonts/Roboto-Regular.woff2);
+    font-family:font2;
+}
+
+p, a{
+    font-size:18px;
+    font-weight:400;
+    line-height:1.3em;
+    text-decoration:none;
+    color:var(--txt2);
+    transition:0.15s;
+}
+
+@media screen and (max-width:440px){
+    
+    p, a{
+        font-size:16px;
+        line-height:1.2em;
+    }
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family:font1;
+    color:var(--txt1);
+    font-weight:800;
+    transition:0.15s;
+}
+
+h1{
+    font-size:38px;
+}
+h2{
+    font-size:36px;
+}
+h3{
+    font-size:28px;
+}
+h4{
+    font-size:24px;
+}
+h5{
+    font-size:20px;
+}
+h6{
+    font-size:18px;
+}
+
+@media screen and (max-width:440px){
+    
+    h1{
+        font-size:32px;
+    }
+    h2{
+        font-size:32px;
+    }
+    h3{
+        font-size:24px;
+    }
+    h4{
+        font-size:20px;
+    }
+    h5{
+        font-size:18px;
+    }
+    h6{
+        font-size:16px;
+    }
+}
+
+    /* Space between contents */
+
+.space{
+    width:100%;
+    height:80px;
+}
+
+.space-s{
+    width:100%;
+    height:40px;
+}
+
+@media screen and (max-width:768px){
+    .space{
+        height:60px;
+    }
+    
+    .space-s{
+        height:30px;
+    }
+}
+
+    /* Wrapper - change body content margins */
+
+.wrapper{
+    max-width:calc(1440px - (var(--wrapperPadding1) * 2));
+    padding:0 var(--wrapperPadding1);
+    margin:0 auto;
+}
+
+.wrapper2{          /* Add this class to existing paernt content */
+    width:100%;
+}
+
+@media screen and (max-width:768px){
+    .wrapper{
+        max-width:calc(1440px - (var(--wrapperPadding2) * 2));
+        padding:0 var(--wrapperPadding2);
+    }
+}
+
+
+
+    /* Nav */
+
+
+
+nav{
+    height:80px;
+    width:100%;
+    background-color:var(--color2);
+    position:relative;
+    z-index:100;
+}
+
+.navwrapper{
+    height:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+        /* Nav - logo */
+
+.logo{
+    height:55%;
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.logo a{
+    height:100%;
+}
+
+.logo img{
+    height:100%;
+}
+
+.logo h1{
+    color:white;
+}
+
+        /* Nav - navigation */
+
+.navigation{
+    height:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:relative;
+    gap:20px;
+}
+
+.navarrow{
+    height:60%;
+    width:100px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.navarrow:nth-child(2){
+    justify-content:flex-end;
+}
+
+.navarrow p{
+    color:white;
+    font-size:45px;
+    height:100%;
+    width:100%;
+    transition:0.15s;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.navarrow:hover p{
+    width:85%;
+    color:var(--color1);
+}
+
+            /* Nav - navigation - dots */
+
+.dots{
+    width:140px;
+    display:flex;
+    gap:4px;
+    position:absolute;
+    bottom:5px;
+    left:50%;
+    transform:translate(-50%, 0);
+}
+
+.dot{
+    flex:1;
+    height:6px;
+    background-color:white;
+    transition:0.15s;
+    z-index:10;
+}
+
+.dot:hover{
+    background-color:var(--color3);
+}
+
+        /* Nav - media */
+
+@media screen and (max-width:768px){
+    
+    .logo{
+        height:36%;
+        gap:10px;
+    }
+    
+    .logo h1{
+        font-size:26px;
+    }
+    
+    .navigation{
+        height:80px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        position:relative;
+        gap:20px;
+    }
+    
+}
+
+@media screen and (max-width:540px){
+    
+    nav{
+        height:auto;
+    }
+    
+    .navwrapper{
+        height:100%;
+        padding-top:30px;
+        padding-bottom:30px;
+        flex-direction:column;
+    }
+    
+    .logo a{
+        height:40px;
+    }
+    
+    .logo h1{
+        font-size:28px;
+    }
+    
+    .navigation{
+        margin-top:8px;
+    }
+    
+}
+
+@media screen and (max-width:440px){
+    
+    .logo{
+        height:auto;
+        flex-direction:column;
+        justify-content:center;
+        gap:5px;
+    }
+    
+}
+
+    /* Footer */
+
+footer{
+    padding:60px 0;
+    background-color:var(--color2);
+    position:relative;
+}
+
+footer .wrapper{
+    display:flex;
+    justify-content:space-between;
+}
+
+        /* Footer - text */
+
+.footertext{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+}
+
+.uverit{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+}
+
+.footertext h4{
+    color:white;
+}
+
+.footertext p{
+    color:white;
+}
+
+.fiverr{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.fiverrimg{
+    height:50px;
+    width:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.fiverrimg img{
+    height:100%;
+    transition:0.15s;
+}
+
+.fiverr:hover .fiverrimg img{
+    height:90%;
+}
+
+.fiverrtext{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+.fiverr h5{
+    color:white;
+    transition:0.15s;
+}
+
+.fiverr:hover h5{
+    color:var(--color1);
+}
+
+.fiverrfloor{
+    width:0;
+    height:3px;
+    background-color:var(--color1);
+    transition:0.15s;
+    position:absolute;
+    bottom:0;
+}
+
+.fiverr:hover .fiverrfloor{
+    width:100%;
+}
+
+        /* Footer - scroll */
+
+.footerscroll{
+    display:flex;
+    align-items:center;
+}
+
+.scrolltop{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    cursor:pointer;
+}
+
+footer .uveritlogo{
+    height:80px;
+    transition:0.25s;
+}
+
+.scrolltop:hover .uveritlogo{
+    padding-top:80px;
+}
+
+footer .doublearrows{
+    height:60px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    opacity:0;
+    transition:0.25s;
+}
+
+.scrolltop:hover .doublearrows{
+    opacity:1;
+    top:calc(50% - 40px);
+}
+
+        /* Footer - media */
+
+@media screen and (max-width:540px){
+
+    footer{
+        padding-top:20px;
+        padding-bottom:50px;
+    }
+    
+    footer .wrapper{
+        flex-direction:column-reverse;
+        gap:50px;
+    }
+    
+    .footerscroll{
+        width:100%;
+        justify-content:center;
+    }
+    
+    .scrolltop{
+        height:160px;
+    }
+    
+}
+
+    /* Gradient Strings */
+
+.gradbg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    background-image:var(--ucpgradient);
+    z-index:-10;
+}
+
+.gradimg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    background-image:url(../images/bgreversed.svg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+    z-index:-10;
+}
+
+    /* Content-header */
+
+.content-header-div{
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
+
+.content-header{
+    min-height:110px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.content-header h1, .content-header h2{
+    text-align:center;
+}
+
+.content-header h1{
+    background:var(--ucpgradient2);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    font-size:56px;
+    filter:drop-shadow(0 0 1px var(--bg3));
+}
+
+.content-header-border{
+    margin-top:8px;
+    width:100%;
+    height:5px;
+    background:var(--ucpgradient2);
+    border-radius:5px;
+}
+
+        /* Content - media */
+
+@media screen and (max-width:768px){
+    
+    .content-header{
+        margin-top:20px;
+    }
+
+}
+
+@media screen and (max-width:540px){
+    
+    .content-header{
+        margin-top:0;
+    }
+    
+    .content-header h1{
+        font-size:52px;
+    }
+    
+    .content-header h2{
+        font-size:30px;
+    }
+
+}
+
+@media screen and (max-width:440px){
+    
+    .content-header{
+        min-height:75px;
+    }
+    
+    .content-header h1{
+        font-size:10.5vw;
+    }
+    
+    .content-header h2{
+        font-size:7vw;
+    }
+
+}
+
+@media screen and (max-width:320px){
+
+    .content-header h1{
+        font-size:10vw;
+    }
+    
+    .content-header h2{
+        font-size:6.5vw;
+    }
+
+}
+
+    /* PDF print */
+
+.print-logo{
+    display:none;
+    width:100%;
+    min-height:50px;
+    flex-direction:column;
+    align-items:center;
+}
+
+.print-logo img{
+    width:175px;
+}
+
+.pdf{
+    position:absolute;
+    top:20px;
+    right:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    background-color:var(--bg5);
+    border:double 2px transparent;
+    border-radius:8px;
+    background-image:linear-gradient(white, white), var(--ucpgradient2);
+    background-origin:border-box;
+    background-clip:content-box, border-box;
+    transition:0.15s;
+    z-index:100;
+}
+
+.pdf:hover{
+    box-shadow:0 0 3px 3px var(--color1);
+}
+
+.pdf-inner{
+    margin:8px 12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+}
+
+.pdf p{
+    color:black;
+}
+
+.pdf img{
+    height:32px;
+}
+
+        /* PDF print - media */
+
+@media screen and (max-width:540px){
+
+    .pdf{
+        top:8px;
+        right:8px;
+    }
+    
+    .pdf-inner p{
+        display:none;
+    }
+    
+    .pdf img{
+        height:36px;
+    }
+    
+}
+
+        /* PDF print - PDF view */
+
+@media print {
+    
+            /* PDF print - Page settings */
+    
+    @page{ 
+        margin:0;
+        size:A4 landscape;
+    }
+    
+    *{
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+    
+    html, body{
+        width:1440px;
+        height:100%;
+    }
+    
+    main{
+        width:100%;
+        height:100%;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+    }
+    
+    .gradbg{
+        position:absolute;
+    }
+    
+            /* PDF print - General settings */
+    
+    main .elements *:not(.pdfPrint, .pdfPrint *),
+    .pdfNoPrint, footer, nav, #hidden-contents{
+        display:none;
+    }
+    
+    .print-logo{
+        display:flex;
+    }
+
+    .space-s{
+        height:30px;
+    }
+
+    .content-header{
+        margin-top:15px;
+    }
+    
+}
+
+
+
+
+
+
+
+

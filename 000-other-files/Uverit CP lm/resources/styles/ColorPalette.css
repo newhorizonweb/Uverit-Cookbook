@@ -1,0 +1,242 @@
+/* 
+    Program created by Uverit
+    Do not copy or distribute
+    https://www.fiverr.com/new_horizon_web
+*/
+
+    /* Media breakpoints */
+    /* Width: 1440, 1024, 768, 540, 440, 320  */
+
+    /* Nav Dots */
+
+.dot:nth-child(1){
+    background-color:var(--color1);
+}
+
+.navarrow:nth-child(1):hover ~ .dots .dot:nth-child(7){
+    background-color:var(--color3);
+}
+
+.navarrow:nth-child(2):hover ~ .dots .dot:nth-child(2){
+    background-color:var(--color3);
+}
+
+.content{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+    /* Cards */
+
+.cards{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+    padding-top:20px;
+}
+
+.card{
+    width:236px;
+    min-height:310px;
+    background-color:var(--bg5);
+    border-radius:14px;
+    box-shadow:0 0 20px 2px var(--bg3);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding-top:8px;
+    padding-bottom:48px;
+    position:relative;
+    transition:0.1s;
+}
+
+.cards:hover .card{
+    border-radius:0 0 14px 14px;
+}
+
+.use{
+    position:absolute;
+    bottom:100%;
+    width:100%;
+    height:0;
+    background-color:var(--bg5);
+    box-shadow:0 0 10px 1px var(--bg3);
+    border-radius:14px 14px 0 0;
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    opacity:0;
+    transition:0.15s;
+    overflow:none;
+}
+
+.cards:hover .use{
+    opacity:1;
+    height:30px;
+}
+
+.use-help{
+    position:absolute;
+    bottom:calc(100% - 8px);
+    width:100%;
+    height:8px;
+    background-color:var(--bg5);
+    transition:0.1s;
+    opacity:0;
+}
+
+.cards:hover .use-help{
+    opacity:1;
+}
+
+.color{
+    width:calc(100% - 16px);
+    height:200px;
+    border-radius:12px;
+    margin-bottom:20px;
+    z-index:10;
+}
+
+.color:hover{
+    box-shadow:0 0 1px 1px black;
+}
+
+
+.card h4{
+    text-align:center;
+    width:calc(100% - 54px);
+    border-bottom:solid 1px var(--bg2);
+    padding-bottom:12px;
+    margin-bottom:12px;
+    text-transform:uppercase;
+    font-size:22px;
+}
+
+.card-text{
+    width:calc(100% - 54px);
+    display:flex;
+    flex-direction:column;
+}
+
+.color-model{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+}
+
+.color-model p{
+    font-size:17px;
+}
+
+.color-model p:nth-child(1){
+    color:var(--bg2);
+}
+
+.break1, .break2, .break3{
+    width:100%;
+    display:none;
+}
+
+    /* Cards - media */
+
+@media screen and (max-width:1440px){
+    
+    .cards{
+        column-gap:50px;
+    }
+    
+    .break1{
+        display:block;
+    }
+    
+}
+
+@media screen and (max-width:1024px){
+    
+    .break1{
+        display:none;
+    }
+    
+    .break2, .break3{
+        display:block;
+    }
+    
+}
+
+@media screen and (max-width:768px){
+    
+    .cards{
+        column-gap:20px;
+    }
+    
+    .card h4{
+        width:calc(100% - 48px);
+    }
+
+    .card-text{
+        width:calc(100% - 48px);
+    }
+    
+    .color-model p{
+        font-size:16px;
+    }
+
+}
+
+@media screen and (max-width:540px){
+    
+    .cards{
+        flex-direction:column;
+        align-items:center;
+        width:100%;
+    }
+    
+    .card{
+        max-width:260px;
+        width:100%;
+    }
+    
+    .break1, .break2, .break3{
+        display:none;
+    }
+
+}
+
+
+
+        /* PDF print - Custom Settings */
+
+@media print {
+    
+    .cards{
+        padding-top:30px;
+    }
+
+    .card{
+        border-radius:0 0 14px 14px;
+    }
+
+    .use{
+        opacity:1;
+        height:30px;
+    }
+
+    .use-help{
+        opacity:1;
+    }
+
+    
+}
+
+
+
+
+
+
+
+
+
+
+

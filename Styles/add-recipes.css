@@ -1,0 +1,1056 @@
+/* 
+    Website created by Uverit
+    Do not copy or distribute
+    https://www.fiverr.com/new_horizon_web
+*/
+
+    /* Media breakpoints */
+    /* Width: 1200, 1024, 768, 540, 440, 320 */
+
+    /* Form Settings */
+
+.add-form{
+    width:100%;
+}
+
+.form-section{
+    margin-bottom:50px;
+}
+
+.add-form input{
+    width:10px;
+    border:none;
+    box-shadow:var(--box-shadow3) var(--bg5);
+    border-radius:var(--radius2);
+    height:20px;
+    padding:4px 8px;
+    font-size:16px;
+    transition:0.15s;
+    background-color:var(--bg1);
+    color:var(--txt1);
+}
+
+.add-form input[type="checkbox"]{
+    transition:0.15s;
+}
+
+.add-form input[type="checkbox"]:hover{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+.form-s1 input:focus,
+.form-s2 input:focus,
+.form-s3 input:focus,
+.form-s4 input:focus{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+.add-form input:-webkit-autofill{
+    -webkit-box-shadow:0 0 0 100px var(--bg1) inset, var(--box-shadow3) var(--color1a);
+    -webkit-text-fill-color:var(--txt1);
+}
+
+.add-form input:focus:-webkit-autofill{
+    -webkit-box-shadow:0 0 0 100px var(--bg1) inset, var(--box-shadow3) var(--color1a);
+    -webkit-text-fill-color:var(--txt1);
+}
+
+@media screen and (max-width:540px){
+    .add-form input[type="checkbox"]:hover{
+        box-shadow:var(--box-shadow3) var(--bg5);
+    }
+}
+
+    /* Form Basics - section 1 */
+
+        /* Form Basics - section 1 - left */
+
+.form-s1{
+    width:100%;
+    display:flex;
+    gap:75px;
+}
+
+.form-s1-left{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    gap:20px;
+}
+
+.input-div{
+    display:flex;
+    flex-direction:column;
+}
+
+.input-div label{
+    margin-bottom:2px;
+}
+
+.input-div input{
+    width:calc(100% - 16px);
+}
+
+.form-s1-left select{
+    height:28px;
+    padding:0 3px;
+    border:none;
+    box-shadow:var(--box-shadow3) var(--bg5);
+    border-radius:var(--radius2);
+    background-color:var(--bg1);
+    color:var(--txt1);
+    font-size:16px;
+    transition:0.1s;
+    cursor:pointer;
+}
+
+.form-s1-left select:focus{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+#file_style{
+    height:28px;
+    margin:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:16px;
+    background-color:var(--bg1);
+    box-shadow:var(--box-shadow3) var(--bg5);
+    border-radius:var(--radius2);
+    transition:0.15s;
+    cursor:pointer;
+}
+
+#file_style:hover, #file_style:focus{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+        /* Form Basics - section 1 - right */
+
+.form-s1-right{
+    width:571px;
+    margin-top:25px;
+    aspect-ratio:16 / 9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:var(--box-shadow1) var(--bg5);
+    border-radius:var(--radius1);
+    background-color:var(--bg1);
+    transition-property:background-color, box-shadow;
+    transition-duration:0.15s;
+}
+
+.form-s1-right.dragOver{
+    box-shadow:var(--box-shadow1) var(--color1);
+}
+
+#output{
+    width:100%;
+    aspect-ratio:16 / 9;
+    object-fit:cover;
+    border-radius:var(--radius1);
+}
+
+        /* Form Basics - section 1 - media */
+
+@media screen and (max-width:1024px){
+    
+    .form-s1{
+        gap:0;
+        flex-direction:column;
+        flex-wrap:wrap;
+    }
+    
+    .form-s1-left{
+        flex-direction:row;
+        flex-wrap:wrap;
+    }
+    
+    .s1-name,
+    .s1-desc{
+        min-width:50%;
+        flex:1;
+    }
+    
+    .s1-type,
+    .s1-diff{
+        width:160px;
+    }
+    
+    .s1-image{
+        width:100%;
+    }
+    
+    .input-div{
+        order:2;
+    }
+
+    .s1-name{
+        order:0;
+    }
+    
+    .s1-type{
+        order:1;
+    }
+    
+    .form-s1-right{
+        width:100%;
+    }
+
+    #output{
+        height:auto;
+        width:100%;
+    }
+}
+
+@media screen and (max-width:540px){
+
+    .s1-name,
+    .s1-desc{
+        order:0;
+        flex:auto;
+        width:100%;
+    }
+    
+    .s1-type,
+    .s1-diff{
+        order:1;
+        width:auto;
+        flex:40%;
+    }
+    
+    .s1-image{
+        width:100%;
+    }
+
+    .form-s1-right{
+        height:auto;
+        width:100%;
+    }
+
+    #output{
+        height:auto;
+        width:100%;
+    }
+}
+
+@media screen and (max-width:440px){
+    
+    .form-s1-left{
+        flex-direction:column;
+    }
+    
+    .input-div{
+        flex:1;
+    }
+
+}
+
+    /* Ingredient Calculator */
+
+.calc{
+    width:100%;
+    margin-bottom:50px;
+    display:flex;
+    flex-direction:column;
+    /* so the box-shadow appears correctly */
+    padding:10px;
+    padding-bottom:0;
+    margin-top:-10px;
+    margin-left:-10px;
+}
+
+.calc::-webkit-scrollbar{
+    height:30px;
+    cursor:pointer;
+}
+
+.calc::-webkit-scrollbar-track{
+    background:var(--bg3);
+    border-radius:500px;
+}
+
+.calc::-webkit-scrollbar-thumb{
+    background:var(--txt1);
+    border:3px solid var(--bg3);
+    border-top:14px solid var(--bg3);
+    border-bottom:14px solid var(--bg3);
+    border-left:10px solid var(--bg3);
+    border-right:10px solid var(--bg3);
+    border-radius:12px;
+}
+        /* Ingredient Calculator - calc-expand */
+
+.calc-expand{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 100px;
+    margin-bottom:5px;
+    background-color:var(--bg1);
+    border-radius:var(--radius1);
+    box-shadow:var(--box-shadow1) var(--bg5);
+    cursor:pointer;
+    transition:0.15s;
+}
+
+.calc-expand.calc-expanded{
+    margin-bottom:30px;
+}
+
+.calc-expand:hover{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+.calc-expand .calc-arrow{
+    width:30px;
+    transition:0.25s;
+    user-select:none;
+}
+
+.dark-mode .calc-expand .calc-arrow{
+    filter:invert(1);
+}
+
+.calc-expand.calc-expanded .calc-arrow1{
+    transform:rotate(-180deg);
+}
+
+.calc-expand.calc-expanded .calc-arrow2{
+    transform:rotate(180deg);
+}
+
+        /* Ingredient Calculator - calculator div */
+
+.calculator{
+    height:0;
+    /* so the input shadow is not cut */
+    padding-right:1px; 
+    margin-right:-1px;
+    
+    display:flex;
+    align-items:flex-start;
+    overflow-y:hidden;
+    gap:5px;
+    transition:0.25s;
+}
+
+.calculator.calc-expanded{
+    height:auto;
+    padding-bottom:3px;
+    margin-bottom:-3px;
+}
+
+        /* Ingredient Calculator - reset */
+
+.reset-calc-row{
+    height:28px;
+    aspect-ratio:1/1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:var(--bg1);
+    box-shadow:var(--box-shadow3) var(--bg5);
+    border-radius:var(--radius2);
+    transition:0.15s;
+    cursor:pointer;
+}
+
+.reset-calc-row:nth-last-of-type(6){
+    margin-top:38px; /* height 28px + gap 10px */
+}
+
+.reset-calc-row:hover{
+    background-color:var(--color1);
+}
+
+.reset-calc-row:after{
+    content:"";
+    width:20px;
+    height:4px;
+    background-color:var(--color1);
+    border-radius:5px;
+    transition:0.15s;
+}
+
+.reset-calc-row:hover:after{
+    background-color:white;
+}
+
+        /* Ingredient Calculator - columns */
+
+.calculator > div{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    gap:10px;
+}
+
+.calculator .reset-calc-col{
+    flex:none;
+}
+
+.calculator > div:not(:nth-of-type(4)) h5{
+    cursor:help;
+}
+
+.calculator > div:nth-of-type(1) h5,
+.calculator > div:nth-of-type(2) h5{
+    cursor:default;
+}
+
+.calculator .list-calc-col{
+    flex:0;
+    min-width:25px;
+}
+
+.calculator .list-calc-col p{
+    height:20px;
+}
+
+.calculator .name-calc-col{
+    flex:none;
+    width:30%;
+}
+
+.calculator .protein-calc-col{
+    padding-right:2px; /* Input focus is fully visible (right box-shadow was cut) */
+}
+
+.calculator input{
+    width:calc(100% - 16px);
+    height:20px;
+}
+
+.calculator input:focus{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+.calculator p{
+    height:22px;
+    padding:4px 0;
+    font-size:18px;
+}
+
+.calculator .calc-num{
+    min-width:42px;
+}
+
+.add-form .calc-result{
+    box-shadow:var(--box-shadow2) var(--color1);
+}
+
+.add-form .calc-result:focus{
+    box-shadow:var(--box-shadow2) var(--color1);
+}
+
+.bottom-pointer{
+    display:none;
+}
+
+        /* Ingredient Calculator - sub */
+
+.calculator .sub-loss{
+    height:28px;
+    padding:0;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.sub-loss span{
+    height:2px;
+    flex:1;
+    margin-right:-15px;
+    background-color:var(--color1);
+}
+
+.sub-line-div{
+    height:28px;
+    display:flex;
+    align-items:center;
+}
+
+.sub-line{
+    height:2px;
+    width:100%;
+    margin-right:5px;
+    background-color:var(--color1);
+}
+
+.calc-sub-select{
+    height:28px;
+    padding:0 3px;
+    color:var(--txt1);
+    background-color:var(--bg1);
+    border:none;
+    box-shadow:var(--box-shadow3) var(--bg5);
+    border-radius:var(--radius2);
+    font-size:16px;
+    transition:0.05s;
+    cursor:pointer;
+}
+
+.calc-sub-select:focus{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+        /* Ingredient Calculator - media */
+
+@media screen and (max-width:768px){
+        
+    .calc{
+        width:100%;
+    }
+    
+    .calc-expand{
+        padding:10px 50px;
+    }
+    
+    .calc.calc-expanded{
+        overflow-y:hidden;
+        overflow-x:auto;
+        padding-bottom:3px;
+    }
+    
+    .calculator{
+        width:722px;
+    }
+
+}
+
+@media screen and (max-width:540px){
+    
+    .calculator > div h5{
+        font-size:16px;
+    }
+}
+
+@media screen and (max-width:440px){
+    
+    .calc-expand .calc-arrow{
+        width:24px;
+    }
+    
+    .calc-expand{
+        display:flex;
+        padding:10px 20px;
+    }
+    
+}
+
+    /* Form Ingredients - section 2 */
+
+.form-s2{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+.form-s2 label{
+    margin-bottom:5px;
+    cursor:help;
+}
+
+.form-s2 .form-s2-inner{
+    width:calc(100% - 23px);
+    padding-left:23px;
+    display: grid;
+    grid-template-columns:repeat(3, 1fr);
+    grid-template-rows:repeat(8, 1fr);
+    grid-auto-flow:column;
+    row-gap:10px;
+    column-gap:50px;
+}
+
+.dark-mode .form-s2 li::marker{
+    color:var(--txt1);
+}
+
+.form-s2 input:nth-child(2n+1){ /* Left - weight */
+    width:40px;
+    float:left;
+    margin-right:5px;
+}
+
+.form-s2 input:nth-child(2n){ /* Right - ingredient */
+    width:calc(100% - 16px - 40px - 21px);
+}
+
+        /* Form Ingredients - section 2 - media */
+
+@media screen and (max-width:1024px){
+    
+    .form-s2 .form-s2-inner{
+        grid-template-columns:repeat(2, 1fr);
+        grid-template-rows:repeat(12, 1fr);
+    }
+
+}
+
+@media screen and (max-width:768px){
+    
+    .form-s2 .form-s2-inner{
+        grid-template-columns:repeat(1, 1fr);
+        grid-template-rows:repeat(24, 1fr);
+    }
+
+}
+
+    /* Form Recipe - section 3 */
+
+.form-s3{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+.form-s3 label{
+    margin-bottom:5px;
+}
+
+.form-s3 ol{
+    width:calc(100% - 23px);
+    padding-left:23px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:50px;
+}
+
+.form-s3 ol div{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    row-gap:10px;
+}
+
+.form-s3 li{
+    width:100%;
+}
+
+.dark-mode .form-s3 li::marker{
+    color:var(--txt1);
+}
+
+.form-s3 input{
+    width:calc(100% - 16px);
+}
+
+        /* Form Recipe - section 3 - media */
+
+@media screen and (max-width:768px){
+    
+    .form-s3 ol{
+        flex-direction:column;
+        gap:10px;
+    }
+
+}
+
+    /* Form Attributes - section 4 */
+
+.form-s4{
+    width:100%;
+    display:flex;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.form-s4 label{
+    margin-bottom:2px;
+}
+
+.form-s4 .s4-help{
+    cursor:help;
+}
+
+.form-s4-div{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.form-s4-input{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+}
+
+.form-s4-input input{
+    width:calc(100% - 16px);
+}
+
+.form-s4-info{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+.form-s4-info input{
+    width:calc(100% - 16px);
+}
+
+        /* Form Attributes - section 4 - media */
+
+@media screen and (max-width:1024px){
+    
+    .form-s4{
+        flex-wrap:wrap;
+    }
+    
+    .form-s4-div{
+        flex:30%;
+    }    
+    
+    .form-s4 label{
+        font-size:16px;
+    }
+
+}
+
+@media screen and (max-width:768px){
+    
+    .form-s4-div{
+        flex:40%;
+    }
+    
+    .form-s4-e{
+        flex-direction:row;
+    }
+
+}
+
+@media screen and (max-width:440px){
+
+    .form-s4-div{
+        flex:100%;
+    }
+    
+    .form-s4-e{
+        flex-direction:column;
+    }
+
+}
+
+    /* Form Tags - section 5 */
+
+.form-s5{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    margin-bottom:25px;
+}
+
+.form-s5 label{
+    margin-bottom:5px;
+    cursor:help;
+}
+
+.form-s5 label:nth-of-type(2){
+    margin-top:20px;
+}
+
+.form-s5 input{
+    width:calc(100% - 16px);
+}
+
+.form-s5 input:focus{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+    /* Form Tags2 - section 6 */
+
+.form-s6{
+    width:100%;
+    margin-bottom:0;
+    column-count:6;
+    column-gap:15px;
+}
+
+.form-s6 .check-div{
+    display:flex;
+    align-items:center;
+    padding-bottom:10px;
+}
+
+.form-s6 input{
+    width:20px;
+    height:20px;
+    margin:0;
+    appearance:none;
+    background-color:var(--bg1);
+    cursor:pointer;
+    border-radius:5px;
+    display:grid;
+    place-content:center;
+}
+
+.form-s6 input:before{
+    content:"";
+    width:12px;
+    height:12px;
+    transform:scale(0);
+    background-color:var(--color1);
+    border-radius:3px;
+    transition:0.12s;
+}
+
+.form-s6 input:checked:before{
+  transform:scale(1);
+}
+
+.form-s6 label{
+    padding-left:5px;
+    margin-bottom:-2px;
+    cursor:pointer;
+}
+
+.form-s6 .check-div-group{
+    position:relative;
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.form-s6 .check-div-group label{
+    height:100%;
+    padding-left:10px;
+    display:flex;
+    align-items:center;
+    cursor:default;
+}
+
+.form-s6 .check-div-group .cdg-line{
+    width:2px;
+    height:calc(100% - 10px); /* subtract the bottom padding */
+    position:absolute;
+    background-color:var(--color1);
+    border-radius:5px;
+}
+
+        /* Form Tags2 - section 6 - media */
+
+@media screen and (max-width:1200px){
+
+    .form-s6{
+        column-count:5;
+    }
+
+}
+
+@media screen and (max-width:1024px){
+
+    .form-s6{
+        column-count:4;
+        column-gap:5px;
+    }
+
+}
+
+@media screen and (max-width:768px){
+
+    .form-s6{
+        column-count:3;
+    }
+    
+    .form-s6 label{
+        font-size:16px;
+    }
+        
+    .form-s6 .check-div-group{
+        height:20px;
+    }
+
+}
+
+@media screen and (max-width:540px){
+
+    .form-s6{
+        column-count:2;
+    }
+    
+    .form-s6 input{
+        width:24px;
+        height:24px;
+    }
+    
+    .form-s6 input:before{
+        width:14px;
+        height:14px;
+    }
+        
+    .form-s6 .check-div-group{
+        height:24px;
+    }
+
+}
+
+@media screen and (max-width:320px){
+
+    .form-s6{
+        column-count:1;
+    }
+
+}
+
+    /* Form - Send btn */
+
+.send-btn{
+    width:100%;
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+    position:relative;
+}
+
+#placeholder-text{
+    height:20px;
+    margin-bottom:10px;
+    padding-bottom:2px;
+    text-align:center;
+    display:flex;
+    align-items:center;
+    font-size:20px;
+    font-family:Quicksand;
+    font-weight:800;
+    border-bottom:2px solid transparent;
+}
+
+#add{
+    width:350px;
+    height:50px;
+    justify-self:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:var(--box-shadow2) var(--color1);
+    border-radius:var(--radius1);
+    background-color:var(--bg1);
+    transition:0.15s;
+    cursor:pointer;
+}
+
+#add:hover{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+#add p{
+    color:var(--txt1);
+    font-size:18px;
+    transition:0.15s;
+}
+
+.send-block{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:calc(100% + 10px);
+    display:none;
+}
+
+@media screen and (max-width:540px){
+    #add{
+        width:100%;
+    }
+}
+
+@media screen and (max-width:440px){
+    #placeholder-text{
+        font-size:18px;
+    }
+}
+
+    /* Copy link */
+
+#copy-link{
+    width:45px;
+    height:45px;
+    background-color:var(--bg3);
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    transition:0.25s;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:var(--radius1);
+    cursor:pointer;
+    box-shadow:var(--box-shadow4) rgb(0,0,0,0.3);
+    z-index:1000;
+    opacity:0.5;
+}
+
+#copy-link:hover{
+    opacity:1;
+}
+
+#copy-link.copy-checked{
+    box-shadow:var(--box-shadow3) var(--color1);
+    opacity:1;
+}
+
+.copy-icon{
+    width:60%;
+    height:60%;
+}
+
+        /* Copy Link - Dark-mode */
+
+.dark-mode #copy-link{
+    box-shadow:var(--box-shadow4) rgb(255,255,255,0.2);
+}
+
+.dark-mode #copy-link.copy-checked{
+    box-shadow:var(--box-shadow3) #07abdb;
+}
+
+.dark-mode .copy-icon{
+    filter:invert(1);
+}
+
+.dark-mode #copy-link.copy-checked .copy-icon{
+    filter:invert(0);
+}
+
+        /* Copy Link - media */
+
+@media screen and (max-width:768px){
+    
+    #copy-link{
+        right:8px;
+        bottom:8px;
+    }
+    
+}
+
+    /* Error and Sent classes */
+
+*.error:not(
+*:focus,
+#file_style:hover,
+.checkbox:hover,
+#placeholder-text){
+    box-shadow:var(--box-shadow3) red !important;
+}
+
+#add.sent{
+    box-shadow:var(--box-shadow3) var(--color2);
+}
+
+#placeholder-text.sent{
+    border-bottom:2px solid var(--color2);
+}
+
+#placeholder-text.error{
+    border-bottom:2px solid red;
+}
+
+
+
+
+
+
+

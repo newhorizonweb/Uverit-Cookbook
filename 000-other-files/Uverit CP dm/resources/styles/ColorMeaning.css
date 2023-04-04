@@ -1,0 +1,170 @@
+/* 
+    Program created by Uverit
+    Do not copy or distribute
+    https://www.fiverr.com/new_horizon_web
+*/
+
+    /* Media breakpoints */
+    /* Width: 1400, 1024, 768, 540, 440, 320  */
+
+    /* Nav Dots */
+
+.dot:nth-child(2){
+    background-color:var(--color1);
+}
+
+.navarrow:nth-child(1):hover ~ .dots .dot:nth-child(1){
+    background-color:var(--color3);
+}
+
+.navarrow:nth-child(2):hover ~ .dots .dot:nth-child(3){
+    background-color:var(--color3);
+}
+
+    /* Content */
+
+.content{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+}
+
+.content-inner{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:50px;
+}
+
+    /* Color */
+
+.coloraside{
+    width:275px;
+    padding:15px 8px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    background-color:var(--bg5);
+    border-radius:14px;
+    box-shadow:0 0 20px 2px var(--bg3);
+}
+
+.color-div{
+    width:100%;
+    height:75px;
+    border-radius:12px;
+}
+
+.coloraside h3{
+    width:100%;
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.color-txt{
+    width:80%;
+    padding:5px 0;
+    margin:15px 0;
+    border-top:solid 1px var(--bg2);
+    border-bottom:solid 1px var(--bg2);
+    display:flex;
+    justify-content:space-evenly;
+    gap:15px;
+}
+
+        /* Color - media */
+
+@media screen and (max-width:1024px){
+    
+    .coloraside{
+        width:250px;
+    }
+    
+}
+
+@media screen and (max-width:768px){
+    
+    .content-inner{
+        flex-direction:column;
+        align-items:center;
+    }
+    
+    .coloraside{
+        width:100%;
+    }
+    
+    .color-div{
+        width:80%;
+    }
+    
+    .color-txt{
+        width:60%;
+    }
+
+}
+
+@media screen and (max-width:440px){
+    
+    .color-div{
+        width:100%;
+    }
+    
+    .color-txt{
+        width:80%;
+    }
+
+}
+
+    /* Desc */
+
+.desc{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.desc h3{
+    width:100%;
+}
+
+.desc p{
+    font-size:20px;
+}
+
+.color-border{
+    width:100%;
+    height:6px;
+    border-radius:3px;
+}
+
+        /* Desc - media */
+
+@media screen and (max-width:1024px){
+
+    .desc p{
+        font-size:16px;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang=en>
+        
+    <head>
+        <title>Uverit Color Palette - Tips</title>
+        <meta name="description" content="Program developed by Uverit to show the brand's color palette. Copying is not allowed.">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="shortcut icon" href="../images/uverit-favicon-bbg.svg" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="../styles/general.css">
+        <link rel="stylesheet" type="text/css" href="../styles/ColorTips.css">
+        
+        <script src="../scripts/jquery.js"></script>
+        <script src="../scripts/chart.min.js" defer></script>
+
+        <script src="../scripts/UCPscriptPack.js" defer></script>
+    </head>
+        
+    <body>
+        
+        <div class="hidden-contents">
+            <div class="ucp1"></div>
+            <div class="ucp2"></div>
+            <div class="ucp3"></div>
+            <div class="ucp4"></div>
+            <div class="ucp5"></div>
+            <p class="ucptxt1"></p>
+            <p class="ucptxt2"></p>
+            <p class="ucptxt3"></p>
+            <p class="ucptxt4"></p>
+            <p class="ucptxt5"></p>
+        </div>
+        
+        <nav>
+            <div class="wrapper navwrapper">
+                
+                <div class="logo">
+                    <a href="../../ColorPalette.html" rel="noreferrer">
+                       <img src="../images/uverit-w.svg" alt="Uverit logo">
+                    </a>
+                    <h1>Color Palette</h1>
+                </div>
+                
+                <div class="navigation">
+                    
+                    <a href="ColorLayout.html" class="navarrow">
+                        <p class="arrow2">&#10094;</p>
+                    </a>
+                    
+                    <a href="Typefaces.html" class="navarrow">
+                        <p class="arrow2">&#10095;</p>
+                    </a>
+                    
+                    <div class="dots">
+                        <a href="../../ColorPalette.html" class="dot" rel="noreferrer"></a>
+                        <a href="ColorMeaning.html" class="dot" rel="noreferrer"></a>
+                        <a href="ColorChart.html" class="dot" rel="noreferrer"></a>
+                        <a href="ColorLayout.html" class="dot" rel="noreferrer"></a>
+                        <a href="ColorTips.html" class="dot" rel="noreferrer"></a>
+                        <a href="Typefaces.html" class="dot" rel="noreferrer"></a>
+                        <a href="FontsInUse.html" class="dot" rel="noreferrer"></a>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </nav>
+        
+        <div class="gradbg">
+            <div class="gradimg"></div>
+        </div>
+
+        <main class="wrapper">
+        <div class="elements">
+        
+            <div class="space pdfPrint"></div>
+            
+            <div class="pdf" onclick="printDiv()" title="Save to PDF or print">
+                <div class="pdf-inner">
+                    <p>Save</p>
+                    <img src="../images/pdf-icon.svg" alt="PDF icon">
+                </div>
+            </div>
+            
+            <div class="print-logo pdfPrint">
+                <img src="../images/uverit-b.svg" alt="Uverit logo pdf black">
+            </div>
+            
+            <div class="content-header-div pdfPrint">
+                <div class="content-header">
+                    <h1>Color Tips</h1>
+                    <h2 class="company-name"></h2>
+                    <div class="content-header-border"></div>
+                </div>
+            </div>
+            
+            <div class="content pdfPrint">
+
+                <div class="space-s"></div>
+                
+                <div class="content-inner">
+
+                    <ul class="tips dos">
+                        <li>
+                            <h3>Do's</h3>
+                            <div class="floor"></div>
+                        </li>
+                        
+                        <li>Use contrasting colors to draw attention. Dark button on a light background seems more important than a light one.</li>
+                        
+                        <li>Take advantage of opacity / half-transparency. You can use it on hovered buttons or in animations.</li>
+                        
+                        <li>Experiment! The best way to design is to test what goes hand in hand. It is worth spending some time on this, it will pay off.</li>
+                        
+                        <li>You should use accent colors to attract to more important information, such as a button to a different page. Be careful not to use it too often.</li>
+                        
+                        <li>You should test text and background contrast on different devices. Each screen is slightly different. You can see something that others cannot.</li>
+                    </ul>
+
+                    <div class="line"></div>
+
+                    <ul class="tips donts">
+                        <li>
+                            <h3>Don'ts</h3>
+                            <div class="floor"></div>
+                        </li>
+                        
+                        <li>Don't match many dark colors close to eachother. This may create confusion about the information priority. </li>
+                        
+                        <li>Don't use completly black color for plain text. It's much easier to read when you use dark grey on a light background.</li>
+                        
+                        <li>You shouldn't use many colors in one place. Pick the most important elements and use it there, so there is no distraction.</li>
+                        
+                        <li>If you have completly different elements / sections, don't use the same colors for them. Separate them so as not to cause confusion.</li>
+                        
+                        <li>Don't waste colors for less important things. People should notice something that will encourage them to delve into more of your content.</li>
+                    </ul>
+                    
+                </div>
+
+                <div class="space"></div>
+            </div>
+
+        </div>
+        </main>
+        
+        <footer>
+            <div class="wrapper">
+                
+                <div class="footertext">
+                    
+                    <div class="uverit">
+                        <h4>Uverit Color Palette</h4>
+                        <p>© All rights reserved, do not distribute</p>
+                        <p class="version"></p>
+                    </div>
+                    
+                    <a href="https://www.fiverr.com/new_horizon_web" target="_blank" class="fiverr">
+                        <div class="fiverrimg">
+                            <img src="../images/fiicon.png" alt="Fiverr icon">
+                        </div>
+                        <div class="fiverrtext">
+                            <h5>Uverit on Fiverr</h5>
+                            <div class="fiverrfloor"></div>
+                        </div>
+                    </a>
+                    
+                </div>
+            
+                <div class="footerscroll">
+                    <div class="scrolltop" onclick="scrollToTop()">
+                        <img src="../images/double-arrow.png" class="doublearrows" alt="double arrow scroll">
+                        <img src="../images/uverit%20favicon-w.svg" class="uveritlogo" alt="Uverit favicon scroll">
+                    </div>
+                </div>
+                
+            </div>
+        </footer>
+
+    </body>
+        
+</html>
+        
+        
+        
+        
+        
+        
+        
+     
+        
+        
+        
+        

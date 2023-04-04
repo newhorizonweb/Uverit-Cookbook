@@ -1,0 +1,1247 @@
+/* 
+    Website created by Uverit
+    Do not copy or distribute
+    https://www.fiverr.com/new_horizon_web
+*/
+
+    /* Media breakpoints */
+    /* Width: 1200, 1024, 768, 540, 440, 320 */
+
+    /* Main module */
+
+.main-module-content{
+    padding-top:0;
+    border-top:none;
+}
+
+    /* Sticky container */
+
+.calc-scroll{
+    /* 4px so the box-shadow is not visible, more +4px instances below */
+    width:calc(100vw + 240px + (var(--wrapperPadding2) * 2) + 4px);
+    min-height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    pointer-events:none;
+}
+
+.cs-padding{
+    width:100%;
+    height:calc(50vh + 50px);
+}
+
+.cs-container{
+    width:calc(240px + (var(--wrapperPadding2) * 2));
+    padding:var(--wrapperPadding2);
+    box-sizing:border-box;
+    position:sticky;
+    top:50px;
+    left:calc(100% + 4px);
+    background-color:var(--bg6);
+    box-shadow:var(--box-shadow1) var(--wrapperColor1), var(--box-shadow2) var(--wrapperColor1);
+    border-radius:var(--radius1) 0 0 var(--radius1);
+    z-index:9000;
+    transition:0.2s;
+    pointer-events:auto;
+}
+
+.cs-container.cs-open{
+    left:calc(100vw - 240px - (var(--wrapperPadding2) * 2));
+}
+
+        /* Sticky container - button */
+
+.cs-button{
+    position:absolute;
+    height:70px;
+    width:54px;
+    top:70px;
+    left:-34px;
+    background-color:var(--bg1);
+    border-radius:var(--radius1) 0 0 var(--radius1);
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    cursor:pointer;
+    box-shadow:var(--box-shadow4) var(--bg5);
+    clip-path:inset(-4px 0px -4px -4px);
+    transition:0.15s;
+}
+
+.cs-button svg{
+    height:25%;
+    transform:rotate(90deg);
+    fill:var(--txt1);
+    user-select:none;
+    transition-property:all, transform;
+    transition-timing-function:ease, ease-out;
+    transition-duration:0.15s, 0.2s;
+}
+
+.cs-button:hover svg{
+    fill:var(--color1);
+}
+
+.cs-open .cs-button svg{
+    transform:rotate(270deg);
+}
+
+        /* Sticky container - inner */
+
+.cs-container-inner{
+    max-height:calc(100vh - 100px - (var(--wrapperPadding2) * 2));
+    padding:var(--wrapperPadding2);
+    box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    overflow-y:overlay;
+    
+    background-color:var(--bg1);
+    box-shadow:var(--box-shadow4) var(--bg5);
+    border-radius:var(--radius1);
+    transition:0.2s;
+}
+
+.cs-container-inner::-webkit-scrollbar{
+    width:2px;
+}
+
+.cs-container-inner::-webkit-scrollbar-track{
+    display:none;
+}
+
+.cs-container-inner::-webkit-scrollbar-thumb{
+    background:var(--txt-faded2);
+    border-top:15px solid transparent;
+    border-bottom:15px solid transparent; /* list bottom padding 5px */
+    background-clip:padding-box;
+}
+
+.cs-title{
+    width:100%;
+    margin-bottom:5px;
+    padding-bottom:3px;
+    border-bottom:solid 3px var(--color1);
+    text-align:center;
+    font-size:20px;
+}
+
+.cs-close{
+    height:32px;
+    aspect-ratio:1/1;
+    position:absolute;
+    top:calc(var(--wrapperPadding2) * 0.5);
+    right:calc(var(--wrapperPadding2) * 0.5);
+    display:none;
+    box-shadow:var(--box-shadow3) var(--bg5);
+    border-radius:var(--radius2);
+    cursor:pointer;
+}
+
+.cs-close span{
+    width:80%;
+    height:2px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    background-color:var(--bg1);
+    border:solid 1.5px var(--txt1);
+    border-radius:20px;
+    pointer-events:none;
+    transition:0.1s;
+}
+
+.cs-close span:nth-of-type(1){
+    transition-property:all, width;
+    transition-duration:0.1s, 0.4s;
+}
+
+.cs-close span:nth-of-type(1),
+.cs-close span:nth-of-type(3){
+    transform:translate(-50%, -50%) rotate(45deg);
+}
+
+.cs-close span:nth-of-type(2){
+    transform:translate(-50%, -50%) rotate(-45deg);
+}
+
+.cs-close span:nth-of-type(3){
+    width:calc(50% - 8px);
+    border:none;
+}
+
+.cs-close:hover span:is(:nth-of-type(1), :nth-of-type(2)){
+    width:60%;
+    border:solid 1px var(--color1);
+}
+
+        /* Sticky container - scroll buttons */
+
+.cs-scroll-div{
+    width:100%;
+    min-height:44px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.cs-scroll-btn{
+    width:100%;
+    margin:6px 0;
+    padding:2px 12px;
+    position:relative;
+    border:solid 2px transparent;
+    border-left:solid 2px var(--txt1);
+    border-right:solid 2px var(--txt1);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    cursor:pointer;
+    transition:0.15s;
+}
+
+.cs-scroll-btn.closest-calc{
+    border-left-color:var(--color1);
+    border-right-color:var(--color1);
+}
+
+.cs-scroll-btn:hover{
+    margin:0;
+    padding:8px 12px;
+    border:solid 2px var(--color1);
+    border-radius:var(--radius2);
+    color:var(--color1);
+}
+
+        /* Sticky container - media */
+
+@media screen and (max-height:600px) and (orientation:landscape){
+    
+    .cs-padding{
+        height:calc(100vh + 50px);
+    }
+    
+}
+
+@media screen and (max-width:440px){
+    
+    .calc-scroll{
+        width:calc(200vw + (var(--wrapperPadding2) * 2) + 4px);
+    }
+
+    .cs-container{
+        width:100vw;
+        top:100px;
+        border-radius:0;
+    }
+    
+    .cs-container-inner{
+        max-height:calc(100vh - 200px - (var(--wrapperPadding2) * 2));
+        position:relative;
+    }
+
+    .cs-container.cs-open{
+        left:0;
+    }
+    
+    .cs-close{
+        display:block;
+    }
+
+    .cs-open .cs-button{
+        width:0;
+        left:0;
+        box-shadow:none;
+    }
+    
+    .cs-scroll-div{
+        min-height:40px;
+    }
+    
+    .cs-scroll-btn{
+        width:80%;
+    }
+
+}
+
+@media screen and (max-height:600px) and (orientation:portrait){
+    
+    .cs-container{
+        top:50px;
+    }
+    
+    .cs-container-inner{
+        max-height:calc(100vh - 100px - (var(--wrapperPadding2) * 2));
+    }
+    
+}
+
+@media screen and (max-height:440px){
+    
+    .cs-container{
+        top:0;
+    }
+    
+    .cs-container-inner{
+        max-height:calc(100vh - (var(--wrapperPadding2) * 2));
+    }
+    
+}
+
+@media screen and (max-width:320px){
+    
+    .cs-close{
+        height:26px;
+    }
+
+    .cs-scroll-btn{
+        width:100%;
+    }
+    
+}
+
+@media screen and (max-height:320px) and (orientation:landscape){
+    
+    .cs-padding{
+        height:calc(100vh + 50px);
+    }
+    
+}
+
+    /* Insulin base */
+
+.ins-base-btn{
+    height:50px;
+    aspect-ratio:1/1;
+    position:absolute;
+    right:var(--wrapperPadding1);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:var(--bg1);
+    box-shadow:var(--box-shadow3) var(--bg5);
+    border-radius:var(--radius1);
+    cursor:pointer;
+    transition:0.15s;
+}
+
+.ins-base-btn.ins-base-open{
+    box-shadow:var(--box-shadow3) var(--color2);
+}
+
+.ins-base-btn:hover{
+    box-shadow:var(--box-shadow3) var(--color2);
+}
+
+.ins-base-btn svg{
+    width:70%;
+    transition-property:all, transform;
+    transition-timing-function:ease;
+    transition-duration:0.15s, 0.3s;
+}
+
+.ins-base-btn.ins-base-open svg{
+    transform:rotate(180deg);
+}
+    
+.ins-base-btn svg *{
+    stroke-width:8px;
+    stroke:var(--txt1);
+    transition:0.15s;
+}
+
+.ins-base-btn.ins-base-open svg *{
+    stroke:var(--color2);
+}
+
+.ins-base-btn:hover svg *{
+    stroke:var(--color2);
+}
+
+        /* Insulin base div */
+
+.ins-calc-base{
+    padding:var(--wrapperPadding1);
+    position:absolute;
+    top:calc((var(--wrapperPadding1) * 2) + 50px);
+    right:calc(-20vw - 300px);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+    
+    background-color:var(--bg6);
+    box-shadow:var(--box-shadow4) var(--bg5);
+    border-radius:var(--radius1);
+    pointer-events:auto;
+    opacity:0;
+    z-index:8000;
+    transition:0.2s;
+    animation:containerFadeOut 0.2s ease-in;
+}
+
+.ins-base-extended{
+    right:var(--wrapperPadding1);
+    opacity:1;
+    animation:containerFadeIn 0.2s ease-out;
+}
+
+@keyframes containerFadeIn{
+    0%{
+        opacity:0;
+    }
+    5%{
+        opacity:1;
+    }
+    100%{
+        opacity:1;
+    }
+}
+
+@keyframes containerFadeOut{
+    0%{
+        opacity:1;
+    }
+    95%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+    }
+}
+
+.ins-base-title{
+    width:100%;
+    padding-bottom:5px;
+    position:relative;
+    font-size:18px;
+    text-align:center;
+}
+
+.ins-base-title:after{
+    content:"";
+    width:100%;
+    height:2px;
+    position:absolute;
+    left:0;
+    bottom:0;
+    background-color:var(--color1);
+    border-radius:3px;
+}
+
+.ins-input{
+    width:calc(100% - 16px);
+    height:20px;
+    padding:4px 8px;
+    border:none;
+    background-color:var(--bg1);
+    box-shadow:var(--box-shadow3) var(--bg5);
+    border-radius:var(--radius2);
+    color:var(--txt1);
+    font-size:16px;
+    transition:0.15s;
+}
+
+.ins-input{
+    width:calc(100% - 16px);
+    height:20px;
+    padding:4px 8px;
+    border:none;
+    background-color:var(--bg1);
+    box-shadow:var(--box-shadow3) var(--bg5);
+    border-radius:var(--radius2);
+    color:var(--txt1);
+    font-size:16px;
+    transition:0.15s;
+}
+
+.ins-input:-webkit-autofill{
+    -webkit-box-shadow:0 0 0 100px var(--bg1) inset, var(--box-shadow2) var(--color1a);
+    -webkit-text-fill-color:var(--txt1);
+}
+
+.ins-input:-webkit-autofill:focus{
+    -webkit-box-shadow:0 0 0 100px var(--bg1) inset, var(--box-shadow3) var(--color1a);
+    -webkit-text-fill-color:var(--txt1);
+} 
+
+.ins-input:focus{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+    /* Insulin base - media */
+
+@media screen and (max-width:768px){
+    
+    .ins-base{
+        width:100%;
+        height:calc(32px + var(--wrapperPadding2));
+    }
+    
+    .ins-base-btn{
+        height:40px;
+        top:var(--wrapperPadding2);
+        right:var(--wrapperPadding2);
+    }
+    
+    .ins-calc-base{
+        top:calc((var(--wrapperPadding2) * 2) + 40px);
+    }
+    
+    .ins-base-extended{
+        right:var(--wrapperPadding2);
+    }
+
+}
+
+@media screen and (max-width:440px){
+    
+    .ins-calc-base{
+        width:calc(100% - (var(--wrapperPadding2) * 2));
+        box-sizing:border-box;
+    }
+    
+    .ins-base-item{
+        width:100%;
+    }
+
+}
+
+    /* Ingredient Calculator */
+
+.calc-header{
+    width:100%;
+    margin-top:60px;
+    margin-bottom:30px;
+    padding-bottom:30px;
+    display:flex;
+    justify-content:center;
+    text-align:center;
+    border-bottom:solid 3px var(--color1);
+}
+
+.calc-header:nth-of-type(2){
+    margin-top:0;
+}
+
+.calc-header h2{
+    width:calc(100% - (50px + var(--wrapperPadding1)) * 2);
+    overflow:hidden;
+}
+
+.calc-head{
+    width:100%;
+    margin-bottom:30px;
+    display:flex;
+    gap:20px;
+}
+
+.calculator-name:focus{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+.select-calculator{
+    height:28px;
+    min-width:220px;
+    padding:0 3px;
+    box-sizing:border-box;
+    color:var(--txt1);
+    background-color:var(--bg1);
+    border:none;
+    box-shadow:var(--box-shadow3) var(--bg5);
+    border-radius:var(--radius2);
+    font-size:16px;
+    transition:0.05s;
+    cursor:pointer;
+    overflow:hidden;
+}
+
+.select-calculator:focus{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+.current-calc{
+    color:var(--color1);
+}
+
+.calc{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    padding:10px;
+    padding-bottom:0;
+    margin-bottom:5px;
+}
+
+        /* Ingredient Calculator - calculator div */
+
+.calculator{
+    display:flex;
+    align-items:flex-start;
+    overflow-y:hidden;
+    transition:0.25s;
+    gap:5px;
+    padding:3px;
+    margin:-3px;
+}
+
+.calculator::-webkit-scrollbar{
+    height:30px;
+    cursor:pointer;
+}
+
+.calculator::-webkit-scrollbar-track{
+    background:var(--bg3);
+    border-radius:500px;
+}
+
+.calculator::-webkit-scrollbar-thumb{
+    background:var(--txt1);
+    border:3px solid var(--bg3);
+    border-top:14px solid var(--bg3);
+    border-bottom:14px solid var(--bg3);
+    border-left:10px solid var(--bg3);
+    border-right:10px solid var(--bg3);
+    border-radius:12px;
+}
+
+.calculator > div{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    gap:10px;
+}
+
+.calculator > div:not(:nth-of-type(5)) h5{
+    cursor:help;
+}
+
+.calculator > div:nth-of-type(1) h5,
+.calculator > div:nth-of-type(2) h5,
+.calculator > div:nth-of-type(3) h5{
+    cursor:default;
+}
+
+.calculator .list-calc-col{
+    flex:0;
+    min-width:25px;
+}
+
+.calculator .list-calc-col p{
+    height:20px;
+}
+
+.calculator .reset-calc-col{
+    flex:none;
+}
+
+.calculator .name-calc-col{
+    flex:none;
+    width:30%;
+    min-width:200px;
+}
+
+.calculator .protein-calc-col{
+    padding-right:2px; /* Input focus is fully visible (right box-shadow was cut) */
+}
+
+        /* Ingredient Calculator - inputs, reset */
+
+            /* Reset row */
+
+.reset-calc-row{
+    height:28px;
+    aspect-ratio:1/1;
+    margin-right:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:var(--bg1);
+    box-shadow:var(--box-shadow3) var(--bg5);
+    border-radius:var(--radius2);
+    transition:0.15s;
+    cursor:pointer;
+}
+
+.reset-calc-row:hover{
+    background-color:var(--color1);
+}
+
+.reset-calc-row:after{
+    content:"";
+    width:20px;
+    height:4px;
+    background-color:var(--color1);
+    border-radius:5px;
+    transition:0.15s;
+}
+
+.reset-calc-row:hover:after{
+    background-color:white;
+}
+
+.reset-calc-row-break{
+    height:28px;
+    aspect-ratio:1/1;
+}
+
+            /* Multiplier */
+
+.multi-calc-col{
+    width:85px;
+    min-width:85px;
+    max-width:85px;
+}
+
+.multi-calc-div{
+    display:flex;
+    background-color:var(--bg1);
+    border-radius:var(--radius2);
+}
+
+.calc .multi-calc{
+    flex:1;
+    background-color:rgb(0,0,0,0);
+    border-radius:0;
+    clip-path:inset(-3px 0.5px -3px 0.5px);
+    text-align:center;
+    z-index:1;
+    transition:0.1s;
+}
+
+.calc .multi-calc:focus{
+    clip-path:none;
+    z-index:1;
+}
+
+.calc .multi-not-default{
+    color:var(--color1);
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+.calc .multi-zero{
+    color:#F00;
+    box-shadow:var(--box-shadow3) #F00;
+}
+
+.multi-change{
+    width:22px;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:var(--bg2);
+    box-shadow:var(--box-shadow3) var(--bg5);
+    cursor:pointer;
+    transition:0.1s;
+}
+
+.multi-change:hover{
+    box-shadow:var(--box-shadow3) var(--color1);
+    z-index:10;
+}
+
+.multi-stop:hover{
+    box-shadow:var(--box-shadow3) var(--bg5);
+    cursor:auto;
+    z-index:0;
+}
+
+.multi-change span{
+    width:12px;
+    height:2px;
+    position:absolute;
+    background-color:var(--txt-faded2);
+    border-radius:5px;
+    transition:0.1s;
+}
+
+.multi-change:hover span{
+    background-color:var(--color1);
+}
+
+.multi-stop:hover span{
+    background-color:var(--txt-faded2);
+}
+
+.multi-sub{
+     border-radius:var(--radius2) 0 0 var(--radius2);
+}
+
+.multi-add{
+    border-radius:0 var(--radius2) var(--radius2) 0;
+}
+
+.multi-change span:nth-of-type(2){
+    transform:rotate(90deg);
+}
+
+            /* Inputs */
+
+.calc input{
+    width:calc(100% - 16px);
+    height:20px;
+    padding:4px 8px;
+    border:none;
+    background-color:var(--bg1);
+    box-shadow:var(--box-shadow3) var(--bg5);
+    border-radius:var(--radius2);
+    color:var(--txt1);
+    font-size:16px;
+    transition:0.15s;
+}
+
+.calc input:-webkit-autofill{
+    -webkit-box-shadow:0 0 0 100px var(--bg1) inset, var(--box-shadow2) var(--color1a);
+    -webkit-text-fill-color:var(--txt1);
+}
+
+.calc input:-webkit-autofill:focus{
+    -webkit-box-shadow:0 0 0 100px var(--bg1) inset, var(--box-shadow3) var(--color1a);
+    -webkit-text-fill-color:var(--txt1);
+} 
+
+.calculator input:focus{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+.calculator p{
+    height:22px;
+    padding:4px 0;
+    font-size:18px;
+}
+
+.calculator .calc-num{
+    min-width:42px;
+}
+
+.calc .calc-result{
+    box-shadow:var(--box-shadow2) var(--color1);
+}
+
+.calc .calc-result:focus{
+    box-shadow:var(--box-shadow2) var(--color1);
+}
+
+.bottom-pointer{
+    display:none;
+}
+
+        /* Calculator break line (cb-line) */
+
+.cb-line-div{
+    height:28px;
+    display:flex;
+    align-items:center;
+    margin-right:-5px;
+}
+
+.name-calc-col .cb-line-div{
+    margin-right:5px;
+}
+
+.cb-line{
+    height:2px;
+    width:100%;
+    background-color:var(--color1);
+}
+
+        /* Ingredient Calculator - media */
+
+@media screen and (max-width:768px){
+    
+    .calc-header h2{
+        width:100%;
+    }
+
+}
+
+@media screen and (max-width:540px){
+    
+    .calc-head{
+        flex-direction:column;
+        gap:10px;
+    }
+    
+    .calc-header h2{
+        font-size:6vw;
+    }
+    
+    .select-calculator{
+        width:100%;
+    }
+    
+    .select-calculator{
+        min-width:0;
+        max-width:100%;
+    }
+    
+    .calculator > div h5{
+        font-size:16px;
+    }
+}
+
+@media screen and (max-width:320px){
+
+    .calc-header h2{
+        font-size:7vw;
+    }
+    
+}
+
+    /* Insulin calculator */
+
+.ins-calc{
+    width:100%;
+    margin-top:40px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:50px;
+    row-gap:20px;
+}
+
+.ins-section{
+    flex:40%;
+    max-width:50%;
+    position:relative;
+    display:flex;
+    gap:10px;
+}
+
+.ins-div{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+}
+
+.c-help{
+    cursor:help;
+}
+
+.cur-gi-wpts{
+    display:none;
+}
+
+.ins-div select{
+    height:28px;
+    padding:0 3px;
+    box-sizing:border-box;
+    color:var(--txt1);
+    background-color:var(--bg1);
+    border:none;
+    box-shadow:var(--box-shadow3) var(--bg5);
+    border-radius:var(--radius2);
+    font-size:16px;
+    transition:0.1s;
+    cursor:pointer;
+}
+
+.ins-div select:focus{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+body .calc-readonly{
+    box-shadow:var(--box-shadow2) var(--color1);
+}
+
+        /* Total insulin */
+
+.total-ins-change{
+    display:flex;
+    background-color:var(--bg1);
+    border-radius:var(--radius2);
+    box-shadow:var(--box-shadow2) var(--color1);
+}
+
+.calc .ins-total{
+    flex:1;
+    background-color:rgb(0,0,0,0);
+    box-shadow:none;
+    border-radius:0;
+    clip-path:inset(-3px 0.5px -3px 0.5px);
+    text-align:center;
+    z-index:1;
+    transition:0.1s;
+}
+
+.ins-adjust{
+    width:28px;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:var(--bg2);
+    box-shadow:var(--box-shadow3) var(--bg5);
+    cursor:pointer;
+    transition:0.1s;
+}
+
+.ins-warning-crit .ins-adjust{
+    box-shadow:var(--box-shadow3) #F00;
+}
+
+.ins-adjust:hover{
+    box-shadow:var(--box-shadow3) var(--color1);
+    z-index:10;
+}
+
+.ins-total-stop:hover{
+    box-shadow:var(--box-shadow3) var(--bg5);
+    cursor:auto;
+    z-index:0;
+}
+
+.ins-warning-crit .ins-total-stop:hover{
+    box-shadow:var(--box-shadow3) #F00;
+}
+
+.ins-adjust span{
+    width:12px;
+    height:2px;
+    position:absolute;
+    background-color:var(--txt-faded2);
+    border-radius:5px;
+    transition:0.1s;
+}
+
+.ins-adjust:hover span{
+    background-color:var(--color1);
+}
+
+.ins-total-stop:hover span{
+    background-color:var(--txt-faded2);
+}
+
+.ins-sub{
+     border-radius:var(--radius2) 0 0 var(--radius2);
+}
+
+.ins-add{
+    border-radius:0 var(--radius2) var(--radius2) 0;
+}
+
+.ins-adjust span:nth-of-type(2){
+    transform:rotate(90deg);
+}
+
+        /* Insulin warning classes */
+
+.calc .ins-warning{
+    box-shadow:var(--box-shadow3) #FFA000;
+}
+
+.calc .ins-warning-crit{
+    box-shadow:var(--box-shadow3) #F00;
+}
+
+        /* Reset calculator */
+
+.calc-reset{
+    align-self:flex-end;
+    width:100%;
+    height:28px;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:var(--bg1);
+    box-shadow:var(--box-shadow3) var(--bg5);
+    border-radius:var(--radius2);
+    transition:0.15s;
+    cursor:pointer;
+}
+
+.calc-reset:hover{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+.calc:has(.calc-reset:hover) div h5,
+.calc:has(.calc-reset:hover) .list-calc-col p,
+.calc:has(.calc-reset:hover) .ins-div p{
+    color:var(--color1);
+}
+
+.calc-reset-hold:before{
+    content:"";
+    width:0;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    background-color:var(--color1);
+    border-radius:var(--radius2);
+    animation:1s animation ease-out;
+}
+
+@keyframes animation{
+    0%{
+        width:0;
+    }
+    100%{
+        width:100%;
+    }
+}
+
+.cr-txt{
+    width:100%;
+    height:100%;
+    line-height:28px;
+    text-align:center;
+    user-select:none;
+    z-index:100;
+}
+
+.calc-reset-hold .cr-txt{
+    color:white;
+    transition:0.15s;
+    transition-delay:0.27s;
+}
+
+/* Disable the ability to click / hold the btn */
+.calc-reset-disable{
+    width:100%;
+    height:100%;
+    display:none;
+    position:absolute;
+    z-index:100;
+}
+
+.ins-section:has(.calc-reset-after) .calc-reset-disable{
+    display:block;
+}
+
+/* Keep the blue bg when finished holding the btn */
+.calc-reset-after{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+.calc-reset-after:before{
+    content:"";
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    background-color:var(--color1);
+    border-radius:var(--radius2);
+}
+
+.calc-reset-after p{
+    color:white;
+}
+
+        /* Insulin calculator - media */
+
+@media screen and (max-width:1024px){
+
+    .ins-section{
+        flex-wrap:wrap;
+    }
+
+    .ins-div{
+        order:1;
+        flex:40%;
+    }
+    
+    .ins-section:nth-of-type(1) .ins-div:nth-of-type(1){
+        flex:100%;
+    }
+    
+    .ins-section:nth-of-type(2) .ins-div:nth-of-type(3){
+        order:0;
+        flex:100%;
+    }
+    
+    .ins-adjust{
+        width:56px;
+    }
+
+}
+
+@media screen and (max-width:768px){
+
+    .ins-calc{
+        row-gap:10px;
+    }
+    
+    .ins-section{
+        flex:100%;
+        max-width:none;
+    }
+        
+    .ins-section:nth-of-type(1){
+        margin-bottom:20px;
+    } 
+    
+    .ins-section:nth-of-type(3){
+        order:1;
+        margin-top:30px;
+    }
+    
+    .ins-div{
+        flex:25%;
+    }
+    
+    .ins-section:nth-of-type(1) .ins-div:nth-of-type(1){
+        flex:25%;
+    }
+    
+    .ins-section:nth-of-type(2) .ins-div:nth-of-type(3){
+        order:1;
+        flex:25%;
+    }
+    
+    .ins-adjust{
+        width:28px;
+    }
+
+}
+
+@media screen and (max-width:540px){
+    
+    .ins-div{
+        flex:40%;
+    }
+    
+    .ins-section:nth-of-type(1) .ins-div:nth-of-type(1){
+        flex:100%;
+    }
+    
+    .ins-section:nth-of-type(2) .ins-div:nth-of-type(3){
+        order:0;
+        flex:100%;
+    }
+    
+    .ins-adjust{
+        width:56px;
+    }
+
+}
+
+@media screen and (max-width:440px){
+    
+    .ins-section:nth-of-type(1) .ins-div{
+        flex:100%;
+    }
+
+}
+
+@media screen and (max-width:320px){
+    
+    .ins-div{
+        flex:100%;
+    }
+    
+    .ins-adjust{
+        width:28px;
+    }
+    
+}
+
+
+
+
+

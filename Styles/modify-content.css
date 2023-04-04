@@ -1,0 +1,585 @@
+/* 
+    Website created by Uverit
+    Do not copy or distribute
+    https://www.fiverr.com/new_horizon_web
+*/
+
+    /* Media breakpoints */
+    /* Width: 1200, 1024, 768, 540, 440, 320 */
+
+html, body{
+    min-height:100%;
+}
+
+body{
+    width:100%;
+    box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    overflow-x:hidden;
+}
+
+.main-module-content{
+    min-height:10px;
+}
+
+.main-module-content:not(:has(.modify-recipes .form-section)){
+    padding:50px 0;
+    border-bottom:3px solid var(--color1);
+}
+
+.main-module-content #search-form ul{
+    width:100%;
+}
+
+.main-module-content #search-form li{
+    height:auto;
+}
+
+    /* Search Bar */
+
+.search-form{
+    width:min(700px, 80%);
+    display:flex;
+    justify-content:center;
+    position:relative;
+}
+
+.search-bar{
+    width:100%;
+    height:40px;
+    padding:0 40px 0 12px;
+    box-sizing:border-box;
+    border:none;
+    box-shadow:var(--box-shadow4) var(--bg5);
+    border-radius:var(--radius2);
+    font-size:16px;
+    transition:0.05s;
+    transition:border-radius none;
+    background-color:var(--bg1);
+    color:var(--txt1);
+}
+
+.search-form.appear .search-bar{
+    border-radius:var(--radius2) var(--radius2) 0 0;
+}
+
+.search-bar:focus{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+.search-bar:focus:-webkit-autofill{
+    -webkit-box-shadow:0 0 0 100px var(--bg1) inset, var(--box-shadow3) var(--color1);
+    -webkit-text-fill-color:var(--txt1);
+}
+
+.search-bar:-webkit-autofill{
+    -webkit-box-shadow:0 0 0 100px var(--bg1) inset, var(--box-shadow4) var(--bg5);
+    -webkit-text-fill-color:var(--txt1);
+}
+
+.search-form:after{
+    content:'';
+    height:inherit;
+    aspect-ratio:1/1;
+    height:100%;
+    position:absolute;
+    top:0;
+    right:0;
+    background-image:url(../Images/search-icon.svg);
+    background-size:contain;
+    background-position:center;
+    background-size:60%;
+    background-repeat:no-repeat;
+    opacity:0.3;
+}
+
+.search-form:has(.search-bar:focus):after{
+    opacity:0.7;
+}
+
+.dark-mode .search-form::after{
+    filter:invert(1);
+}
+
+        /* Search Bar - Results */
+
+.search-results{
+    width:100%;
+    position:absolute;
+    top:43px; /* box-shadow 3px */
+}
+
+.search-list{
+    max-height:500px;
+    list-style:none;
+    display:none;
+    flex-direction:column;
+    background-color:var(--bg1);
+    z-index:10000;
+    overflow:overlay;
+}
+
+.search-list::-webkit-scrollbar{
+    width:2px;
+}
+
+.search-list::-webkit-scrollbar-track{
+    display:none;
+}
+
+.search-list::-webkit-scrollbar-thumb{
+    background:var(--txt-faded2);
+    border-top:10px solid transparent;
+    border-bottom:15px solid transparent; /* list bottom padding 5px */
+    background-clip:padding-box;
+}
+
+.search-form.appear .search-list{
+    display:flex;
+    position:relative;
+    overflow-x:auto;
+    background-color:transparent;
+    /* prevents box shadow from being cut */
+    padding:0 6px 4px 4px;
+    margin:0 -6px -4px -4px;
+}
+
+@-moz-document url-prefix(){ 
+    .search-list{
+        scrollbar-color:var(--color1) var(--bg1) !important;
+    }
+    .search-form.appear .search-list{
+        padding:0 2px 4px 4px;
+        margin:0 -2px -4px -4px;
+    }
+}
+
+.search-list li{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    background-color:var(--bg1);
+    box-shadow:var(--box-shadow3) var(--bg5);
+    padding:0 12px;
+    cursor:pointer;
+    gap:20px;
+    position:relative;
+    z-index:1000;
+}
+
+.search-list li:nth-last-of-type(1){
+    border-radius:0 0 var(--radius2) var(--radius2);
+}
+
+.search-list li:hover,
+.search-list li:focus{
+    box-shadow:var(--box-shadow3) var(--color1);
+    z-index:10000;
+}
+
+.search-list .result-img{
+    height:54px;
+    aspect-ratio:16 / 9;
+    margin:2px 0;
+    background-color:var(--bg3);
+    box-shadow:var(--box-shadow2) var(--bg5);
+    border-radius:var(--radius2);
+    object-fit:cover;
+}
+
+.search-results-products .result-img{
+    height:73px;
+}
+
+.result-left{
+    flex:1;
+    max-width:calc(100% - 120px);
+    padding:8px 0;
+    display:inline-flex;
+    flex-direction:column;
+    justify-content:space-between;
+    gap:3px;
+}
+
+.search-results-products .result-left{
+    max-width:calc(100% - 165px);
+}
+
+.result-left p{
+    max-width:100%;
+    max-height:18.5px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+
+.result-left p:first-letter{
+    text-transform:uppercase;
+}
+
+.result-left p:nth-child(1){
+    max-height:none;
+    font-size:16px;
+    font-weight:600;
+    max-height:auto;
+    white-space:normal;
+    overflow:visible;
+    text-overflow:clip;
+}
+
+.search-results-products .result-left p:nth-child(1){
+    font-size:14px;
+    font-weight:400;
+}
+
+.result-left p:nth-child(2){
+    font-size:14px;
+}
+
+.search-results-products .result-left p:nth-child(2){
+    max-height:none;
+    font-size:16px;
+    font-weight:600;
+    max-height:auto;
+    white-space:normal;
+    overflow:visible;
+    text-overflow:clip;
+}
+
+.search-results-products .result-left p:nth-child(3){
+    font-size:14px;
+}
+
+.search-list .empty-list{
+    padding:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.search-list .el-line{
+    height:3px;
+    flex:1;
+    background-color:var(--color1);
+    border-radius:5px;
+}
+
+@media screen and (max-width:768px){
+    
+    .search-form{
+        width:100%;
+    }
+
+}
+
+
+@media screen and (max-width:440px){
+    
+    .search-list li{
+        flex-direction:column;
+        align-items:center;
+        gap:12px;
+    }
+    
+    .result-left,
+    .search-results-products .result-left{
+        width:100%;
+        max-width:none;
+        padding-bottom:0;
+    } 
+    
+    .result-left p:nth-child(2){
+        max-width:100%;
+    }
+    
+    .search-list .result-img{
+        height:auto;
+        width:min(200px, 100%);
+        margin-bottom:8px;
+    }
+    
+    .search-list .empty-list{
+        flex-direction:row;
+    }
+
+}
+
+@media screen and (max-width:320px){
+    
+    .search-list .empty-list{
+        gap:5px;
+    }
+    
+    .search-list .empty-list h4{
+        font-size:16px;
+    }
+
+}
+
+    /* Modify / delete recipe */
+
+.send-inner{
+    width:100%;
+    position:relative;
+    display:flex;
+    justify-content:center;
+}
+
+.add-left-padding{
+    display:none;
+}
+
+.rc-button{
+    height:50px;
+    width:50px;
+    position:absolute;
+    right:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:var(--bg1);
+    box-shadow:var(--box-shadow3) var(--bg5);
+    border-radius:var(--radius1);
+    cursor:pointer;
+    transition:0.15s;
+}
+
+.rc-button.rc-open{
+    box-shadow:var(--box-shadow3) var(--color2);
+}
+
+.rc-button.delete-error{
+    box-shadow:var(--box-shadow3) red;
+}
+
+.rc-button.delete-success{
+    box-shadow:var(--box-shadow3) var(--color2);
+}
+
+.rc-button:hover{
+    box-shadow:var(--box-shadow3) var(--color2);
+}
+
+.rc-button svg{
+    width:90%;
+    transition:0.15s ease-out;
+}
+
+.rc-button svg *{
+    stroke:var(--txt1);
+    transition:0.15s ease-out;
+}
+
+.rc-button.rc-open svg *{
+    stroke:var(--color2);
+}
+
+.rc-button.delete-error svg *{
+    stroke:red;
+}
+
+.rc-button.delete-success svg *{
+    stroke:var(--color2);
+}
+
+.rc-button:hover svg *{
+    stroke:var(--color2);
+}
+
+.rc-button.rc-open .bin-lid *{
+    transform:translate(-20px, 5px) rotate(-12deg);
+}
+
+        /* Recipe container */
+
+.recipe-container{
+    padding:var(--wrapperPadding1);
+    position:absolute;
+    bottom:calc(100% + 48px);
+    right:calc(-20vw - 300px);
+    background-color:var(--bg6);
+    box-shadow:var(--box-shadow4) var(--bg5);
+    border-radius:var(--radius1);
+    pointer-events:auto;
+    opacity:0;
+    z-index:9999;
+    transition:0.2s;
+    animation:containerFadeOut 0.2s ease-in;
+}
+
+.rc-extended{
+    right:0;
+    opacity:1;
+    animation:containerFadeIn 0.2s ease-out;
+}
+
+@keyframes containerFadeIn{
+    0%{
+        opacity:0;
+    }
+    5%{
+        opacity:1;
+    }
+    100%{
+        opacity:1;
+    }
+}
+
+@keyframes containerFadeOut{
+    0%{
+        opacity:1;
+    }
+    95%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+    }
+}
+
+        /* Delete-form */
+
+.delete-div{
+    display:flex;
+}
+
+.delete-form{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:relative;
+    justify-content:center;
+}
+
+.delete-block{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+.delete-info{
+    font-size:18px;
+}
+
+.delete-form #password{
+    width:220px;
+    height:32px;
+    margin:var(--wrapperPadding2) 0;
+    padding:4px 8px;
+    box-sizing:border-box;
+    background-color:var(--bg1);
+    color:var(--txt1);
+    border:none;
+    box-shadow:var(--box-shadow4) var(--bg5);
+    border-radius:var(--radius2);
+    font-size:18px;
+    transition:0.1s;
+}
+
+.delete-form #password:focus{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+.delete-form #delete{
+    width:220px;
+    height:32px;
+    padding:4px 8px;
+    background-color:var(--bg1);
+    color:var(--txt1);
+    border:none;
+    box-shadow:var(--box-shadow2) var(--color1);
+    border-radius:var(--radius2);
+    font-size:18px;
+    transition:0.15s;
+}
+
+.delete-form #delete:hover{
+    box-shadow:var(--box-shadow3) var(--color1);
+    cursor:pointer;
+}
+
+p.deleted-success{
+    border-bottom:2px solid var(--color2);
+    margin-bottom:-2px;
+}
+
+p.deleted-error{
+    border-bottom:2px solid red;
+    margin-bottom:-2px;
+}
+
+        /* Recipe-Silde - media */
+
+@media screen and (max-width:768px){
+    
+    .send-inner{
+        gap:var(--wrapperPadding2);
+    }
+    
+    .add-left-padding{
+        display:block;
+        height:50px;
+        width:50px;
+    }
+    
+    .rc-button{
+        position:static;
+    }
+    
+}
+
+@media screen and (max-width:540px){
+
+    .add-left-padding{
+        display:none;
+    }
+    
+    #add{
+        flex:1;
+        width:auto;
+    }
+
+}
+
+@media screen and (max-width:440px){
+
+    .recipe-container{
+        width:100%;
+        box-sizing:border-box;
+    }
+    
+    .delete-form #password{
+        width:min(220px, 100%);
+    }
+
+    .delete-form #delete{
+        width:min(220px, 100%);
+    }
+
+}
+
+    /* Form Section 1 */
+
+.form-s1{
+    margin-top:50px;
+    padding-top:50px;
+    border-top:3px solid var(--color1);
+}
+
+    /* Form Section 5 - Tags */
+
+.form-s5{
+    margin-bottom:0;
+}
+
+.tag-input:focus{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+
+

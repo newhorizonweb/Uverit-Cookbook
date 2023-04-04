@@ -1,0 +1,274 @@
+/* 
+    Website created by Uverit
+    Do not copy or distribute
+    https://www.fiverr.com/new_horizon_web
+*/
+
+    /* Media breakpoints */
+    /* Width: 1200, 1024, 768, 540, 440, 320 */
+
+    /* Main tiles */
+
+.main-module-content{
+    min-height:0;
+    padding-top:0;
+    display:flex;
+    flex-direction:column;
+    gap:var(--wrapperPadding1);
+    border:none;
+}
+
+.main-row{
+    width:100%;
+    padding:var(--wrapperPadding1);
+    box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:var(--wrapperPadding1);
+    
+    background-color:var(--bg1);
+    box-shadow:var(--box-shadow3) var(--bg5);
+    border-radius:var(--radius1);
+    overflow:hidden;
+}
+
+.main-title{
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
+
+.main-title h2{
+    width:100%;
+    padding-bottom:3px;
+    text-align:center;
+    border-bottom:solid 3px var(--color1);
+}
+
+        /* Main tiles - tile + fade-in/out */
+
+.main-tiles{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    gap:var(--wrapperPadding1);
+}
+
+.main-link{
+    width:calc((100% - var(--wrapperPadding1) * 2) / 3);
+    aspect-ratio:1/1;
+    will-change:left, right, transform, opacity;
+    position:relative;
+    transform:scale(1.2);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    
+    background-color:var(--bg3);
+    box-shadow:var(--box-shadow1) var(--bg5);
+    border-radius:var(--radius1);
+    opacity:0;
+    overflow:hidden;
+    transition:
+        0.5s all,
+        0.15s background,
+        0.15s box-shadow;
+}
+
+.main-link:hover{
+    box-shadow:var(--box-shadow1) var(--color2), var(--box-shadow3) var(--bg5);
+}
+
+.main-link:is(:nth-of-type(1), :nth-last-of-type(1)){
+    transform:scale(1);
+    opacity:1;
+}
+
+.main-link:nth-of-type(1){
+    left:-100vw;
+}
+
+.main-link:nth-last-of-type(1){
+    right:-100vw;
+}
+
+.main-link.fade-in{
+    left:0;
+    transform:scale(1);
+    opacity:1;
+}
+
+.main-link:nth-last-of-type(1).fade-in{
+    left:auto;
+    right:0;
+}
+
+        /* Main tiles - SVG */
+
+.main-link svg{
+    width:100%;
+    stroke-width:8px;
+    position:absolute;
+    border-radius:var(--radius1);
+    transition:0.15s;
+    clip-path:inset(0);
+}
+
+.main-link:hover svg{
+    width:105%;
+    stroke-width:10px;
+}
+
+.main-link:hover svg:nth-of-type(1){
+    clip-path:inset(5%);
+}
+
+.main-link *{
+    stroke:var(--txt1);
+}
+
+.main-link .nav-icon-addon{
+    width:45%;
+    position:absolute;
+    bottom:5%;
+    right:5%;
+    background-color:transparent;
+    border-radius:0;
+}
+
+.main-link:hover .nav-icon-addon{
+    width:55%;
+    position:absolute;
+    bottom:3%;
+    right:3%;
+}
+
+.main-link .nav-icon-addon *{
+    fill:var(--bg3);
+    stroke-width:10px;
+    transition:0.15s;
+}
+
+.main-link .nav-icon-accent{
+    transition:0.15s stroke;
+}
+
+.main-link:hover .nav-icon-addon *,
+.main-link:hover .nav-icon-accent{
+    stroke:var(--color1);
+}
+
+        /* Main tiles - media */
+
+@media screen and (width <= 768px){
+    
+    .main-module-content{
+        gap:var(--wrapperPadding2);
+    }
+    
+    .main-row{
+        padding:var(--wrapperPadding2);
+        gap:var(--wrapperPadding2);
+    }
+
+    .main-tiles{
+        gap:var(--wrapperPadding2);
+    }
+    
+    .main-link{
+        width:calc((100% - var(--wrapperPadding2) * 2) / 3);
+        aspect-ratio:1/1;
+    }
+
+}
+
+@media screen and (width <= 540px){
+        
+    .main-title h2{
+        font-size:26px;
+    }
+    
+}
+
+    /* Blob C: */
+
+.cursor-blob{
+    width:60%;
+    aspect-ratio:1/0.85;
+    will-change:left, top;
+    position:absolute;
+    top:-100%;
+    left:-100%;
+    
+    opacity:0;
+    background:linear-gradient(to right, 
+        var(--color1),
+        #CC1EEC
+    );
+    border-radius:50%;
+    filter:blur(50px);
+    
+    transition:0.25s opacity;
+    pointer-events:none;
+    animation:blob 6s linear infinite;
+}
+
+.main-module-content:hover .cursor-blob{
+    opacity:0.15;
+}
+
+.main-link:hover .cursor-blob{
+    opacity:0.35;
+}
+
+@keyframes blob{
+    0%{
+        transform:translate(-50%, -50%) rotate(0deg);
+        aspect-ratio:1/0.85;
+    }
+    50%{
+        aspect-ratio:1/1.15;
+    }
+    100%{
+        transform:translate(-50%, -50%) rotate(360deg);
+        aspect-ratio:1/0.85;
+    }
+}
+
+        /* Blob - media */
+
+@media screen and (width <= 768px){
+        
+    .cursor-blob{
+        filter:blur(40px);
+    }
+    
+}
+
+@media screen and (width <= 540px){
+        
+    .cursor-blob{
+        filter:blur(35px);
+    }
+    
+}
+
+@media screen and (width <= 440px){
+        
+    .cursor-blob{
+        filter:blur(25px);
+    }
+    
+}
+
+@media screen and (width <= 320px){
+        
+    .cursor-blob{
+        filter:blur(10px);
+    }
+    
+}
+
+
+
