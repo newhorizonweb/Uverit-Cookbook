@@ -32,11 +32,11 @@ function mainTiles(){
 
             "<div class='main-tiles'>" +
         
-                "<a href='index.php' class='main-link'>" +
+                "<a href='index.php' class='main-link' aria-label='Main Page'>" +
                     mainIcon +
                 "</a>" +
 
-                "<a href='calculator.php' class='main-link'>" +
+                "<a href='calculator.php' class='main-link' aria-label='Calculator'>" +
                     calculatorIcon +
                 "</a>" +
 
@@ -52,17 +52,17 @@ function mainTiles(){
 
             "<div class='main-tiles'>" +
         
-                "<a href='recipe-list.php' class='main-link'>" +
+                "<a href='recipe-list.php' class='main-link' aria-label='Recipe List'>" +
                     recipeIcon +
                     listIcon +
                 "</a>" +
 
-                "<a href='add-recipes.php' class='main-link'>" +
+                "<a href='add-recipes.php' class='main-link' aria-label='Add Recipes'>" +
                     recipeIcon +
                     plusIcon +
                 "</a>" +
 
-                "<a href='modify-recipes.php' class='main-link'>" +
+                "<a href='modify-recipes.php' class='main-link' aria-label='Modify Recipes'>" +
                     recipeIcon +
                     gearIcon +
                 "</a>" +
@@ -79,17 +79,17 @@ function mainTiles(){
 
             "<div class='main-tiles'>" +
         
-                "<a href='product-list.php' class='main-link'>" +
+                "<a href='product-list.php' class='main-link' aria-label='Product List'>" +
                     productIcon +
                     listIcon +
                 "</a>" +
 
-                "<a href='add-products.php' class='main-link'>" +
+                "<a href='add-products.php' class='main-link' aria-label='Add Products'>" +
                     productIcon +
                     plusIcon +
                 "</a>" +
 
-                "<a href='modify-products.php' class='main-link'>" +
+                "<a href='modify-products.php' class='main-link' aria-label='Modify Products'>" +
                     productIcon +
                     gearIcon +
                 "</a>" +
@@ -114,11 +114,11 @@ function baseNav(){
                 "<h4 class='nav-title-txt'>Cookbook</h4>" +
             "</div>" +
 
-            "<a href='index.php' class='nav-link'>" +
+            "<a href='index.php' class='nav-link' aria-label='Main Page'>" +
                 mainIcon +
             "</a>" +
 
-            "<a href='calculator.php' class='nav-link'>" +
+            "<a href='calculator.php' class='nav-link' aria-label='Calculator'>" +
                 calculatorIcon +
             "</a>" +
 
@@ -130,17 +130,17 @@ function baseNav(){
                 "<h4 class='nav-title-txt'>Przepisy</h4>" +
             "</div>" +
 
-            "<a href='recipe-list.php' class='nav-link'>" +
+            "<a href='recipe-list.php' class='nav-link' aria-label='Recipe List'>" +
                 recipeIcon +
                 listIcon +
             "</a>" +
 
-            "<a href='add-recipes.php' class='nav-link'>" +
+            "<a href='add-recipes.php' class='nav-link' aria-label='Add Recipes'>" +
                 recipeIcon +
                 plusIcon +
             "</a>" +
 
-            "<a href='modify-recipes.php' class='nav-link'>" +
+            "<a href='modify-recipes.php' class='nav-link' aria-label='Modify Recipes'>" +
                 recipeIcon +
                 gearIcon +
             "</a>" +
@@ -153,17 +153,17 @@ function baseNav(){
                 "<h4 class='nav-title-txt'>Produkty</h4>" +
             "</div>" +
 
-            "<a href='product-list.php' class='nav-link'>" +
+            "<a href='product-list.php' class='nav-link' aria-label='Product List'>" +
                 productIcon +
                 listIcon +
             "</a>" +
 
-            "<a href='add-products.php' class='nav-link'>" +
+            "<a href='add-products.php' class='nav-link' aria-label='Add Products'>" +
                 productIcon +
                 plusIcon +
             "</a>" +
 
-            "<a href='modify-products.php' class='nav-link'>" +
+            "<a href='modify-products.php' class='nav-link' aria-label='Modify Products'>" +
                 productIcon +
                 gearIcon +
             "</a>" +
@@ -203,11 +203,11 @@ document.querySelector(".navbar-inner").innerHTML =
             "<h4 class='nav-title-txt'>Cookbook</h4>" +
         "</div>" +
 
-        "<a href='../index.php' class='nav-link'>" +
+        "<a href='../index.php' class='nav-link' aria-label='Main Page'>" +
             mainIcon +
         "</a>" +
 
-        "<a href='../calculator.php' class='nav-link'>" +
+        "<a href='../calculator.php' class='nav-link' aria-label='Calculator'>" +
             calculatorIcon +
         "</a>" +
 
@@ -219,17 +219,17 @@ document.querySelector(".navbar-inner").innerHTML =
             "<h4 class='nav-title-txt'>Przepisy</h4>" +
         "</div>" +
     
-        "<a href='../recipe-list.php' class='nav-link'>" +
+        "<a href='../recipe-list.php' class='nav-link' aria-label='Recipe List'>" +
             recipeIcon +
             listIcon +
         "</a>" +
 
-        "<a href='../add-recipes.php' class='nav-link'>" +
+        "<a href='../add-recipes.php' class='nav-link' aria-label='Add Recipes'>" +
             recipeIcon +
             plusIcon +
         "</a>" +
 
-        "<a href='../modify-recipes.php' class='nav-link'>" +
+        "<a href='../modify-recipes.php' class='nav-link' aria-label='Modify Recipes'>" +
             recipeIcon +
             gearIcon +
         "</a>" +
@@ -242,17 +242,17 @@ document.querySelector(".navbar-inner").innerHTML =
             "<h4 class='nav-title-txt'>Produkty</h4>" +
         "</div>" +
     
-        "<a href='../product-list.php' class='nav-link'>" +
+        "<a href='../product-list.php' class='nav-link' aria-label='Product List'>" +
             productIcon +
             listIcon +
         "</a>" +
 
-        "<a href='../add-products.php' class='nav-link'>" +
+        "<a href='../add-products.php' class='nav-link' aria-label='Add Products'>" +
             productIcon +
             plusIcon +
         "</a>" +
 
-        "<a href='../modify-products.php' class='nav-link'>" +
+        "<a href='../modify-products.php' class='nav-link' aria-label='Modify Products'>" +
             productIcon +
             gearIcon +
         "</a>" +

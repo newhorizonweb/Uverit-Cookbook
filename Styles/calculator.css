@@ -634,7 +634,7 @@
     height:20px;
 }
 
-.calculator .reset-calc-col{
+.calculator :is(.reset-calc-col, .attention-calc-col){
     flex:none;
 }
 
@@ -650,20 +650,93 @@
 
         /* Ingredient Calculator - inputs, reset */
 
-            /* Reset row */
+            /* Reset row & Attention Toggle */
 
 .reset-calc-row{
     height:28px;
     aspect-ratio:1/1;
-    margin-right:10px;
+    margin-left:8px;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     background-color:var(--bg1);
     box-shadow:var(--box-shadow3) var(--bg5);
     border-radius:var(--radius2);
+
     transition:0.15s;
     cursor:pointer;
+}
+
+.calculator .attention-toggle{
+    width:28px;
+    height:28px;
+    margin-left:8px;
+    position:relative;
+
+    appearance:none;
+    background-color:var(--bg1);
+
+    &:hover{
+        box-shadow:var(--box-shadow3) var(--color1);
+    }
+
+    &:not(:hover):focus{
+        box-shadow:var(--box-shadow3) var(--bg5);
+    }
+
+    &:after{
+        content:"!";
+        width:100%;
+        height:100%;
+    
+        position:absolute;
+        top:0;
+        left:0;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        color:var(--color1);
+        font-family:font1-semibold;
+        font-weight:800;
+        font-size:26px;
+            
+        background-color:var(--bg1);
+        border-radius:var(--radius2);
+        cursor:pointer;
+    }
+
+    &.attention-active{
+
+        &:focus{
+            box-shadow:var(--box-shadow3) var(--attColor);
+        }
+
+        &:after{
+            color:var(--attColor);
+        }
+        
+    }
+
+    &.warn-active{
+
+        &:focus{
+            box-shadow:var(--box-shadow3) var(--warnColor);
+        }
+
+        &:after{
+            color:var(--warnColor);
+        }
+        
+    }
+
+}
+
+.calc .attention-active{
+    box-shadow:var(--box-shadow3) var(--attColor);
 }
 
 .reset-calc-row:hover{
@@ -691,12 +764,13 @@
             /* Multiplier */
 
 .multi-calc-col{
-    width:85px;
-    min-width:85px;
-    max-width:85px;
+    width:96px;
+    min-width:96px;
+    max-width:96px;
 }
 
 .multi-calc-div{
+    margin:0 8px;
     display:flex;
     background-color:var(--bg1);
     border-radius:var(--radius2);
@@ -723,8 +797,8 @@
 }
 
 .calc .multi-zero{
-    color:#F00;
-    box-shadow:var(--box-shadow3) #F00;
+    color:var(--warnColor);
+    box-shadow:var(--box-shadow3) var(--warnColor);
 }
 
 .multi-change{
@@ -980,7 +1054,7 @@ body .calc-readonly{
 }
 
 .ins-warning-crit .ins-adjust{
-    box-shadow:var(--box-shadow3) #F00;
+    box-shadow:var(--box-shadow3) var(--warnColor);
 }
 
 .ins-adjust:hover{
@@ -995,7 +1069,7 @@ body .calc-readonly{
 }
 
 .ins-warning-crit .ins-total-stop:hover{
-    box-shadow:var(--box-shadow3) #F00;
+    box-shadow:var(--box-shadow3) var(--warnColor);
 }
 
 .ins-adjust span{
@@ -1030,11 +1104,11 @@ body .calc-readonly{
         /* Insulin warning classes */
 
 .calc .ins-warning{
-    box-shadow:var(--box-shadow3) #FFA000;
+    box-shadow:var(--box-shadow3) var(--attColor);
 }
 
 .calc .ins-warning-crit{
-    box-shadow:var(--box-shadow3) #F00;
+    box-shadow:var(--box-shadow3) var(--warnColor);
 }
 
         /* Reset calculator */
@@ -1058,10 +1132,24 @@ body .calc-readonly{
     box-shadow:var(--box-shadow3) var(--color1);
 }
 
-.calc:has(.calc-reset:hover) div h5,
-.calc:has(.calc-reset:hover) .list-calc-col p,
-.calc:has(.calc-reset:hover) .ins-div p{
-    color:var(--color1);
+.calc:has(.calc-reset:hover) :is(div h5, .list-calc-col p, .ins-div p){
+    color:var(--warnColor);
+}
+
+.calc:has(.calc-reset:hover) input:not(.ins-calc input){
+    box-shadow:var(--box-shadow3) var(--warnColor);
+}
+
+.calc:has(.calc-reset:hover) .attention-toggle{
+
+    &:focus{
+        box-shadow:var(--box-shadow3) var(--warnColor);
+    }
+
+    &:after{
+        color:var(--warnColor);
+    }
+    
 }
 
 .calc-reset-hold:before{
@@ -1132,6 +1220,11 @@ body .calc-readonly{
 .calc-reset-after p{
     color:white;
 }
+
+.calc .warn-active{
+    box-shadow:var(--box-shadow3) var(--warnColor);
+}
+
 
         /* Insulin calculator - media */
 
@@ -1240,8 +1333,3 @@ body .calc-readonly{
     }
     
 }
-
-
-
-
-

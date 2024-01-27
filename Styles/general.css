@@ -43,6 +43,9 @@
     --txt-faded:#444;               /* Text faded color 1 */
     --txt-faded2:#6A6A6A;           /* Text faded color 2 */
     --txt-faded3:#919191;           /* Text faded color 3 */
+
+    --attColor:#FFA000;            /* Attention color */
+    --warnColor:#FF0000;            /* Attention color */
 }
 
         /* Dark-mode - class-changes */
@@ -203,18 +206,19 @@ body{
     font-family:font2;
 }
 
-p, a, label{
+p, a, label, input{
+    color:var(--txt1);
     font-size:18px;
     font-weight:400;
+
     line-height:1.3em;
     text-decoration:none;
-    color:var(--txt1);
     transition:0.15s;
 }
 
 @media screen and (max-width:440px){
     
-    p, a, label{
+    p, a, label, input{
         font-size:16px;
         line-height:1.2em;
     }
@@ -555,7 +559,7 @@ h6{
     transform:translate(-50%, 0) rotate(-45deg);
 }
 
-.burger-btn.open span:nth-child(3):after{;
+.burger-btn.open span:nth-child(3):after{
     width:8px;
     height:4px;
     transform:translate(-50%, -50%) rotate(-90deg);

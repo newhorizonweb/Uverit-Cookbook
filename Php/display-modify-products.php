@@ -132,27 +132,27 @@ $con = mysqli_connect("localhost", "root", "", "cookbook");
             <input type="text" name="shelf_life" value='<?php echo $shelf_life ?>'>
         </div>
         <div class="form-s4-input">
-            <label for="kcal" title="Kcal (w całości)" class="s4-help">Kalorie (kcal)*</label>
+            <label for="kcal" title="Kcal / 100g" class="s4-help">Kalorie (kcal)*</label>
             <input type='tel' name="kcal" class="kcal required" value='<?php echo $kcal ?>'>
         </div>
     </div>
     <div class="form-s4-b form-s4-div">
         <div class="form-s4-input">
-            <label for="fat" title="W gramach (w całości)" class="s4-help">Tłuszcz (g)*</label>
+            <label for="fat" title="W gramach / 100g" class="s4-help">Tłuszcz (g)*</label>
             <input type='tel' name="fat" class="fat required" value='<?php echo $fat ?>'>
         </div>
         <div class="form-s4-input">
-            <label for="carbohydrates" title="Węglowodany przyswajalne w gramach (w całości)" class="s4-help">Węglow. netto (g)*</label>
+            <label for="carbohydrates" title="Węglowodany przyswajalne w gramach / 100g" class="s4-help">Węglow. netto (g)*</label>
             <input type='tel' name="carbohydrates" class="carbohydrates required" value='<?php echo $carbohydrates ?>'>
         </div>
     </div>
     <div class="form-s4-c form-s4-div">
         <div class="form-s4-input">
-            <label for="fiber" title="W gramach (w całości)" class="s4-help">Błonnik (g)*</label>
+            <label for="fiber" title="W gramach / 100g" class="s4-help">Błonnik (g)*</label>
             <input type='tel' name="fiber" class="fiber required" value='<?php echo $fiber ?>'>
         </div>
         <div class="form-s4-input">
-            <label for="protein" title="W gramach (w całości)" class="s4-help">Białko (g)*</label>
+            <label for="protein" title="W gramach / 100g" class="s4-help">Białko (g)*</label>
             <input type='tel' name="protein" class="protein required" value='<?php echo $protein ?>'>
         </div>
     </div>

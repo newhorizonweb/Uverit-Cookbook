@@ -63,7 +63,6 @@ function inputCalc(chngName){
         result += (nType[x] / 100 * (weight[x] * multi[x]));
     }
 
-    let nutriInput = "."+c+"-"+chngName+"-calc";
     $("."+c+"-"+chngName+"-result").val(Math.round(result * 10) / 10);
 }
     
@@ -114,7 +113,6 @@ function multiNotDefault(){
     }
 }
 
-        
 // Limit the range between 0 and 10 when entering the value manually
 $("."+c+"-multi-calc").on("input", function(){
     multiInp = $(this);
@@ -252,6 +250,21 @@ $(document).ready(function(){
         $("."+c+"-multi-calc"+nr).val(storedCalcMulti);
     }
 
+    // Get the calculator attention toggle state and set it
+    for (let nr = 1; nr <= inpColLen; nr++){
+
+        let storedCalcAtt = localStorage.getItem(c+"-attention-calc"+nr) ?? false;
+
+        let setState = false;
+        if (storedCalcAtt === "true"){
+            setState = true;
+        }
+
+        $("."+c+"-attention-calc"+nr).prop("checked", setState);
+        markAttentionRow($("."+c+"-attention-calc"+nr), setState);
+
+    }
+
     // Get the calc input values and set them
     for (let inpNr = 0; inpNr < inpNamesLength; inpNr++){
         for (let nr = 1; nr <= inpColLen; nr++){
@@ -296,18 +309,81 @@ function setLocalStorage(thisElem){
     let inputVal = $(thisElem).val();
     localStorage.setItem(inputName, inputVal);
 }
+function setCheckboxStorage(thisElem){
+    let inputName = $(thisElem).attr("name");
+    let inputCheck = $(thisElem).is(":checked");
+
+    localStorage.setItem(inputName, inputCheck);
+    markAttentionRow($(thisElem), inputCheck);
+}
 $(".calculator-name").on("input", function(){
     setLocalStorage(this);
 });
 $(".calc input").on("input", function(){
-    setLocalStorage(this);
+    if (!$(this).is(':checkbox')){
+        setLocalStorage(this);
+    } else {
+        setCheckboxStorage(this);
+    }
 });
 $(".ins-calc select").on("input", function(){
     setLocalStorage(this);
 });
 
+// Mark the row based on the attention checkbox state
+function markAttentionRow(elem, state){
+    
+    const inputParent = elem.parent();
+    const inputCols = inputParent.siblings().addBack();
+    const index = inputParent.children('input').index(elem);
+
+    if (state === true){
+       
+        inputCols.each(function(){
+            const inputInCurrentDiv = $(this).find('input:eq('+index+')');
+            inputInCurrentDiv.addClass("attention-active");
+        });
+
+    } else {
+
+        inputCols.each(function(){
+            const inputInCurrentDiv = $(this).find('input:eq('+index+')');
+            inputInCurrentDiv.removeClass("attention-active");
+        });
+        
+    }
+
+}
+
+// ---/---|---\---/ RESET \---/---|---\--- \\
+
+function markWarnRow(e, nr, state){
+    
+    const inputParent = $(e.target).parent();
+    const inputCols = inputParent.siblings();
+    const index = nr - 1;
+
+    if (state === "add"){
+
+        inputCols.each(function(){
+            const inputInCurrentDiv = $(this).find('input:eq('+index+')');
+            inputInCurrentDiv.addClass("warn-active");
+        });
+
+    } else if (state === "remove") {
+
+        inputCols.each(function(){
+            const inputInCurrentDiv = $(this).find('input:eq('+index+')');
+            inputInCurrentDiv.removeClass("warn-active");
+        });
+        
+    }
+
+}
+
 // Reset all of the values in the row
 for (let nr = 1; nr <= inpColLen; nr++){
+
     $("."+c+"-reset-calc-row"+nr).on("click", function(){
         
         // Input calc values
@@ -319,6 +395,11 @@ for (let nr = 1; nr <= inpColLen; nr++){
         // Multiplier calc values
         $("."+c+"-multi-calc"+nr).val(1);
         localStorage.removeItem(c+"-multi-calc"+nr);
+
+        // Attention Toggle
+        $("."+c+"-attention-calc"+nr).prop("checked", false);
+        localStorage.removeItem(c+"-attention-calc"+nr);
+        markAttentionRow($("."+c+"-attention-calc"+nr), false);
         
         // Calculate the input values
         inputCalcAll();
@@ -327,22 +408,32 @@ for (let nr = 1; nr <= inpColLen; nr++){
         // Remove the multi-not-default class
         multiInp = $("."+c+"-multi-calc"+nr);
         multiNotDefault();
+
     });
+
+    $("."+c+"-reset-calc-row"+nr).on("mouseenter", function(e){
+        markWarnRow(e, nr, "add");
+    });
+
+    $("."+c+"-reset-calc-row"+nr).on("mouseleave", function(e){
+        markWarnRow(e, nr, "remove");
+    });
+    
 }
 
     // Reset all of the values
 
 // Messages 
-let holdMsg = "Przytrzymaj";
-let resetMsg = "Zresetowano";
+const holdMsg = "Przytrzymaj";
+const resetMsg = "Zresetowano";
     
     // Variables
     
 // Time to hold the button in milliseconds
-let holdTime = 1000;
+const holdTime = 1000;
     
 // Time to display the "Reset" message after successful btn hold
-let afterHoldTime = 1500; 
+const afterHoldTime = 1500; 
     
 // Track whether the button is being held or not
 let holdBtn = false; 
@@ -382,6 +473,12 @@ $("."+c+"-calc-reset").on("mousedown touchstart", function(){
             // Multiplier calc values
             $("."+c+"-multi-calc"+nr).val(1);
             localStorage.removeItem(c+"-multi-calc"+nr);
+
+            // Attention Toggle
+            $("."+c+"-attention-calc"+nr).prop("checked", false);
+            localStorage.removeItem(c+"-attention-calc"+nr);
+            markAttentionRow($("."+c+"-attention-calc"+nr), false);
+
         }
         
         // Remove the multi-not-default and multi-zero class
@@ -491,12 +588,14 @@ function insertCalcOptions(){
         // Add class to the currently selected option
         calcOptName.removeClass("current-calc");
         $("."+c+"-sc-option"+calcs+":selected").addClass("current-calc");
+
     }
 }
 
 // Store the original input and select values
 let originVal = {};
 let originMultiVal = {};
+let originAttState = {};
     
 let originBsVal;
 let originGiVal;
@@ -516,8 +615,12 @@ function originalValues(){
         // Calc multiplier values
         originMultiVal[nr] = {};
         originMultiVal[nr][c+"-multi-calc"] = $("."+c+"-multi-calc"+nr).val();
+
+        // Attention Toggle State
+        originAttState[nr] = {};
+        originAttState[nr][c+"-attention-calc"] = $("."+c+"-attention-calc"+nr).prop("checked");
     }
-    
+
     // Insulin input and select values
     originBsVal = $("."+c+"-cur-bs").val();
     originGiVal = $("."+c+"-cur-gi").val();
@@ -552,11 +655,30 @@ $(".calc input").on("input", function(){
     originalValues();
 });
 
-    // Get the input values from the localStorage or arrays / variables and insert them into the current calculator
-    
+$(document).on("keydown", "input", function(e){
+
+    if ($(".calculator div input").is(":focus") &&
+        e.key === 'q' && e.ctrlKey){
+        
+        // The value is set after when using the shortcut
+        // That's why there's a delay
+        setTimeout(() => {
+            for (let nr = 1; nr <= inpColLen; nr++){
+                originAttState[nr] = {};
+                originAttState[nr][c+"-attention-calc"] = $("."+c+"-attention-calc"+nr).prop("checked");
+            }
+        }, 100);
+        
+    }
+
+});
+
+    /* Current Calculator */
+
 // Define the current calculator in a variable
 let currCalc; 
-    
+
+// Get the input values from the localStorage or arrays / variables and insert them into the current calculator
 function currSelectCalc(){
         
     let curBs = c+"-cur-bs";
@@ -584,6 +706,15 @@ function currSelectCalc(){
         
         let multiName = $("."+c+"-multi-calc"+nr).attr("name");
         localStorage.setItem(multiName, multiVal);
+
+        // Attention calc checkbox state
+        let attState = originAttState[nr][c+"-attention-calc"];
+
+        $("."+c+"-attention-calc"+nr).prop("checked", attState);
+        markAttentionRow($("."+c+"-attention-calc"+nr), attState);
+        
+        let attName = $("."+c+"-attention-calc"+nr).attr("name");
+        localStorage.setItem(attName, attState);
     }
 
         // Insulin
@@ -621,6 +752,8 @@ function currSelectCalc(){
     
     localStorage.setItem(c+"changeInsVal", parseFloat(originInsAdjVal));
 }
+
+    /* Different Calculator */
     
 function diffSelectCalc(){
     let storedCurBs = localStorage.getItem(currCalc+"-cur-bs");
@@ -659,6 +792,27 @@ function diffSelectCalc(){
         } else {
             localStorage.setItem(multiStoredName, "");
         }
+
+        // Multiplier calc input values (insert 1 if undefined)
+        let attStoredState = localStorage.getItem(currCalc+"-attention-calc"+nr) ?? false;
+
+        let attSetState = false;
+        if (attStoredState === "true"){
+            attSetState = true;
+        }
+
+        $("."+c+"-attention-calc"+nr).prop("checked", attSetState);
+        markAttentionRow($("."+c+"-attention-calc"+nr), attSetState);
+        
+        // Save the new multiplier input values to the localStorage
+        let attStoredName = $("."+c+"-attention-calc"+nr).attr("name");
+        
+        if (attSetState != null){
+            localStorage.setItem(attStoredName, attSetState);
+        } else {
+            localStorage.setItem(attStoredName, "");
+        }
+
     }
 
         // Insulin
@@ -704,13 +858,45 @@ function diffSelectCalc(){
     localStorage.setItem(c+"changeInsVal", parseFloat(changeInsVal));
 }
 
+    /* Multiplier */
+
+// Add / remove the multiplier highlight class (if val != 1)
+// Add / Remove the stop class
+function multiClassChange(){
+
+    $("."+c+"-multi-calc").each(function(){
+        multiInp = $(this);
+        let multiVal = multiInp.val();
+
+        if (multiVal == 0){
+            $(this).siblings('.multi-sub').addClass("multi-stop");
+        } else {
+            $(this).siblings('.multi-sub').removeClass("multi-stop");
+        }
+
+        console.log($(this).siblings('.multi-sub'))
+
+        if (multiVal == 10){
+            $(this).siblings('.multi-add').addClass("multi-stop");
+        } else {
+            $(this).siblings('.multi-add').removeClass("multi-stop");
+        }
+
+        multiNotDefault();
+
+    });
+
+}
+
+    /* Calculator Selection */
+
 $(".select-calculator"+c).on("input", function(){
     // Get the value of the selected calculator
     currCalc = $(this).val();
     
     if (currCalc == c){
         // Set values if the chosen calculator is the current one (get values from the array)
-        currSelectCalc()
+        currSelectCalc();
     } else {
         // Set values if the chosen calculator is NOT the current one (get values from the localStorage)
         diffSelectCalc();
@@ -720,10 +906,9 @@ $(".select-calculator"+c).on("input", function(){
     inputCalcAll();
 
     // Add / remove the multiplier highlight class (if val != 1)
-    $("."+c+"-multi-calc").each(function(){
-        multiInp = $(this);
-        multiNotDefault();
-    });
+    // Add / Remove the stop class
+    multiClassChange();
+
 });
 
 
@@ -816,7 +1001,11 @@ function insCalc(){
     curGiSel.css("display", "block");            
     curGiWpts.css("display", "none");
 
-    if (insEarly != 0 && insMid != 0 && insLate != 0 && bsIncrease != 0 && curBs > 30){
+    if (insEarly != 0 &&
+        insMid != 0 &&
+        insLate != 0 &&
+        bsIncrease != 0 &&
+        curBs > 30){
 
         // Calculator nutrition values
         let carbVal = $("."+c+"-carb-result").val();
@@ -1167,40 +1356,62 @@ $(".ins-adjust").on("click", function(){
 
 
 
-// ---/---|---\---/ Move Focus \---/---|---\--- \\
+// ---/---|---\---/ Keyboard Shortcuts \---/---|---\--- \\
 
 
 
-    // Move focus on ctrl + arrow keys click
+// Toggle the attention checkbox & mark the row
+function attentionShortcut(e){
 
-$(document).on("keydown", "input", function(e) {
-    
-    let ctrl = e.ctrlKey;
+    if ($(".calculator div input").is(":focus") &&
+        e.key === 'q' && e.ctrlKey){
+        
+        const eTarget = e.currentTarget;
+        const inputParent = $(eTarget).parent();
+        const index = inputParent.children('input').index($(eTarget));
+
+        const thisAttToggle =
+            inputParent.siblings(".attention-calc-col").children('.attention-toggle:eq('+index+')');
+        const toggleState = thisAttToggle.prop("checked");
+
+        // Set the new state
+        thisAttToggle.prop("checked", !toggleState);
+
+        // Mark the row & save the checkboc state to the localstorage
+        setCheckboxStorage(thisAttToggle);
+    }
+
+}
+
+// Move focus on ctrl + arrow keys click
+function navigationShortcuts(e){
+
+    const ctrl = e.ctrlKey;
+    const eTarget = e.currentTarget;
     
     // Change focus + prevent from focusing on the calc result inputs
-    if ($(".calculator div input").is(":focus") &&     !$(this).next().hasClass("calc-result") &&
-    ctrl){
+    if ($(".calculator div input").is(":focus") &&
+        !$(eTarget).next().hasClass("calc-result") && ctrl){
         
         // Down arrow
         if (e.keyCode == 40){
-            $(this).next("input").focus();
+            $(eTarget).next("input").focus();
         }
     }
     
     // Change focus
-    if ($(".calculator div input").is(":focus") &&
-    ctrl){
-        let inputParent = $(this).parent();
-        let index = inputParent.children('input').index($(this));
+    if ($(".calculator div input").is(":focus") && ctrl){
+        let inputParent = $(eTarget).parent();
+        let index = inputParent.children('input').index($(eTarget));
         
         // Up arrow
         if (e.keyCode == 38){
-            $(this).prev("input").focus();
+            $(eTarget).prev("input").focus();
         }  
         
-        // Left arrow
+        // Left arrow (exclude attention toggle)
         if (e.keyCode == 37){
-            inputParent.prev().children('input:eq('+index+')').focus();
+            inputParent.prev().children('input:not([type="checkbox"]):eq('+index+')').focus();
         }
         
         // Right arrow
@@ -1208,5 +1419,10 @@ $(document).on("keydown", "input", function(e) {
             inputParent.next().children('input:eq('+index+')').focus();
         }
     }
-});
 
+}
+
+$(document).on("keydown", "input", function(e){
+    navigationShortcuts(e);
+    attentionShortcut(e);
+});

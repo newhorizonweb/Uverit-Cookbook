@@ -12,7 +12,7 @@
         <link rel="preload" href="Images/banner1.svg" as="image">
         
         <!-- Settings -->
-        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="shortcut icon" href="Images/uverit-favicon-bbg.svg" type="image/x-icon">
         <link rel="stylesheet" type="text/css" href="Styles/general.css">
@@ -22,7 +22,6 @@
         <script src="Scripts/jquery-3.6.0.min.js"></script>
         <script src="Scripts/ScriptPack-min.js" defer></script>
         <script src="Scripts/navigation.js"></script>
-        <script src="Scripts/loop.js" defer></script>
         <script src='Scripts/calculator-calc.js' defer></script>
     </head>
         
@@ -132,22 +131,22 @@
                                 
                                 <div class="ins-base-item">
                                     <p title="Ilość węglowodanów w gramach, które pokrywa 1j insuliny (na śniadanie)">Śniadanie</p>
-                                    <input type='tel' name="ins-amount-early" class="ins-input ins-amount-early" tabindex="-1">
+                                    <input type='tel' name="ins-amount-early" class="ins-input ins-amount-early" tabindex="-1" aria-label="Insulin amount - Early Meal">
                                 </div>
                                 
                                 <div class="ins-base-item">
                                     <p title="Ilość węglowodanów w gramach, które pokrywa 1j insuliny (na obiad)">Obiad</p>
-                                    <input type='tel' name="ins-amount-mid" class="ins-input ins-amount-mid" tabindex="-1">
+                                    <input type='tel' name="ins-amount-mid" class="ins-input ins-amount-mid" tabindex="-1" aria-label="Insulin amount - Mid/Noon Meal">
                                 </div>
                                     
                                 <div class="ins-base-item">
                                     <p title="Ilość węglowodanów w gramach, które pokrywa 1j insuliny (na kolację)">Kolacja</p>
-                                    <input type='tel' name="ins-amount-late" class="ins-input ins-amount-late" tabindex="-1">
+                                    <input type='tel' name="ins-amount-late" class="ins-input ins-amount-late" tabindex="-1" aria-label="Insulin amount - Late Meal">
                                 </div>
                                     
                                 <div class="ins-base-item">
                                     <p title="Ile mg/dl glukozy we krwi zbija 1j insuliny">Wart. korekcyjna</p>
-                                    <input type='tel' name="bs-increase" class="ins-input bs-increase" tabindex="-1">
+                                    <input type='tel' name="bs-increase" class="ins-input bs-increase" tabindex="-1" aria-label="Insulin Impact (how much 1 insulin unit lowers the blood sugar)">
                                 </div>
                             </div>
                         </div>           
@@ -170,9 +169,9 @@ $cos .= "<div class='$c-calc-header calc-header' scroll-button='cs-scroll-btn".$
         "<div class='calc calc$c'>".
         
         "<div class='calc-head'>".
-            "<input type='text' class='calculator-name calculator-name$c' name='calculator-name$c' maxlength='48'>".
+            "<input type='text' class='calculator-name calculator-name$c' name='calculator-name$c' maxlength='48' aria-label='Calculator Name'>".
 
-            "<select class='select-calculator select-calculator$c' autocomplete='off'>";
+            "<select class='select-calculator select-calculator$c' autocomplete='off' aria-label='Copy Calculators'>";
                 for ($o = 1; $o <= $calculators; $o++){
                     if ($o == $c){
                         $cos .= "<option class='$c-sc-option".$o."' value='$o' selected></option>";
@@ -193,11 +192,11 @@ $cos .=     "</select>".
                 }
 $cos .=     "</div>".
 
-            // Generate reset values buttons
-            "<div class='reset-calc-col'>".
+            // Generate attention toggle buttons
+            "<div class='attention-calc-col'>".
                 "<h5>&nbsp;</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
-                    $cos .= "<div class='reset-calc-row $c-reset-calc-row".$x."'></div>";
+                    $cos .= "<input type='checkbox' name='$c-attention-calc".$x."'' class='attention-toggle $c-attention-calc".$x."' aria-label='Row Attention Toggle'>";
                 }
 $cos .=         "<div class='cb-line-div'>".
                     "<span class='cb-line'></span>".
@@ -211,7 +210,7 @@ $cos .=         "<div class='cb-line-div'>".
                     $cos .= "<div class='multi-calc-div'>".
                         "<div class='multi-change multi-sub $c-multi-sub'><span></span></div>".
                         
-                        "<input type='tel' name='$c-multi-calc".$x."' class='multi-calc $c-multi-calc $c-multi-calc".$x."'>".
+                        "<input type='tel' name='$c-multi-calc".$x."' class='multi-calc $c-multi-calc $c-multi-calc".$x."' aria-label='Multiplier'>".
                         
                         "<div class='multi-change multi-add $c-multi-add'><span></span><span></span></div>".
                     "</div>";
@@ -225,7 +224,7 @@ $cos .=         "<div class='cb-line-div'>".
             "<div class='weight-calc-col'>".
                 "<h5 title='Waga w gramach (puste pole = 100g)'>Waga</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
-                    $cos .= "<input type='tel' name='$c-weight-calc".$x."' class='weight-calc $c-weight-calc".$x." calc-num'>";
+                    $cos .= "<input type='tel' name='$c-weight-calc".$x."' class='weight-calc $c-weight-calc".$x." calc-num' aria-label='Weight Input'>";
                 }
 $cos .=         "<div class='cb-line-div'>".
                     "<span class='cb-line'></span>".
@@ -236,7 +235,7 @@ $cos .=         "<div class='cb-line-div'>".
             "<div class='name-calc-col'>".
                 "<h5>Nazwa</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
-                    $cos .= "<input type='text' name='$c-name-calc".$x."' class='$c-name-calc $c-name-calc".$x."'>";
+                    $cos .= "<input type='text' name='$c-name-calc".$x."' class='$c-name-calc $c-name-calc".$x."' aria-label='Name Input'>";
                 }
 $cos .=         "<div class='cb-line-div'>".
                     "<span class='cb-line'></span>".
@@ -247,47 +246,60 @@ $cos .=         "<div class='cb-line-div'>".
             "<div class='kcal-calc-col'>".
                 "<h5 title='Kcal / 100g'>Kcal</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
-                    $cos .= "<input type='tel' name='$c-kcal-calc".$x."' class='kcal-calc $c-kcal-calc".$x." calc-num'>";
+                    $cos .= "<input type='tel' name='$c-kcal-calc".$x."' class='kcal-calc $c-kcal-calc".$x." calc-num' aria-label='Kcal Input'>";
                 }
-$cos .=         "<input class='calc-result $c-kcal-result' readonly>".
+$cos .=         "<input class='calc-result $c-kcal-result'
+                aria-label='Total Kcal' readonly>".
             "</div>".
 
             // Generate calculator fat inputs
             "<div class='fat-calc-col'>".
                 "<h5 title='W gramach / 100g'>Tłuszcz</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
-                    $cos .= "<input type='tel' name='$c-fat-calc".$x."' class='fat-calc $c-fat-calc".$x." calc-num'>";
+                    $cos .= "<input type='tel' name='$c-fat-calc".$x."' class='fat-calc $c-fat-calc".$x." calc-num' aria-label='Fat Input'>";
                 }
-$cos .=         "<input class='calc-result $c-fat-result' readonly>".
+$cos .=         "<input class='calc-result $c-fat-result'
+                aria-label='Total Fat' readonly>".
             "</div>".
 
             // Generate calculator carb inputs
             "<div class='carb-calc-col'>".
                 "<h5 title='W gramach / 100g'>Węgle</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
-                    $cos .= "<input type='tel' name='$c-carb-calc".$x."' class='carb-calc $c-carb-calc".$x." calc-num'>";
+                    $cos .= "<input type='tel' name='$c-carb-calc".$x."' class='carb-calc $c-carb-calc".$x." calc-num' aria-label='Carbs Input'>";
                 }
-$cos .=         "<input class='calc-result $c-carb-result' readonly>".
+$cos .=         "<input class='calc-result $c-carb-result'
+                aria-label='Total Carbs' readonly>".
             "</div>".
 
             // Generate calculator fiber inputs
             "<div class='fiber-calc-col'>".
                 "<h5 title='W gramach / 100g'>Błonnik</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
-                    $cos .= "<input type='tel' name='$c-fiber-calc".$x."' class='fiber-calc $c-fiber-calc".$x." calc-num'>";
+                    $cos .= "<input type='tel' name='$c-fiber-calc".$x."' class='fiber-calc $c-fiber-calc".$x." calc-num' aria-label='Fiber Input'>";
                 }
-$cos .=         "<input class='calc-result $c-fiber-result' readonly>".
+$cos .=         "<input class='calc-result $c-fiber-result'
+                aria-label='Total Fiber'readonly>".
             "</div>".
 
             // Generate calculator protein inputs
             "<div class='protein-calc-col'>".
                 "<h5 title='W gramach / 100g'>Białko</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
-                    $cos .= "<input type='tel' name='$c-protein-calc".$x."' class='protein-calc $c-protein-calc".$x." calc-num'>";
+                    $cos .= "<input type='tel' name='$c-protein-calc".$x."' class='protein-calc $c-protein-calc".$x." calc-num' aria-label='Protein Input'>";
                 }
-$cos .=         "<input class='calc-result $c-protein-result' readonly>".
+$cos .=         "<input class='calc-result $c-protein-result'
+                aria-label='Total Protein' readonly>".
             "</div>".
-    
+
+            // Generate reset values buttons
+            "<div class='reset-calc-col'>".
+                "<h5>&nbsp;</h5>";
+                for ($x = 1; $x <= $inpColLen; $x++){
+                    $cos .= "<div class='reset-calc-row $c-reset-calc-row".$x."'></div>";
+                }
+$cos .=     "</div>".
+
         "</div>".
 
         "<div class='ins-calc'>".
@@ -296,13 +308,13 @@ $cos .=         "<input class='calc-result $c-protein-result' readonly>".
 
                 "<div class='ins-div'>".
                     "<p title='Poziom glukozy we krwi, mg/dl' class='c-help'>Poz. glukozy</p>".
-                    "<input type='tel' name='$c-cur-bs' class='cur-bs $c-cur-bs' placeholder='min. 30, max. 350'>".
+                    "<input type='tel' name='$c-cur-bs' class='cur-bs $c-cur-bs' placeholder='min. 30, max. 350' aria-label='Current Blood Sugar'>".
                 "</div>".
 
                 "<div class='ins-div'>".
                     "<p>IG</p>".
 
-                    "<select name='$c-cur-gi' class='cur-gi $c-cur-gi'>".
+                    "<select name='$c-cur-gi' class='cur-gi $c-cur-gi'  aria-label='Glycemic Index'>".
                         "<option value='wpts' hidden>WBT</option>".
                         "<option value='very-low-gi'>B. niski (gł. b+t)</option>".
                         "<option value='low-gi'>Niski</option>".
@@ -310,12 +322,12 @@ $cos .=         "<input class='calc-result $c-protein-result' readonly>".
                         "<option value='high-gi'>Wysoki</option>".
                     "</select>".
 
-                    "<input class='cur-gi-wpts $c-cur-gi-wpts' value='WBT' readonly>".
+                    "<input class='cur-gi-wpts $c-cur-gi-wpts' value='WBT' readonly aria-label='Fat & Protein Info'>".
                 "</div>".
 
                 "<div class='ins-div'>".
                     "<p>Typ posiłku</p>".
-                    "<select name='$c-ins-meal-type' class='ins-meal-type $c-ins-meal-type'>".
+                    "<select name='$c-ins-meal-type' class='ins-meal-type $c-ins-meal-type' aria-label='Meal Type'>".
                         "<option value='early'>Śniadanie</option>".
                         "<option value='mid' selected>Obiad</option>".
                         "<option value='late'>Kolacja</option>".
@@ -328,19 +340,19 @@ $cos .=         "<input class='calc-result $c-protein-result' readonly>".
 
                 "<div class='ins-div'>".
                     "<p title='Insulina na pokrycie posiłku' class='c-help'>Ins. posiłkowa</p>".
-                    "<input class='calc-readonly ins-meal $c-ins-meal' readonly>".
+                    "<input class='calc-readonly ins-meal $c-ins-meal' readonly aria-label='Meal Insulin'>".
                 "</div>".
 
                 "<div class='ins-div'>".
                     "<p title='Korekcja dawki w celu osiągnięcia optymalnego poz. gluk.' class='c-help'>Ins. korekcyjna</p>".
-                    "<input class='calc-readonly ins-correction $c-ins-correction' readonly>".
+                    "<input class='calc-readonly ins-correction $c-ins-correction' readonly aria-label='Correction Insulin'>".
                 "</div>".
 
                 "<div class='ins-div'>".
                     "<p title='Insulina posiłkowa, korekcyjna oraz dostosowanie dawki' class='c-help'>Ins. całkowita</p>".
                     "<div class='total-ins-change'>".
                         "<div class='ins-adjust ins-sub $c-ins-sub'><span></span></div>".
-                        "<input class='calc-readonly ins-total $c-ins-total' readonly>".
+                        "<input class='calc-readonly ins-total $c-ins-total' readonly aria-label='Total Insulin'>".
                         "<div class='ins-adjust ins-add $c-ins-add'><span></span><span></span></div>".
                     "</div>".
                 "</div>".
@@ -357,12 +369,12 @@ $cos .=         "<input class='calc-result $c-protein-result' readonly>".
             "<div class='ins-section'>".
                 "<div class='ins-div'>".
                     "<p>Przew. gluk.</p>".
-                    "<input class='calc-readonly expected-bs $c-expected-bs' readonly>".
+                    "<input class='calc-readonly expected-bs $c-expected-bs' readonly aria-label='Expected Blood Sugar'>".
                 "</div>".
 
                 "<div class='ins-div'>".
                     "<p title='Czas iniekcji insuliny w odniesieniu do rozpoczącia posiłku' class='c-help'>Czas iniekcji</p>".
-                    "<input class='calc-readonly time-before-meal $c-time-before-meal' readonly>".
+                    "<input class='calc-readonly time-before-meal $c-time-before-meal' readonly aria-label='Injection Time Before Meal'>".
                 "</div>".
             "</div>".
 
@@ -377,35 +389,14 @@ echo $cos;
                 </div>
                 
                 <div class="space"></div>
-                <!--
-                <loop for="x" start="11" stop="15" influence="none">
-                    <div class="x-x--xx">
-                        <p id="hemlox_alaasd">hemlo!-xvx xx</p>
-                        <p id="hemlox_alaasd">hemlo!-xvx xx</p>
-                        <p id="hemlox_alaasd">hemlo!-xvx xx</p>
-                        <div name="hemlo_x_"><input name="xax"></div>
-                    </div>                    <div class="x-x--xx">
-                        <p id="hemlox_alaasd">hemlo!-xvx xx</p>
-                        <div name="hemlo_x_"><input name="xax"></div><div name="hemlo_x_"><input name="xax"><input name="xax"></div>
-                    </div>
-                </loop>
-                <br>
-                <loop for="x" start="1" stop="5">
-                    <div class="hemlox">aaa</div>
-                    <i class="divx">bbb</i>
-                </loop>
                 
-                <loop for="num" start="1" stop="7" influence="none">
-                    <h3 class="aaanum">Hey, neighbouououor! It's nice too meet ya for the num time this week!</h3>
-                </loop>
-                -->
             </div>
     <!-- /MAIN-MODULE -->
 
         </main>
         
         <footer>
-    <!-- FOOTER3 -->
+    <!-- FOOTER -->
             <div class="footer">
                 <div class="wrapper">
                     
@@ -435,9 +426,10 @@ echo $cos;
                     </a>
                 </div>
             </div>
-    <!-- /FOOTER3 -->
+    <!-- /FOOTER -->
         </footer>
-        <script>
+
+        <script defer>
 
             // Sticky container variables
 
@@ -546,5 +538,6 @@ echo $cos;
             });
         });
         </script>
+
     </body>
 </html>
