@@ -44,6 +44,11 @@
     --txt-faded2:#6A6A6A;           /* Text faded color 2 */
     --txt-faded3:#919191;           /* Text faded color 3 */
 
+    --np-fat:#FACD31;
+    --np-carb:#52CD48;
+    --np-fiber:#A9F549;
+    --np-protein:#46D2EE;
+
     --attColor:#FFA000;            /* Attention color */
     --warnColor:#FF0000;            /* Attention color */
 }
@@ -157,6 +162,7 @@
     padding:0;
     font-family:font2, Roboto, Arial, sans-serif; /* Stupid firefox... */
     -webkit-tap-highlight-color:transparent;
+    text-wrap:pretty;
 }
 
 *:focus{
@@ -228,6 +234,7 @@ h1, h2, h3, h4, h5, h6{
     font-family:font1, Calibri, sans-serif;
     color:var(--txt1);
     font-weight:800;
+    text-wrap:balance;
     transition:0.15s;
 }
 
@@ -1288,16 +1295,19 @@ h6{
 
 .main-background{
     /* Prevent gaps on the sides */
+    will-change:transform;
     width:calc(100% + 4px);
     height:100%;
+
     position:fixed;
     top:0;
     left:calc(50% - 2px);
-    transform:translate3D(-50%, 0, 0);
+    transform:translate3D(-50%, 0, 0) scale3d(1.2, 1, 1);
+    
     background-image:url("../Images/bgreversed.svg");
     background-size:cover;
     background-position:center;
-    animation:mainBgShrink 2s cubic-bezier(0,.3,.4,1);
+    animation:mainBgShrink 2s cubic-bezier(0,.3,.4,1) forwards;
 }
 
 .dark-mode .main-background{
@@ -1306,35 +1316,35 @@ h6{
 
 @keyframes mainBgShrink{
     0%{
-        padding:0 20%;
+        transform:translate3D(-50%, 0, 0) scale3d(1.2, 1, 1);
     }
     100%{
-        padding:0;
+        transform:translate3D(-50%, 0, 0) scale3d(1, 1, 1);
     }
 }
 @media screen and (max-width:1440px){
     @keyframes mainBgShrink{
         0%{
-            padding:0 35%;
+            transform:translate3D(-50%, 0, 0) scale3d(1.35, 1, 1);
         }
         100%{
-            padding:0;
+            transform:translate3D(-50%, 0, 0) scale3d(1, 1, 1);
         }
     }
 }
 @media screen and (max-width:1200px){
     @keyframes mainBgShrink{
         0%{
-            padding:0;
+            transform:translate3D(-50%, 0, 0) scale3d(1, 1, 1);
         }
         100%{
-            padding:0;
+            transform:translate3D(-50%, 0, 0) scale3d(1, 1, 1);
         }
     }
 }
 
 :root{
-    --gradBgWidth: calc(100% / 6);
+    --gradBgWidth:calc(100% / 6);
 }
 
 .main-bg-grad{

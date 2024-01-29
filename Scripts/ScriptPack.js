@@ -1,20 +1,21 @@
     
     /* Remove transition on page load (remove flash) */
 
-document.getElementsByTagName("body")[0].classList.add("remove-transition");
-setTimeout(function(){
-    document.getElementsByTagName("body")[0].classList.remove("remove-transition");
-}, 20);
+function removeTrans(){
+    document.body.classList.add("remove-transition");
+    setTimeout(function(){
+        document.body.classList.remove("remove-transition");
+    }, 0);
+}
+
+removeTrans();
 
     /* Dark Mode */
 
-// It's not in order to maximize the performance (don't flash light theme on page load)
-
-let dmBtn = document.getElementsByClassName("dm-btn")[0];
-let body = document.getElementsByTagName("body")[0];
+const dmBtn = document.getElementsByClassName("dm-btn")[0];
 
 // Set visit counter
-var visit = localStorage.getItem('visit');
+let visit = localStorage.getItem('visit');
 
 // If user's device is set to dark mode, set it on the first page visit
 if (visit == null){
@@ -26,13 +27,20 @@ if (visit == null){
 } 
 
 // Get the dark mode state and set it to the dm toggle
-let dmState = JSON.parse(localStorage.getItem("dm-checkbox"));    
-if (dmState){
-    body.classList.add("dark-mode");
-}
+let dmState = JSON.parse(localStorage.getItem("dm-checkbox"));   
 
-// Check the dark-mode toggle
-dmBtn.checked = dmState;
+requestAnimationFrame(() => {
+
+    if (dmState){
+
+        // Add the dark-mode class
+        document.body.classList.add("dark-mode");
+    }
+
+    // Check the dark-mode toggle
+    dmBtn.checked = dmState;
+
+});
 
 // Update the visit counter
 visit++
@@ -40,14 +48,18 @@ localStorage.setItem('visit', visit);
 
 // Set dark mode on toggle
 dmBtn.addEventListener("click", function(){
+
     localStorage.setItem("dm-checkbox", dmBtn.checked);
-    let dmState = JSON.parse(localStorage.getItem("dm-checkbox"));
+    dmState = JSON.parse(localStorage.getItem("dm-checkbox"));
+
+    removeTrans();
     
     if (dmState){
-        body.classList.add("dark-mode");
+        document.body.classList.add("dark-mode");
     } else {
-        body.classList.remove("dark-mode");
+        document.body.classList.remove("dark-mode");
     }
+
 });
 
     /* Background gradient */

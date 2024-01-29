@@ -1,14 +1,12 @@
 # Uverit-Cookbook
 
-Uverit Cookbook - All Rights Reserved.
-
 Uverit cookbook is a collection of recipes and products. The project also includes a calculator with some useful features, such as ingredient multiplier, insulin calculator and copying calculators.
 
 ![main page](000-other-files/readme-img/main.png)
 
+## Recipes
 
-Add Recipes ------------------------
-
+### Add Recipes
 
 The user can add, modify and search the recipe list.
 The add-recipes page has a user-friendly UI that allows to upload data such as recipe name, description, image, type, ingredients, steps, nutritional and additional info.
@@ -20,17 +18,13 @@ The tag system allows for further recipe categorization.
 ![add recipes (first part)](000-other-files/readme-img/add-recipes1.png)
 ![add recipes (second part)](000-other-files/readme-img/add-recipes2.png)
 
-
-Modify Recipes ---------------------
-
+### Modify Recipes
 
 The modify-recipes page is a section for modifying or deleting existing recipes. The user can change every aspect of the recipe or delete it completely (inculding images stored on the server and recipe page).
 
 ![modify recipes](000-other-files/readme-img/modify-recipes.png)
 
-
-Recipe List ------------------------
-
+### Recipe List
 
 Recipe-list contains a list of every uploaded recipe. The user can sort results, choose a type or search by entering keywords. 
 The dropdown lists allow for a quick way to choose the desired tags.
@@ -41,9 +35,7 @@ After searching, a basic info about the recipe is displayed (name, description, 
 
 ![recipe list](000-other-files/readme-img/recipe-list.png)
 
-
-Recipe Page ------------------------
-
+### Recipe Page
 
 The recipe page contains all the info about the recipe. The data is presented in a modern, easy to understand UI.
 
@@ -70,16 +62,14 @@ The list of features:
 ![recipe (second part)](000-other-files/readme-img/recipe2.png)
 ![recipe (third part)](000-other-files/readme-img/recipe3.png)
 
+## Products
 
-Add & Modify Products --------------
-
+### Add & Modify Products
 
 The add-products and modify-products pages have the same features with some minor changes. 
 The tag system is dependant on the product type, so every type has unique, fitting tags for a better experience and searchability.
 
-
-Product List -----------------------
-
+### Product List
 
 Similar to the recipe-list, but with some changes.
 The tag lists are dependant on the product type.
@@ -88,9 +78,7 @@ There are no product pages. Instead, the products are displayed in a slide-in ty
 
 ![product list](000-other-files/readme-img/product-list.png)
 
-
-Display Product --------------------
-
+### Display Product
 
 It's a major section in the product-list page. When user chooses a product, the info is displayed in a slide-in container.
 Inculdes data such as:
@@ -110,31 +98,48 @@ Inculdes data such as:
 ![product section 2](000-other-files/readme-img/product-section2.png)
 ![product section 3](000-other-files/readme-img/product-section3.png)
 
-
-Calculator -------------------------
-
+## Calculator
 
 It's an advanced calculator for nutritional info of the ingredients. The page contains multiple independent calculators.
 
 The user can enter the weight, ingredient name, calorie, fat, carbohydrate, fiber and protein values.
-Every row can be multiplied (0x-10x). The output is displayed for every value.
+Every row can be multiplied (0x-10x).
 
-The data in every row can be removed with 1 click, the data in every calculator can be removed by holding a button at the bottom.
-The user can change/copy calculators to every other calculator. The data values are saved automatically on a set action (localStorage).
+It's possible to mark each row for attention (it will be highlighted).
+It can be done either by clicking a button or by pressing "ctrl + q".
+
+The user can remove the data in one row with a click of a button.
+All of the data in every calculator can be removed by holding a button at the bottom.
 The user can jump to the nearest cells from the one on focus by using ctrl + arrows (up, down, left, right).
 
+The user can change/copy calculators to replace the other ones.
+The data values are saved automatically to the localStorage.
 
-Insulin Calculator -----------------
+![calculator](000-other-files/readme-img/calculator.png)
 
+### Insulin Calculator
 
 A major section of the calculator page especially important for people with diabetes.
 At the top of the page the user can enter the insulin amount needed for a specific meal type and the blood sugar amount that is decreased by 1 insulin unit.
 
 Every calculator has its own insulin section at the bottom. By entering required data the user can get an accurate information about the total insulin units for the meal, meal insulin, correction insulin, expected blood sugar and recommended injection time before meal.
 
-![calculator](000-other-files/readme-img/calculator.png)
+### Combining Nutritional Values
 
+This part of the calculator allows combining the nutritional values from different calculators.
+The user can choose one or more calculators using checkboxes.
 
-Version ----------------------------
+The displayed data includes:
+- total calorie count
+- weight
+    - combined weight for each nutritional value (fat, carbs, fiber, and protein)
+    - graph with the weight ratio
+- calorie percentage
+    - combined calorie percentage for each nutritional value (as a part of all calories)
+    - graph with the calorie ratio
 
-v1.0.1
+![calculator](000-other-files/readme-img/calculator-total-values.png)
+
+## License
+
+Uverit Cookbook - All Rights Reserved.

@@ -18,7 +18,7 @@
 
 .calc-scroll{
     /* 4px so the box-shadow is not visible, more +4px instances below */
-    width:calc(100vw + 240px + (var(--wrapperPadding2) * 2) + 4px);
+    width:calc(100vw + 356px + (var(--wrapperPadding2) * 2) + 4px);
     min-height:100%;
     position:absolute;
     top:0;
@@ -32,22 +32,25 @@
 }
 
 .cs-container{
-    width:calc(240px + (var(--wrapperPadding2) * 2));
+    width:calc(356px + (var(--wrapperPadding2) * 2));
     padding:var(--wrapperPadding2);
     box-sizing:border-box;
+
     position:sticky;
     top:50px;
     left:calc(100% + 4px);
+
     background-color:var(--bg6);
     box-shadow:var(--box-shadow1) var(--wrapperColor1), var(--box-shadow2) var(--wrapperColor1);
     border-radius:var(--radius1) 0 0 var(--radius1);
-    z-index:9000;
-    transition:0.2s;
+
     pointer-events:auto;
+    transition:0.2s;
+    z-index:9000;
 }
 
 .cs-container.cs-open{
-    left:calc(100vw - 240px - (var(--wrapperPadding2) * 2));
+    left:calc(100vw - 356px - (var(--wrapperPadding2) * 2));
 }
 
         /* Sticky container - button */
@@ -93,15 +96,16 @@
     max-height:calc(100vh - 100px - (var(--wrapperPadding2) * 2));
     padding:var(--wrapperPadding2);
     box-sizing:border-box;
+
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:10px;
-    overflow-y:overlay;
-    
+
     background-color:var(--bg1);
     box-shadow:var(--box-shadow4) var(--bg5);
     border-radius:var(--radius1);
+
+    overflow-y:overlay;
     transition:0.2s;
 }
 
@@ -122,9 +126,9 @@
 
 .cs-title{
     width:100%;
-    margin-bottom:5px;
+    margin-bottom:10px;
     padding-bottom:3px;
-    border-bottom:solid 3px var(--color1);
+    border-bottom:solid 2px var(--color1);
     text-align:center;
     font-size:20px;
 }
@@ -144,14 +148,17 @@
 .cs-close span{
     width:80%;
     height:2px;
+
     position:absolute;
     top:50%;
     left:50%;
+
     background-color:var(--bg1);
     border:solid 1.5px var(--txt1);
     border-radius:20px;
-    pointer-events:none;
+
     transition:0.1s;
+    pointer-events:none;
 }
 
 .cs-close span:nth-of-type(1){
@@ -180,9 +187,25 @@
 
         /* Sticky container - scroll buttons */
 
-.cs-scroll-div{
+.calc-links{
     width:100%;
-    min-height:44px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+}
+
+.cs-elem{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:var(--wrapperPadding2);
+}
+
+.cs-scroll-div{
+    width:calc(100% - 28px - var(--wrapperPadding2)); /* checkbox, gap */
+    min-height:38px;
+
     display:flex;
     justify-content:center;
     align-items:center;
@@ -191,16 +214,21 @@
 .cs-scroll-btn{
     width:100%;
     margin:6px 0;
-    padding:2px 12px;
+    padding:0 12px;
+    box-sizing:border-box;
     position:relative;
+
+    font-size:16px;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+
     border:solid 2px transparent;
     border-left:solid 2px var(--txt1);
     border-right:solid 2px var(--txt1);
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+    
     cursor:pointer;
     transition:0.15s;
+    overflow:hidden;
 }
 
 .cs-scroll-btn.closest-calc{
@@ -210,10 +238,196 @@
 
 .cs-scroll-btn:hover{
     margin:0;
-    padding:8px 12px;
+    padding:6px 12px;
+
+    color:var(--color1);
+    border-color:var(--color1);
+    border-radius:var(--radius2);
+}
+
+        /* Sticky container - checkboxes */
+
+.cs-scroll-check{
+    height:28px;
+    aspect-ratio:1/1;
+    position:relative;
+    appearance:none;
+
+    &:before{
+        content:"";
+        width:100%;
+        height:100%;
+        box-sizing:border-box;
+
+        position:absolute;
+        top:0;
+        left:0;
+
+        background-color:var(--bg5);
+        box-shadow:var(--box-shadow2) var(--txt-faded2);
+        border-radius:var(--radius2);
+
+        transition:0.15s;
+        cursor:pointer;
+    }
+
+    &:checked:before{
+        box-shadow:var(--box-shadow3) var(--color1);
+    }
+
+    &:after{
+        content:"";
+        width:0;
+        height:0;
+
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+
+        background-color:var(--color1);
+        border-radius:6px;
+
+        pointer-events:none;
+        transition:0.15s;
+    }
+
+    &:checked:after{
+        width:18px;
+        height:18px;
+    }
+
+}
+
+        /* Sticky container - ratio */
+
+.total-results{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+.total-kcal{
+    width:100%;
+    padding:4px 12px 2px;
+    box-sizing:border-box;
+
+    font-size:16px;
+    text-align:center;
     border:solid 2px var(--color1);
     border-radius:var(--radius2);
-    color:var(--color1);
+}
+
+.total-ratio-section{
+    width:100%;
+    margin-top:var(--wrapperPadding1);
+
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.ratio-heading{
+    width:100%;
+    text-align:center;
+
+    &.ratio-heading-border{
+        padding-bottom:2px;
+        border-bottom:solid 2px var(--color1);
+    }
+
+}
+
+.ratio-values{
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+
+    & .ratio-val-elem{
+        flex:35%;
+        padding-left:20px;
+
+        display:flex;
+        align-items:center;
+        gap:5px;
+
+        & span{
+            width:12px;
+            aspect-ratio:1/1;
+            
+            display:block;
+            border-radius:50%;
+        }
+
+        &.fat-ratio span{
+            background-color:var(--np-fat);
+        }
+        &.carb-ratio span{
+            background-color:var(--np-carb);
+        }
+        &.fiber-ratio span{
+            background-color:var(--np-fiber);
+        }
+        &.protein-ratio span{
+            background-color:var(--np-protein);
+        }
+
+        & p{
+            margin-bottom:-1px;
+            color:var(--txt-faded);
+            font-size:14px;
+            text-transform:uppercase;
+            text-align:center;
+        }
+
+    }
+
+}
+
+.ratio-bar{
+    width:100%;
+    display:flex;
+
+    background-color:var(--bg5);
+    border-radius:100px;
+    overflow:hidden;
+
+    & .ratio-bar-elem{
+        height:16px;
+        border-left:solid 1px var(--bg5);
+        border-right:solid 1px var(--bg5);
+        transition:0.5s ease-in-out;
+
+        &.first-bar{
+            border-left-width:0;
+            border-radius:100px 0 0 100px;
+        }
+    
+        &.last-bar{
+            border-right-width:0;
+            border-radius:0 100px 100px 0;
+        }
+
+        &.hide-bar{
+            border-width:0;
+        }
+
+    }
+
+    & .fat-ratio{
+        background-color:var(--np-fat);
+    }
+    & .carb-ratio{
+        background-color:var(--np-carb);
+    }
+    & .fiber-ratio{
+        background-color:var(--np-fiber);
+    }
+    & .protein-ratio{
+        background-color:var(--np-protein);
+    }
+    
 }
 
         /* Sticky container - media */
@@ -256,13 +470,23 @@
         left:0;
         box-shadow:none;
     }
-    
-    .cs-scroll-div{
-        min-height:40px;
+        
+    .total-ratio-section{
+        margin-top:var(--wrapperPadding2);
     }
-    
-    .cs-scroll-btn{
-        width:80%;
+
+    .ratio-values{
+        gap:6px;
+
+        & .ratio-val-elem{
+            padding-left:0;
+            
+            & p{
+                font-size:13px;
+            }
+
+        }
+
     }
 
 }
@@ -297,8 +521,12 @@
         height:26px;
     }
 
-    .cs-scroll-btn{
-        width:100%;
+    .ratio-values{
+
+        & .ratio-val-elem{
+            flex:100%;
+        }
+
     }
     
 }
@@ -793,12 +1021,20 @@
 
 .calc .multi-not-default{
     color:var(--color1);
-    box-shadow:var(--box-shadow3) var(--color1);
+
+    &:not(.attention-active){
+        box-shadow:var(--box-shadow3) var(--color1);
+    }
+    
 }
 
 .calc .multi-zero{
     color:var(--warnColor);
-    box-shadow:var(--box-shadow3) var(--warnColor);
+
+    &:not(.attention-active){
+        box-shadow:var(--box-shadow3) var(--warnColor);
+    }
+
 }
 
 .multi-change{

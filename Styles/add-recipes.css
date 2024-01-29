@@ -348,12 +348,17 @@
 .reset-calc-row{
     height:28px;
     aspect-ratio:1/1;
+    margin-left:4px;
+    margin-right:8px;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     background-color:var(--bg1);
     box-shadow:var(--box-shadow3) var(--bg5);
     border-radius:var(--radius2);
+
     transition:0.15s;
     cursor:pointer;
 }

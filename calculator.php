@@ -103,12 +103,82 @@
                         <?php echo $arrowIcon; ?>
                     </div>
                     <div class="cs-container-inner">
+
                         <h4 class="cs-title">Kalkulatory</h4>
+
                         <div class="cs-close">
                             <span></span>
                             <span></span>
                             <span></span>
                         </div>
+
+                        <div class="calc-links"></div>
+
+                        <div class="total-results">
+
+                            <div class="total-ratio-section total-calories">
+                                <h5 class="ratio-heading">Kalorie</h5>
+                                <p class="total-kcal"></p>
+                            </div>
+
+                            <div class="total-ratio-section total-weight-ratio">
+
+                                <h5 class="ratio-heading ratio-heading-border">Waga</h5>
+
+                                <div class="ratio-values">
+                                    <div class="ratio-val-elem fat-ratio">
+                                        <span></span><p></p>
+                                    </div>
+                                    <div class="ratio-val-elem carb-ratio">
+                                        <span></span><p></p>
+                                    </div>
+                                    <div class="ratio-val-elem fiber-ratio">
+                                        <span></span><p></p>
+                                    </div>
+                                    <div class="ratio-val-elem protein-ratio">
+                                        <span></span><p></p>
+                                    </div>
+                                </div>
+
+                                <div class="ratio-bar">
+                                    <div class="ratio-bar-elem fat-ratio"></div>
+                                    <div class="ratio-bar-elem carb-ratio"></div>
+                                    <div class="ratio-bar-elem fiber-ratio"></div>
+                                    <div class="ratio-bar-elem protein-ratio"></div>
+                                </div>
+
+                            </div>
+
+                            <div class="total-ratio-section total-calorie-ratio">
+
+                                <h5 class="ratio-heading ratio-heading-border">Skład Procentowy</h5>
+
+                                <div class="ratio-values">
+                                    <div class="ratio-val-elem fat-ratio">
+                                        <span></span><p></p>
+                                    </div>
+                                    <div class="ratio-val-elem carb-ratio">
+                                        <span></span><p></p>
+                                    </div>
+                                    <div class="ratio-val-elem fiber-ratio">
+                                        <span></span><p></p>
+                                    </div>
+                                    <div class="ratio-val-elem protein-ratio">
+                                        <span></span><p></p>
+                                    </div>
+                                </div>
+
+                                <div class="ratio-bar">
+                                    <div class="ratio-bar-elem fat-ratio"></div>
+                                    <div class="ratio-bar-elem carb-ratio"></div>
+                                    <div class="ratio-bar-elem fiber-ratio"></div>
+                                    <div class="ratio-bar-elem protein-ratio"></div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -248,7 +318,7 @@ $cos .=         "<div class='cb-line-div'>".
                 for ($x = 1; $x <= $inpColLen; $x++){
                     $cos .= "<input type='tel' name='$c-kcal-calc".$x."' class='kcal-calc $c-kcal-calc".$x." calc-num' aria-label='Kcal Input'>";
                 }
-$cos .=         "<input class='calc-result $c-kcal-result'
+$cos .=         "<input class='calc-result kcal-result $c-kcal-result'
                 aria-label='Total Kcal' readonly>".
             "</div>".
 
@@ -258,7 +328,7 @@ $cos .=         "<input class='calc-result $c-kcal-result'
                 for ($x = 1; $x <= $inpColLen; $x++){
                     $cos .= "<input type='tel' name='$c-fat-calc".$x."' class='fat-calc $c-fat-calc".$x." calc-num' aria-label='Fat Input'>";
                 }
-$cos .=         "<input class='calc-result $c-fat-result'
+$cos .=         "<input class='calc-result fat-result $c-fat-result'
                 aria-label='Total Fat' readonly>".
             "</div>".
 
@@ -268,7 +338,7 @@ $cos .=         "<input class='calc-result $c-fat-result'
                 for ($x = 1; $x <= $inpColLen; $x++){
                     $cos .= "<input type='tel' name='$c-carb-calc".$x."' class='carb-calc $c-carb-calc".$x." calc-num' aria-label='Carbs Input'>";
                 }
-$cos .=         "<input class='calc-result $c-carb-result'
+$cos .=         "<input class='calc-result carb-result $c-carb-result'
                 aria-label='Total Carbs' readonly>".
             "</div>".
 
@@ -278,7 +348,7 @@ $cos .=         "<input class='calc-result $c-carb-result'
                 for ($x = 1; $x <= $inpColLen; $x++){
                     $cos .= "<input type='tel' name='$c-fiber-calc".$x."' class='fiber-calc $c-fiber-calc".$x." calc-num' aria-label='Fiber Input'>";
                 }
-$cos .=         "<input class='calc-result $c-fiber-result'
+$cos .=         "<input class='calc-result fiber-result $c-fiber-result'
                 aria-label='Total Fiber'readonly>".
             "</div>".
 
@@ -288,7 +358,7 @@ $cos .=         "<input class='calc-result $c-fiber-result'
                 for ($x = 1; $x <= $inpColLen; $x++){
                     $cos .= "<input type='tel' name='$c-protein-calc".$x."' class='protein-calc $c-protein-calc".$x." calc-num' aria-label='Protein Input'>";
                 }
-$cos .=         "<input class='calc-result $c-protein-result'
+$cos .=         "<input class='calc-result protein-result $c-protein-result'
                 aria-label='Total Protein' readonly>".
             "</div>".
 
@@ -431,23 +501,62 @@ echo $cos;
 
         <script defer>
 
-            // Sticky container variables
+            /* Elements */
 
-        let scBg = ".calc-scroll"
-        let scContainer = $(".cs-container");
-        let scContInner = $(".cs-container-inner");
-        let scBtn = $(".cs-button");
-        let scScrollBtn = 'cs-scroll-btn'
-        let scClose = "cs-close";
-        let scOpen = "cs-open";
+        // Sticky container
+        const scBg = ".calc-scroll"
+        const scContainer = $(".cs-container");
+        const calcLinks = $(".calc-links");
+        const scBtn = $(".cs-button");
+        const scScrollBtn = 'cs-scroll-btn'
+        const scClose = "cs-close";
+        const scOpen = "cs-open";
+
+        // Total Results
+        const totalResults = $(".total-results");
+        const totalCalories = $(".total-calories");
+        const totalWeightRatio = $(".total-weight-ratio");
+        const totalCalorieRatio = $(".total-calorie-ratio");
+
+        // Arrays
+        let currCalcs = [];
+
+        let mergedResults = {
+            kcal: 0,
+            fat: 0,
+            carbs: 0,
+            fiber: 0,
+            protein: 0
+        };
+
+        const nutriElems = [
+            ".fat-ratio",
+            ".carb-ratio",
+            ".fiber-ratio",
+            ".protein-ratio"
+        ]
+
+        const nutriNamesPl = [
+            "kalorie",
+            "tłuszcz",
+            "węgle",
+            "błonnik",
+            "białko"
+        ]
+
+        // Reset button
+        const holdTime = 1000; // The same as in the calculator-calc.js
+        let timerResetBtn;
 
         // Scroll to the set element + or - this value
-        let addPx = 50;
+        const addPx = 50;
 
         // Scrolling animation time
-        let scrollTime = 350;
+        const scrollTime = 350;
 
-            // Slide-in
+
+        
+            /* Slide-in */
 
         scBtn.on("click", function(e){
             scContainer.toggleClass(scOpen);
@@ -465,63 +574,251 @@ echo $cos;
             }
         });
 
-            // Scroll buttons
-            
-        // Yeah, double document ready - deal with it
+        // Detect the closest calculator
+        function detectClosestSection(){
+
+            let scrollPos = $(window).scrollTop();
+            let windowHeight = $(window).height();
+
+            $('.calc-header').each(function(index){
+                let headerPos = $(this).position().top + (windowHeight * 0.35);
+                let scrollBtn = $(this).attr("scroll-button");
+
+                if ((index === 0 && scrollPos === 0) || headerPos <= scrollPos){
+                    $("."+scScrollBtn).removeClass('closest-calc');
+                    $("."+scrollBtn).addClass('closest-calc');
+                }
+            });
+
+        }
+
         $(document).ready(function(){
+
+
+
+                /* Calculator Slide-in */
+
             $(document).ready(function(){
+
+                // Append the calculator buttons
                 for (let sc = 1; sc <= $(".calc").length; sc++){
-                    let calcName = $("."+sc+"-calc-header h2").html();
-                    scContInner.append(
-                        "<div class='cs-scroll-div'><p "+
-                        "class='"+scScrollBtn+" "+scScrollBtn+sc+"'" +
-                        "container='."+sc+"-calc-header'>"+calcName +
-                        "</p></div>"
+
+                    const calcName = $("."+sc+"-calc-header h2").html();
+
+                    calcLinks.append(
+                        "<div class='cs-elem'>" +
+                            "<div class='cs-scroll-div'>" +
+                                `<p class='${scScrollBtn} ${scScrollBtn + sc}'` +
+                                `container='.${sc}-calc-header'>` +
+                                    calcName +
+                                "</p>" +
+                            "</div>" +
+
+                            `<input type='checkbox' class='cs-scroll-check' data-link='${sc}' aria-label='Calculate the total nutritional values - calculator${sc}'>` +
+                        "</div>"
                     );
+
                 }
 
+                // Add a class to the button related to the closest calc
+                requestAnimationFrame(detectClosestSection);
+                
+                $(window).on("scroll resize", function(){
+                    requestAnimationFrame(detectClosestSection);
+                });
+
+                // Smooth scrolling
                 $("."+scScrollBtn).on("click", function(){
+
                     let scrollToElem = $(this).attr("container");
                     $('html,body').animate({scrollTop: $(scrollToElem).offset().top - 50}, scrollTime);
+
                 });
+
+                    /* Merge Calculator Results */
+
+                // Choose calculators
+                function chooseCalcData(){
+
+                    const dataLink = parseInt($(this).attr("data-link"));
+
+                    if ($(this).is(':checked')){
+                        currCalcs.push(dataLink);
+                    } else {
+                        currCalcs = currCalcs.filter(item => item !== dataLink);
+                    }
+
+                    mergeCalcResults();
+
+                }
+
+                // Sum the calculator results
+                function mergeCalcResults(){
+
+                    // Resel the values before recalculating
+                    mergedResults = {
+                        kcal: 0,
+                        fat: 0,
+                        carbs: 0,
+                        fiber: 0,
+                        protein: 0
+                    };
+
+                    $.each(currCalcs, function(index, val){
+
+                        const calculator = $(`.calc${val}`);
+
+                        mergedResults.kcal +=
+                            parseFloat(calculator.find(".kcal-result").val()) || 0;
+                        mergedResults.fat += 
+                            parseFloat(calculator.find(".fat-result").val()) || 0;
+                        mergedResults.carbs +=
+                            parseFloat(calculator.find(".carb-result").val()) || 0;
+                        mergedResults.fiber +=
+                            parseFloat(calculator.find(".fiber-result").val()) || 0;
+                        mergedResults.protein +=
+                            parseFloat(calculator.find(".protein-result").val()) || 0;
+
+                    });
+
+                    showCalculatedResults();
+
+                }
+
+                // Show the results
+                function showCalculatedResults(){
+
+                    let index = 0;
+                    let firstBarElem;
+                    let lastBarElem;
+
+                    const totalWeight = mergedResults.fat + mergedResults.carbs + mergedResults.fiber + mergedResults.protein;
+
+                    $.each(mergedResults, function(key, value){
+                        
+                        if (key !== "kcal"){
+
+                            // Variables
+                            const i = index - 1;
+
+                            const totalRatioVal = $(`.ratio-values ${nutriElems[i]} p`);
+                            const totalRatioBar = $(`.ratio-bar ${nutriElems[i]}`);
+
+                            // Remove the classes (removing left-right borders)
+                            totalRatioBar.removeClass("first-bar last-bar");
+
+                            // If the value is 0, hide the bar
+                            if (value != 0){
+
+                                totalRatioBar.removeClass("hide-bar");
+
+                                if (!firstBarElem){
+                                    firstBarElem = totalRatioBar;
+                                }
+                                lastBarElem = totalRatioBar;
+
+                            } else {
+                                totalRatioBar.css("width", "0");
+                                totalRatioBar.addClass("hide-bar");
+                            }
+
+                            // Weight
+                            const weightWidth = (value / totalWeight) * 100;
+
+                            totalWeightRatio.find(`.ratio-values ${nutriElems[i]} p`).html(`${nutriNamesPl[index]} ${value}g`);
+                            totalWeightRatio.find(`.ratio-bar ${nutriElems[i]}`).css("width", `${weightWidth}%`);
+
+                            // Calorie Percentage
+                            let valueMulti = 0;
+                            switch (key){
+                                case "fat":
+                                    valueMulti = 9;
+                                    break;
+
+                                case "carbs":
+                                case "protein":
+                                    valueMulti = 4;
+                                    break;
+
+                                case "fiber":
+                                    valueMulti = 2;
+                                    break;
+                            }
+
+                            let calorieValPercent = 0;
+
+                            if (mergedResults.kcal){
+                                calorieValPercent =
+                                    Math.round(
+                                        (value * valueMulti) / mergedResults.kcal * 100 * 10
+                                    ) / 10 || 0;
+                            }
+
+                            totalCalorieRatio.find(`.ratio-values ${nutriElems[i]} p`).html(`${nutriNamesPl[index]} ${calorieValPercent}%`);
+                            totalCalorieRatio.find(`.ratio-bar ${nutriElems[i]}`).css("width", `${calorieValPercent}%`);
+                    
+                        } else {
+                            $(".total-kcal").text(`${value} kcal`);
+                        }
+
+                        index++;
+
+                    });
+
+                    if (firstBarElem){
+                        firstBarElem.addClass("first-bar");
+                    }
+                    if (lastBarElem){
+                        lastBarElem.addClass("last-bar");
+                    }
+
+                }
+
+                    /* Run the total result code */
+
+                // On load
+                chooseCalcData();
+
+                // Checkbox click
+                $(".cs-scroll-check").on("click", chooseCalcData);
+
+                // Changing the input values
+                $(".calculator input").on("input", mergeCalcResults);
+
+                // Clicking buttons
+                $(".multi-change, .reset-calc-row").on("click", mergeCalcResults);
+
+                // Clicking reset (touch events for mobile)
+                $(".calc-reset").on("mousedown touchstart", function(){
+                    timerResetBtn = setTimeout(mergeCalcResults, holdTime);
+                }).on("mouseup mouseleave touchend touchcancel", function(){
+                    clearTimeout(timerResetBtn);
+                });
+
             });
+            
+
+
+                /* Calculator Slide Pop-up names */
            
+            // Change the calculator names dynamically on input
+            // Debounce to prevent compatibility issues
             $(".calculator-name").on("input", debounce(function(){
                 for (let sc = 1; sc <= $(".calc").length; sc++){
                     let calcName = $("."+sc+"-calc-header h2").html();
                     $("."+scScrollBtn+sc).html(calcName)
                 }
             }, 40));
-        });
 
-            // Add a class to the button related to the closest calc
 
-        $(document).ready(function(){
-            $(window).on("load scroll resize", debounce(function(){
 
-                let scrollPos = $(window).scrollTop();
-                let windowHeight = $(window).height();
-
-                $('.calc-header').each(function(){
-                    let headerPos = $(this).position().top + (windowHeight * 0.35);
-                    let scrollBtn = $(this).attr("scroll-button");
-
-                    if (headerPos <= scrollPos){
-                        $("."+scScrollBtn).removeClass('closest-calc');
-                        $("."+scrollBtn).addClass('closest-calc');
-                    }
-                });
-
-            }, 50));
-        });
+                /* Insulin Slide Pop-up */
 
             // Insulin base settings
-            
-        $(document).ready(function(){
-            let slideContainer = ".ins-calc-base";
-            let slideBtn = $(".ins-base-btn");
-            let slideOpenClass = "ins-base-open";
-            let slideExtClass = "ins-base-extended";
+            const slideContainer = ".ins-calc-base";
+            const slideBtn = $(".ins-base-btn");
+            const slideOpenClass = "ins-base-open";
+            const slideExtClass = "ins-base-extended";
 
             slideBtn.on("click", function(e){
                 $(slideContainer).toggleClass(slideExtClass);
@@ -536,7 +833,9 @@ echo $cos;
                     slideBtn.removeClass(slideOpenClass);
                 }
             });
+
         });
+        
         </script>
 
     </body>

@@ -2255,13 +2255,6 @@ main:has(.header-no-results) .product-details{
 
         /* Nutritional percentage ratio */
 
-:root{
-    --np-fat:#FACD31;
-    --np-carb:#52CD48;
-    --np-fiber:#A9F549;
-    --np-protein:#46D2EE;
-}
-
 .np-ratio-fat{
     background-color:var(--np-fat);
 }

@@ -873,9 +873,7 @@ function multiClassChange(){
         } else {
             $(this).siblings('.multi-sub').removeClass("multi-stop");
         }
-
-        console.log($(this).siblings('.multi-sub'))
-
+        
         if (multiVal == 10){
             $(this).siblings('.multi-add').addClass("multi-stop");
         } else {
