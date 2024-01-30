@@ -466,37 +466,7 @@ echo $cos;
         </main>
         
         <footer>
-    <!-- FOOTER -->
-            <div class="footer">
-                <div class="wrapper">
-                    
-                    <div class="brand">
-                        <div id="brand-logo" onclick="scrollToTop()">
-                            <img src="Images/uverit-w.svg" alt="Business logo" oncontextmenu="window.event.returnValue=false;" id="footer-scrolltop">
-                        </div>
-
-                        <div id="socials">
-
-                            <h6>Usługi na Fiverr:</h6>
-
-                            <a href="https://www.fiverr.com/new_horizon_web" class="social-btn" target="_blank" rel="noreferrer">
-                                <img src="Images/fiicon.svg" alt="Fiverr icon">
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div id="credits">
-                    <a href="https://www.fiverr.com/new_horizon_web" target="_blank" rel="noreferrer">
-                    <script>
-                        let currentYear = new Date().getFullYear();
-                        $("#credits a").html("© Cookbook created by uverit " + currentYear);
-                    </script>
-                    </a>
-                </div>
-            </div>
-    <!-- /FOOTER -->
+            <!-- navigation.js -->
         </footer>
 
         <script defer>
@@ -723,9 +693,9 @@ echo $cos;
                             }
 
                             // Weight
-                            const weightWidth = (value / totalWeight) * 100;
+                            const weightWidth = Math.round((value / totalWeight) * 100 * 10) / 10;
 
-                            totalWeightRatio.find(`.ratio-values ${nutriElems[i]} p`).html(`${nutriNamesPl[index]} ${value}g`);
+                            totalWeightRatio.find(`.ratio-values ${nutriElems[i]} p`).html(`${nutriNamesPl[index]} ${Math.round(value * 10) / 10}g`);
                             totalWeightRatio.find(`.ratio-bar ${nutriElems[i]}`).css("width", `${weightWidth}%`);
 
                             // Calorie Percentage

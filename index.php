@@ -113,39 +113,7 @@
         </main>
         
         <footer>
-
-    <!-- FOOTER3 -->
-            <div class="footer">
-                <div class="wrapper">
-                    
-                    <div class="brand">
-                        <div id="brand-logo" onclick="scrollToTop()">
-                            <img src="Images/uverit-w.svg" alt="Business logo" oncontextmenu="window.event.returnValue=false;" id="footer-scrolltop">
-                        </div>
-
-                        <div id="socials">
-
-                            <h6>Usługi na Fiverr:</h6>
-
-                            <a href="https://www.fiverr.com/new_horizon_web" class="social-btn" target="_blank" rel="noreferrer">
-                                <img src="Images/fiicon.svg" alt="Fiverr icon">
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div id="credits">
-                    <a href="https://www.fiverr.com/new_horizon_web" target="_blank" rel="noreferrer">
-                    <script>
-                        let currentYear = new Date().getFullYear();
-                        $("#credits a").html("© Cookbook created by uverit " + currentYear);
-                    </script>
-                    </a>
-                </div>
-            </div>
-    <!-- /FOOTER3 -->
-
+            <!-- navigation.js -->
         </footer>
         
 <script>

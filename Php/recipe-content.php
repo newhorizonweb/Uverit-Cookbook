@@ -1135,41 +1135,10 @@ function bottomContent(){
 
     </main>
 
-    <footer>
-
-<!-- FOOTER -->
-        <div class="footer">
-            <div class="wrapper">
-
-                <div class="brand">
-                    <div id="brand-logo" onclick="scrollToTop()">
-                        <img src="../Images/uverit-w.svg" alt="Business logo" oncontextmenu="window.event.returnValue=false;" id="footer-scrolltop">
-                    </div>
-
-                    <div id="socials">
-
-                        <h6>Usługi na Fiverr:</h6>
-
-                        <a href="https://www.fiverr.com/new_horizon_web" class="social-btn" target="_blank" rel="noreferrer">
-                            <img src="../Images/fiicon.svg" alt="Fiverr icon">
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-            <div id="credits">
-                <a href="https://www.fiverr.com/new_horizon_web" target="_blank" rel="noreferrer">
-                <script>
-                    let currentYear = new Date().getFullYear();
-                    $("#credits a").html("© Cookbook created by uverit " + currentYear);
-                </script>
-                </a>
-            </div>
-        </div>
-<!-- /FOOTER -->
-
+    <footer class='recipe-footer'>
+        <!-- navigation.js -->
     </footer>
+
 <script>
 
     // Multiply Recipe - Cookies (keeps selected value)
@@ -1180,7 +1149,8 @@ $(document).ready(function(e){
 
     for(var i=0; i<ca.length; i++){
         var c = ca[i].trim();
-        if (c.indexOf(name)==0){                               $('.multiply_ing').val(c.substring(name.length,c.length));
+        if (c.indexOf(name)==0){
+            $('.multiply_ing').val(c.substring(name.length,c.length));
         }
     }
 });

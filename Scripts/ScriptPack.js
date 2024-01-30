@@ -5,7 +5,7 @@ function removeTrans(){
     document.body.classList.add("remove-transition");
     setTimeout(function(){
         document.body.classList.remove("remove-transition");
-    }, 0);
+    }, 250);
 }
 
 removeTrans();
