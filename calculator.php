@@ -728,7 +728,7 @@ echo $cos;
                             totalCalorieRatio.find(`.ratio-bar ${nutriElems[i]}`).css("width", `${calorieValPercent}%`);
                     
                         } else {
-                            $(".total-kcal").text(`${value} kcal`);
+                            $(".total-kcal").text(`${Math.round(value * 10) / 10} kcal`);
                         }
 
                         index++;
