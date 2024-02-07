@@ -278,7 +278,7 @@ function insertFooter(){
 
         "<div id='credits'>" +
             "<a href='https://www.fiverr.com/new_horizon_web' target='_blank' rel='noreferrer'>" +
-                "© Uverit 2024 - Cookbook v1.2.2" +
+                "© Uverit 2024 - Cookbook v1.2.3" +
             "</a>" +
         "</div>";
 

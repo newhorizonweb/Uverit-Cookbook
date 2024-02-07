@@ -226,7 +226,7 @@
 $calculators = 7;
 
 // Number of inputs in a column
-$inpColLen = 20;
+$inpColLen = 22;
 
 // Calculator output string
 $cos = "";
@@ -744,7 +744,7 @@ echo $cos;
 
                 }
 
-                    /* Run the total result code */
+                    /* Run the total results code */
 
                 // On load
                 chooseCalcData();
@@ -753,7 +753,7 @@ echo $cos;
                 $(".cs-scroll-check").on("click", chooseCalcData);
 
                 // Changing the input values
-                $(".calculator input").on("input", mergeCalcResults);
+                $(".calculator input, .select-calculator").on("input", mergeCalcResults);
 
                 // Clicking buttons
                 $(".multi-change, .reset-calc-row").on("click", mergeCalcResults);
