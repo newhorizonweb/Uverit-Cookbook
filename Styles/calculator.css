@@ -1336,6 +1336,7 @@
                 display:flex;
                 flex-direction:column;
                 justify-content:center;
+                cursor:default;
 
                 & .error-code{
                     color:var(--warnColor);
@@ -1374,7 +1375,7 @@
                 overflow:hidden;
             }
 
-            &:hover p{
+            &:hover :is(.list-name, .list-kcal){
                 color:var(--color1b);
             }
 

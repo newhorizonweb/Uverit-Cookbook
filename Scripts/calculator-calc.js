@@ -444,7 +444,7 @@ for (let nr = 1; nr <= inpColLen; nr++){
             $("."+c+"-"+inputNames[inpNr]+nr).val("");
             localStorage.removeItem(c+"-"+inputNames[inpNr]+nr);
         }
-        
+
         // Multiplier calc values
         $("."+c+"-multi-calc"+nr).val(1);
         localStorage.removeItem(c+"-multi-calc"+nr);
@@ -453,6 +453,10 @@ for (let nr = 1; nr <= inpColLen; nr++){
         $("."+c+"-attention-calc"+nr).prop("checked", false);
         localStorage.removeItem(c+"-attention-calc"+nr);
         markAttentionRow($("."+c+"-attention-calc"+nr), false);
+
+        // Search Button - Active Class
+        $(`.calc${c} .name-calc-col`).children(".name-elem").eq(nr - 1)
+            .children(".search-btn").removeClass("btn-active");
         
         // Calculate the input values
         inputCalcAll();
@@ -571,6 +575,11 @@ $("."+c+"-calc-reset").on("mousedown touchstart", function(){
         // Remove the warning BS classes
         $("."+c+"-expected-bs").removeClass("ins-warning-crit");
         $("."+c+"-expected-bs").removeClass("ins-warning");
+
+        // Search Button - Active Class
+        $(`.calc${c} .name-elem`).each(function(){
+            $(this).children(".search-btn").removeClass("btn-active");
+        });
 
             // Button messages
         
