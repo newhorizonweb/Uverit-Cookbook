@@ -43,6 +43,7 @@
     --txt-faded:#444;               /* Text faded color 1 */
     --txt-faded2:#6A6A6A;           /* Text faded color 2 */
     --txt-faded3:#919191;           /* Text faded color 3 */
+    --txt-faded4:#AFAFAF;           /* Text faded color 4 */
 
     --np-fat:#FACD31;
     --np-carb:#52CD48;
@@ -85,6 +86,7 @@
     --txt-faded:#D5D5D5;            /* Text faded color 1 */
     --txt-faded2:#CFCFCF;           /* Text faded color 2 */
     --txt-faded3:#B1B1B1;           /* Text faded color 3 */
+    --txt-faded4:#7A7A7A;           /* Text faded color 4 */
 }
 
     /* Sizes */

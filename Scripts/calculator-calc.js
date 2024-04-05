@@ -1,7 +1,8 @@
+requestAnimationFrame(() => {
 
 
 
-// ---/---|---\---/ INCULIN CALCULATOR - BASE \---/---|---\--- \\
+// ---/---|---\---/ INSULIN CALCULATOR - BASE \---/---|---\--- \\
 
 
 
@@ -16,6 +17,21 @@ $(document).ready(function(){
     });
 });
 
+// The last modification date
+const modUpdate = () => {
+    const currentDate = new Date();
+    const options = {
+        weekday: 'long',
+        day: '2-digit', month: '2-digit', year: 'numeric',
+        hour: 'numeric', minute: 'numeric', second: 'numeric',
+        hour12: false,
+    };
+    const formattedDate = currentDate.toLocaleDateString('en-GB', options)
+        .replace(/\//g, '.');
+
+    localStorage.setItem("last-mod-date", formattedDate);
+};
+
 
 
 // ---/---|---\---/ CALCULATOR \---/---|---\--- \\
@@ -25,7 +41,7 @@ $(document).ready(function(){
 let calcCount = $(".calc").length;
 
 // Number of inputs in a column
-let inpColLen = $(".calc:first .name-calc-col").children("input").length;
+let inpColLen = $(".calc:first .weight-calc-col").children("input").length;
 
 // Input class names
 let inputNames = [
@@ -91,8 +107,18 @@ $(".fiber-calc-col input").on('input', function(){
 $(".protein-calc-col input").on('input', function(){
     inputCalc("protein");
 });
+
 $(".weight-calc-col input, .multi-calc-col input").on('input', function(){
     inputCalcAll();
+});
+$(document).on('fetchedSearch', function(){
+
+    // Input values
+    inputCalcAll();
+
+    // Calculate insulin
+    insCalc();
+    
 });
     
     // Multiplier
@@ -164,6 +190,9 @@ $("."+c+"-multi-sub").on('click', function(){
     
     // Add the multi-not-default class if the input val != 1
     multiNotDefault();
+
+    // Last Mod Update
+    modUpdate();
 });
     
 // Add 1 on multi button click
@@ -198,6 +227,9 @@ $("."+c+"-multi-add").on('click', function(){
     
     // Add the multi-not-default class if the input val != 1
     multiNotDefault();
+
+    // Last Mod Update
+    modUpdate();
 }); 
     
 // Add the stop class to the multiplier buttons when out of range
@@ -307,7 +339,9 @@ $(document).ready(function(){
 function setLocalStorage(thisElem){
     let inputName = $(thisElem).attr("name");
     let inputVal = $(thisElem).val();
+
     localStorage.setItem(inputName, inputVal);
+    modUpdate();
 }
 function setCheckboxStorage(thisElem){
     let inputName = $(thisElem).attr("name");
@@ -315,6 +349,7 @@ function setCheckboxStorage(thisElem){
 
     localStorage.setItem(inputName, inputCheck);
     markAttentionRow($(thisElem), inputCheck);
+    modUpdate();
 }
 $(".calculator-name").on("input", function(){
     setLocalStorage(this);
@@ -330,6 +365,22 @@ $(".ins-calc select").on("input", function(){
     setLocalStorage(this);
 });
 
+$(document).on("fetchedSearch", function(e){
+
+    const index = e.detail.index;
+
+    $('.calculator > div').each(function(){
+        const input = $(this).find(`input:eq(${index})`);
+
+        if (!input.is(':checkbox')){
+            setLocalStorage(input);
+        }
+    });
+
+});
+
+
+
 // Mark the row based on the attention checkbox state
 function markAttentionRow(elem, state){
     
@@ -340,14 +391,16 @@ function markAttentionRow(elem, state){
     if (state === true){
        
         inputCols.each(function(){
-            const inputInCurrentDiv = $(this).find('input:eq('+index+')');
+            const inputInCurrentDiv =
+                $(this).find('.calc-input:eq('+index+')');
             inputInCurrentDiv.addClass("attention-active");
         });
 
     } else {
 
         inputCols.each(function(){
-            const inputInCurrentDiv = $(this).find('input:eq('+index+')');
+            const inputInCurrentDiv =
+                $(this).find('.calc-input:eq('+index+')');
             inputInCurrentDiv.removeClass("attention-active");
         });
         
@@ -366,14 +419,14 @@ function markWarnRow(e, nr, state){
     if (state === "add"){
 
         inputCols.each(function(){
-            const inputInCurrentDiv = $(this).find('input:eq('+index+')');
+            const inputInCurrentDiv = $(this).find('.calc-input:eq('+index+')');
             inputInCurrentDiv.addClass("warn-active");
         });
 
     } else if (state === "remove") {
 
         inputCols.each(function(){
-            const inputInCurrentDiv = $(this).find('input:eq('+index+')');
+            const inputInCurrentDiv = $(this).find('.calc-input:eq('+index+')');
             inputInCurrentDiv.removeClass("warn-active");
         });
         
@@ -408,6 +461,9 @@ for (let nr = 1; nr <= inpColLen; nr++){
         // Remove the multi-not-default class
         multiInp = $("."+c+"-multi-calc"+nr);
         multiNotDefault();
+
+        // Last Mod Update
+        modUpdate();
 
     });
 
@@ -486,6 +542,16 @@ $("."+c+"-calc-reset").on("mousedown touchstart", function(){
             $(this).removeClass("multi-not-default");
             $(this).removeClass("multi-zero");
         });
+        
+            // Calculator name
+
+        $(".calculator-name"+c).val("");
+        localStorage.removeItem("calculator-name"+c);
+        insertCalcOptions();
+        
+        // Remove the warning BS classes
+        $("."+c+"-expected-bs").removeClass("ins-warning-crit");
+        $("."+c+"-expected-bs").removeClass("ins-warning");
 
             // Calculator insulin values
 
@@ -524,6 +590,9 @@ $("."+c+"-calc-reset").on("mousedown touchstart", function(){
         // Calculate the input and insulin values
         inputCalcAll();
         insCalc();
+
+        // Last Mod Update
+        modUpdate();
         
     }, holdTime);
     
@@ -552,7 +621,7 @@ function insertCalcOptions(){
     let calculators = $(".calc").length;
 
     for (let calcs = 1; calcs <= calculators; calcs++){
-        let calcInputVal = $(".calculator-name"+calcs).val();
+        let calcInputVal = $(".calculator-name"+calcs).val() ?? "";
         let calcHeading = $("."+c+"-calc-header h2");
         let calcStoredName = localStorage.getItem("calculator-name"+calcs);
         let calculatorName;
@@ -652,6 +721,11 @@ $(".calc-reset, .reset-calc-row, .cur-gi, .ins-meal-type, .multi-change").on("cl
     
 // On calc input
 $(".calc input").on("input", function(){
+    originalValues();
+});
+
+// On fetched API data
+$(document).on("fetchedSearch", function(){
     originalValues();
 });
 
@@ -906,6 +980,9 @@ $(".select-calculator"+c).on("input", function(){
     // Add / remove the multiplier highlight class (if val != 1)
     // Add / Remove the stop class
     multiClassChange();
+
+    // Last Mod Update
+    modUpdate();
 
 });
 
@@ -1348,6 +1425,7 @@ $(".weight-calc-col, .fat-calc-col, .protein-calc-col, .carb-calc-col").on("inpu
 // On insulin adjust button click - save the current calculator settings
 $(".ins-adjust").on("click", function(){
     originalValues();
+    modUpdate();
 }); 
 
 } // <-- The end of the calculator loop
@@ -1381,11 +1459,71 @@ function attentionShortcut(e){
 
 }
 
+function moveX(dir, parent, index){
+
+    let chgDir;
+    let chgParDir;
+
+    switch (dir){
+        case "prev":
+            chgDir = parent.prev();
+            chgParDir = parent.parent().prev();
+            break;
+        case "next":
+            chgDir = parent.next();
+            chgParDir = parent.parent().next();
+    }
+
+    // If the CURRENT focus is on the name input
+    if (!parent.is(".calc-input")){
+        chgDir.children(`.calc-input:eq(${index})`).focus();
+    } else {
+        chgParDir.children(`.calc-input:eq(${index})`).focus();
+    }
+
+    // If the NEXT focus is on the name input
+    if (chgDir.children('div').length < 1){
+        chgDir.children(`.calc-input:eq(${index})`).focus();
+    } else {
+        chgDir.children(`.calc-input:eq(${index})`).children("input").focus();
+    }
+
+    return false;
+
+}
+
+function moveY(dir, target){
+
+    let chgDir;
+    let chgParDir;
+
+    switch (dir){
+        case "up":
+            chgDir = target.prev("input");
+            chgParDir = target.parent().prev("div.calc-input")
+                .children("input");
+            break;
+        case "down":
+            chgDir = target.next("input");
+            chgParDir = target.parent().next("div.calc-input")
+                .children("input");
+    }
+    
+    if (!target.parent().is(".calc-input")){
+        chgDir.focus();
+    } else {
+        chgParDir.focus();
+    }
+
+    return false;
+
+}
+
 // Move focus on ctrl + arrow keys click
 function navigationShortcuts(e){
 
     const ctrl = e.ctrlKey;
-    const eTarget = e.currentTarget;
+    const eTarget = $(e.currentTarget);
     
     // Change focus + prevent from focusing on the calc result inputs
     if ($(".calculator div input").is(":focus") &&
@@ -1393,29 +1531,38 @@ function navigationShortcuts(e){
         
         // Down arrow
         if (e.keyCode == 40){
-            $(eTarget).next("input").focus();
+            moveY("down", eTarget);
         }
     }
-    
+
     // Change focus
     if ($(".calculator div input").is(":focus") && ctrl){
+
         let inputParent = $(eTarget).parent();
-        let index = inputParent.children('input').index($(eTarget));
+        let index = inputParent.children('.calc-input').index($(eTarget));
         
+        // Set the correct index when the focused input is the name-calc
+        if (inputParent.is(".calc-input")){
+            index = inputParent.parent()
+                .children('div').children('input')
+                .index($(eTarget));
+        }
+
         // Up arrow
         if (e.keyCode == 38){
-            $(eTarget).prev("input").focus();
-        }  
+            moveY("up", eTarget);
+        }
         
-        // Left arrow (exclude attention toggle)
+        // Left arrow
         if (e.keyCode == 37){
-            inputParent.prev().children('input:not([type="checkbox"]):eq('+index+')').focus();
+            moveX("prev", inputParent, index);
         }
         
         // Right arrow
         if (e.keyCode == 39){
-            inputParent.next().children('input:eq('+index+')').focus();
+            moveX("next", inputParent, index);
         }
+
     }
 
 }
@@ -1423,4 +1570,6 @@ function navigationShortcuts(e){
 $(document).on("keydown", "input", function(e){
     navigationShortcuts(e);
     attentionShortcut(e);
+}); 
+
 });

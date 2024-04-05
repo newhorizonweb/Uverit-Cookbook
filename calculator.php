@@ -23,6 +23,7 @@
         <script src="Scripts/ScriptPack-min.js" defer></script>
         <script src="Scripts/navigation.js"></script>
         <script src='Scripts/calculator-calc.js' defer></script>
+        <script src='Scripts/calc-search.js' defer></script>
     </head>
         
     <body>
@@ -218,6 +219,61 @@
                                     <p title="Ile mg/dl glukozy we krwi zbija 1j insuliny">Wart. korekcyjna</p>
                                     <input type='tel' name="bs-increase" class="ins-input bs-increase" tabindex="-1" aria-label="Insulin Impact (how much 1 insulin unit lowers the blood sugar)">
                                 </div>
+
+                                <h4 class="search-settings-title">
+                                    Wyszukiwarka
+                                </h4>
+
+                                <div class="search-box-item">
+                                    <input type="checkbox" class="search-box"
+                                        id="search-box-auto" tabindex="-1">
+                                    <label for="search-box-auto">
+                                        Auto-search
+                                    </label>
+                                </div>
+
+                                <div class="search-box-item">
+                                    <input type="checkbox" class="search-box"
+                                        id="search-box-kcal" tabindex="-1">
+                                    <label for="search-box-kcal">
+                                        Kalorie
+                                    </label>
+                                </div>
+
+                                <div class="search-box-item">
+                                    <input type="checkbox" class="search-box"
+                                        id="search-box-fat" tabindex="-1">
+                                    <label for="search-box-fat">
+                                        Tłuszcz
+                                    </label>
+                                </div>
+
+                                <div class="search-box-item">
+                                    <input type="checkbox" class="search-box"
+                                        id="search-box-carb" tabindex="-1">
+                                    <label for="search-box-carb">
+                                        Węgle
+                                    </label>
+                                </div>
+
+                                <div class="search-box-item">
+                                    <input type="checkbox" class="search-box"
+                                        id="search-box-fiber" tabindex="-1">
+                                    <label for="search-box-fiber">
+                                        Błonnik
+                                    </label>
+                                </div>
+
+                                <div class="search-box-item">
+                                    <input type="checkbox" class="search-box"
+                                        id="search-box-protein" tabindex="-1">
+                                    <label for="search-box-protein">
+                                        Białko
+                                    </label>
+                                </div>
+
+                                <div class="search-box-logo"></div>
+                                
                             </div>
                         </div>           
                         
@@ -239,7 +295,7 @@ $cos .= "<div class='$c-calc-header calc-header' scroll-button='cs-scroll-btn".$
         "<div class='calc calc$c'>".
         
         "<div class='calc-head'>".
-            "<input type='text' class='calculator-name calculator-name$c' name='calculator-name$c' maxlength='48' aria-label='Calculator Name'>".
+            "<input type='text' class='calc-input calculator-name calculator-name$c' name='calculator-name$c' maxlength='48' aria-label='Calculator Name'>".
 
             "<select class='select-calculator select-calculator$c' autocomplete='off' aria-label='Copy Calculators'>";
                 for ($o = 1; $o <= $calculators; $o++){
@@ -266,7 +322,7 @@ $cos .=     "</div>".
             "<div class='attention-calc-col'>".
                 "<h5>&nbsp;</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
-                    $cos .= "<input type='checkbox' name='$c-attention-calc".$x."'' class='attention-toggle $c-attention-calc".$x."' aria-label='Row Attention Toggle'>";
+                    $cos .= "<input type='checkbox' name='$c-attention-calc".$x."'' class='calc-input attention-toggle $c-attention-calc".$x."' aria-label='Row Attention Toggle'>";
                 }
 $cos .=         "<div class='cb-line-div'>".
                     "<span class='cb-line'></span>".
@@ -280,7 +336,7 @@ $cos .=         "<div class='cb-line-div'>".
                     $cos .= "<div class='multi-calc-div'>".
                         "<div class='multi-change multi-sub $c-multi-sub'><span></span></div>".
                         
-                        "<input type='tel' name='$c-multi-calc".$x."' class='multi-calc $c-multi-calc $c-multi-calc".$x."' aria-label='Multiplier'>".
+                        "<input type='tel' name='$c-multi-calc".$x."' class='calc-input multi-calc $c-multi-calc $c-multi-calc".$x."' aria-label='Multiplier'>".
                         
                         "<div class='multi-change multi-add $c-multi-add'><span></span><span></span></div>".
                     "</div>";
@@ -294,18 +350,28 @@ $cos .=         "<div class='cb-line-div'>".
             "<div class='weight-calc-col'>".
                 "<h5 title='Waga w gramach (puste pole = 100g)'>Waga</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
-                    $cos .= "<input type='tel' name='$c-weight-calc".$x."' class='weight-calc $c-weight-calc".$x." calc-num' aria-label='Weight Input'>";
+                    $cos .= "<input type='tel' name='$c-weight-calc".$x."' class='calc-input weight-calc $c-weight-calc".$x." calc-num' aria-label='Weight Input'>";
                 }
 $cos .=         "<div class='cb-line-div'>".
                     "<span class='cb-line'></span>".
                 "</div>".
             "</div>".
 
-            // Generate calculator name inputs
+            // Generate calculator name inputs & search buttons
             "<div class='name-calc-col'>".
                 "<h5>Nazwa</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
-                    $cos .= "<input type='text' name='$c-name-calc".$x."' class='$c-name-calc $c-name-calc".$x."' aria-label='Name Input'>";
+                    $cos .= "<div class='calc-input name-elem'>".
+
+                        "<input type='text' name='$c-name-calc".$x."' class='name-calc $c-name-calc $c-name-calc".$x."' aria-label='Name Input'>".
+                        
+                        "<div class='search-btn'></div>".
+
+                        "<div class='search-list-outer'>".
+                            "<div class='search-list'></div>".
+                        "</div>".
+
+                    "</div>";
                 }
 $cos .=         "<div class='cb-line-div'>".
                     "<span class='cb-line'></span>".
@@ -316,9 +382,9 @@ $cos .=         "<div class='cb-line-div'>".
             "<div class='kcal-calc-col'>".
                 "<h5 title='Kcal / 100g'>Kcal</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
-                    $cos .= "<input type='tel' name='$c-kcal-calc".$x."' class='kcal-calc $c-kcal-calc".$x." calc-num' aria-label='Kcal Input'>";
+                    $cos .= "<input type='tel' name='$c-kcal-calc".$x."' class='calc-input kcal-calc $c-kcal-calc".$x." calc-num' aria-label='Kcal Input'>";
                 }
-$cos .=         "<input class='calc-result kcal-result $c-kcal-result'
+$cos .=         "<input class='calc-input calc-result kcal-result $c-kcal-result'
                 aria-label='Total Kcal' readonly>".
             "</div>".
 
@@ -326,9 +392,9 @@ $cos .=         "<input class='calc-result kcal-result $c-kcal-result'
             "<div class='fat-calc-col'>".
                 "<h5 title='W gramach / 100g'>Tłuszcz</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
-                    $cos .= "<input type='tel' name='$c-fat-calc".$x."' class='fat-calc $c-fat-calc".$x." calc-num' aria-label='Fat Input'>";
+                    $cos .= "<input type='tel' name='$c-fat-calc".$x."' class='calc-input fat-calc $c-fat-calc".$x." calc-num' aria-label='Fat Input'>";
                 }
-$cos .=         "<input class='calc-result fat-result $c-fat-result'
+$cos .=         "<input class='calc-input calc-result fat-result $c-fat-result'
                 aria-label='Total Fat' readonly>".
             "</div>".
 
@@ -336,9 +402,9 @@ $cos .=         "<input class='calc-result fat-result $c-fat-result'
             "<div class='carb-calc-col'>".
                 "<h5 title='W gramach / 100g'>Węgle</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
-                    $cos .= "<input type='tel' name='$c-carb-calc".$x."' class='carb-calc $c-carb-calc".$x." calc-num' aria-label='Carbs Input'>";
+                    $cos .= "<input type='tel' name='$c-carb-calc".$x."' class='calc-input carb-calc $c-carb-calc".$x." calc-num' aria-label='Carbs Input'>";
                 }
-$cos .=         "<input class='calc-result carb-result $c-carb-result'
+$cos .=         "<input class='calc-input calc-result carb-result $c-carb-result'
                 aria-label='Total Carbs' readonly>".
             "</div>".
 
@@ -346,9 +412,9 @@ $cos .=         "<input class='calc-result carb-result $c-carb-result'
             "<div class='fiber-calc-col'>".
                 "<h5 title='W gramach / 100g'>Błonnik</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
-                    $cos .= "<input type='tel' name='$c-fiber-calc".$x."' class='fiber-calc $c-fiber-calc".$x." calc-num' aria-label='Fiber Input'>";
+                    $cos .= "<input type='tel' name='$c-fiber-calc".$x."' class='calc-input fiber-calc $c-fiber-calc".$x." calc-num' aria-label='Fiber Input'>";
                 }
-$cos .=         "<input class='calc-result fiber-result $c-fiber-result'
+$cos .=         "<input class='calc-input calc-result fiber-result $c-fiber-result'
                 aria-label='Total Fiber'readonly>".
             "</div>".
 
@@ -356,9 +422,9 @@ $cos .=         "<input class='calc-result fiber-result $c-fiber-result'
             "<div class='protein-calc-col'>".
                 "<h5 title='W gramach / 100g'>Białko</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
-                    $cos .= "<input type='tel' name='$c-protein-calc".$x."' class='protein-calc $c-protein-calc".$x." calc-num' aria-label='Protein Input'>";
+                    $cos .= "<input type='tel' name='$c-protein-calc".$x."' class='calc-input protein-calc $c-protein-calc".$x." calc-num' aria-label='Protein Input'>";
                 }
-$cos .=         "<input class='calc-result protein-result $c-protein-result'
+$cos .=         "<input class='calc-input calc-result protein-result $c-protein-result'
                 aria-label='Total Protein' readonly>".
             "</div>".
 
@@ -378,7 +444,7 @@ $cos .=     "</div>".
 
                 "<div class='ins-div'>".
                     "<p title='Poziom glukozy we krwi, mg/dl' class='c-help'>Poz. glukozy</p>".
-                    "<input type='tel' name='$c-cur-bs' class='cur-bs $c-cur-bs' placeholder='min. 30, max. 350' aria-label='Current Blood Sugar'>".
+                    "<input type='tel' name='$c-cur-bs' class='calc-input cur-bs $c-cur-bs' placeholder='min. 30, max. 350' aria-label='Current Blood Sugar'>".
                 "</div>".
 
                 "<div class='ins-div'>".
@@ -392,7 +458,7 @@ $cos .=     "</div>".
                         "<option value='high-gi'>Wysoki</option>".
                     "</select>".
 
-                    "<input class='cur-gi-wpts $c-cur-gi-wpts' value='WBT' readonly aria-label='Fat & Protein Info'>".
+                    "<input class='calc-input cur-gi-wpts $c-cur-gi-wpts' value='WBT' readonly aria-label='Fat & Protein Info'>".
                 "</div>".
 
                 "<div class='ins-div'>".
@@ -410,19 +476,19 @@ $cos .=     "</div>".
 
                 "<div class='ins-div'>".
                     "<p title='Insulina na pokrycie posiłku' class='c-help'>Ins. posiłkowa</p>".
-                    "<input class='calc-readonly ins-meal $c-ins-meal' readonly aria-label='Meal Insulin'>".
+                    "<input class='calc-input calc-readonly ins-meal $c-ins-meal' readonly aria-label='Meal Insulin'>".
                 "</div>".
 
                 "<div class='ins-div'>".
                     "<p title='Korekcja dawki w celu osiągnięcia optymalnego poz. gluk.' class='c-help'>Ins. korekcyjna</p>".
-                    "<input class='calc-readonly ins-correction $c-ins-correction' readonly aria-label='Correction Insulin'>".
+                    "<input class='calc-input calc-readonly ins-correction $c-ins-correction' readonly aria-label='Correction Insulin'>".
                 "</div>".
 
                 "<div class='ins-div'>".
                     "<p title='Insulina posiłkowa, korekcyjna oraz dostosowanie dawki' class='c-help'>Ins. całkowita</p>".
                     "<div class='total-ins-change'>".
                         "<div class='ins-adjust ins-sub $c-ins-sub'><span></span></div>".
-                        "<input class='calc-readonly ins-total $c-ins-total' readonly aria-label='Total Insulin'>".
+                        "<input class='calc-input calc-readonly ins-total $c-ins-total' readonly aria-label='Total Insulin'>".
                         "<div class='ins-adjust ins-add $c-ins-add'><span></span><span></span></div>".
                     "</div>".
                 "</div>".
@@ -439,12 +505,12 @@ $cos .=     "</div>".
             "<div class='ins-section'>".
                 "<div class='ins-div'>".
                     "<p>Przew. gluk.</p>".
-                    "<input class='calc-readonly expected-bs $c-expected-bs' readonly aria-label='Expected Blood Sugar'>".
+                    "<input class='calc-input calc-readonly expected-bs $c-expected-bs' readonly aria-label='Expected Blood Sugar'>".
                 "</div>".
 
                 "<div class='ins-div'>".
                     "<p title='Czas iniekcji insuliny w odniesieniu do rozpoczącia posiłku' class='c-help'>Czas iniekcji</p>".
-                    "<input class='calc-readonly time-before-meal $c-time-before-meal' readonly aria-label='Injection Time Before Meal'>".
+                    "<input class='calc-input calc-readonly time-before-meal $c-time-before-meal' readonly aria-label='Injection Time Before Meal'>".
                 "</div>".
             "</div>".
 
@@ -470,7 +536,7 @@ echo $cos;
         </footer>
 
         <script defer>
-
+            
             /* Elements */
 
         // Sticky container
@@ -749,8 +815,11 @@ echo $cos;
                 // On load
                 chooseCalcData();
 
-                // Checkbox click
+                // On checkbox click
                 $(".cs-scroll-check").on("click", chooseCalcData);
+
+                // When fetching API data
+                $(document).on('fetchedSearch', chooseCalcData);
 
                 // Changing the input values
                 $(".calculator input, .select-calculator").on("input", mergeCalcResults);

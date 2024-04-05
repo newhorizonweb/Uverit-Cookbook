@@ -105,6 +105,10 @@ It's an advanced calculator for nutritional info of the ingredients. The page co
 The user can enter the weight, ingredient name, calorie, fat, carbohydrate, fiber and protein values.
 Every row can be multiplied (0x-10x).
 
+The user can search for an item and get the macronutrients data from a REST API - the values are automatically inserted into the inputs.
+The user can go to the settings and select which macronutrients should be used.
+Search results can appear automatically as the user types, or only after clicking the search button.
+
 It's possible to mark each row for attention (it will be highlighted).
 It can be done either by clicking a button or by pressing "ctrl + q".
 

@@ -1,3 +1,12 @@
+
+
+
+// Cookbook version
+const appVersion = "v1.3.0";
+
+
+
+// Icons
 const mainIcon = "<svg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 280'><defs><style>.cls-1{fill:none;stroke-miterlimit:10;}</style></defs><rect class='cls-1' x='44' y='44' width='80' height='80' rx='12'/><rect class='cls-1' x='156' y='44' width='80' height='80' rx='12'/><rect class='cls-1' x='44' y='156' width='80' height='80' rx='12'/><rect class='cls-1 nav-icon-accent' x='156' y='156' width='80' height='80' rx='12'/></svg>";
 
 const calculatorIcon = "<svg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 280'><defs><style>.cls-1{fill:none;}.cls-1,.cls-1,.cls-2,.cls-3{stroke-miterlimit:10;}.cls-2,.cls-3{fill:#fff;stroke-linecap:round;}</style></defs><rect class='cls-1' x='44' y='44' width='80' height='80' rx='12'/><rect class='cls-1' x='156' y='44' width='80' height='80' rx='12'/><rect class='cls-1' x='44' y='156' width='80' height='80' rx='12'/><rect class='cls-1 nav-icon-accent' x='156' y='156' width='80' height='80' rx='12'/><line class='cls-2' x1='84' y1='61.6' x2='84' y2='106.4'/><line class='cls-2' x1='61.6' y1='84' x2='106.4' y2='84'/><line class='cls-2' x1='173.6' y1='84' x2='218.4' y2='84'/><line class='cls-2' x1='68.2' y1='180.2' x2='99.8' y2='211.8'/><line class='cls-2' x1='68.2' y1='211.8' x2='99.8' y2='180.2'/><line class='cls-3 nav-icon-accent' x1='173.6' y1='196' x2='218.4' y2='196'/><line class='cls-2 nav-icon-accent' x1='196' y1='180.2' x2='196' y2='180.2'/><line class='cls-2 nav-icon-accent' x1='196' y1='211.8' x2='196' y2='211.8'/></svg>";
@@ -278,7 +287,7 @@ function insertFooter(){
 
         "<div id='credits'>" +
             "<a href='https://www.fiverr.com/new_horizon_web' target='_blank' rel='noreferrer'>" +
-                "© Uverit 2024 - Cookbook v1.2.3" +
+                `© Uverit 2024 - Cookbook ${appVersion}` +
             "</a>" +
         "</div>";
 

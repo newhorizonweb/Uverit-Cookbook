@@ -7,7 +7,14 @@
     /* Media breakpoints */
     /* Width: 1200, 1024, 768, 540, 440, 320 */
 
-    /* Main module */
+
+
+    /* Basics */
+
+/* Prevent the search list from overflowing the wrapper */
+.wrapper{
+    overflow:clip;
+}
 
 .main-module-content{
     padding-top:0;
@@ -589,25 +596,27 @@
     stroke:var(--color2);
 }
 
-        /* Insulin base div */
+        /* Insulin & Search Settings */
 
 .ins-calc-base{
     padding:var(--wrapperPadding1);
     position:absolute;
     top:calc((var(--wrapperPadding1) * 2) + 50px);
     right:calc(-20vw - 300px);
+
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:15px;
+    gap:16px;
     
+    opacity:0;
     background-color:var(--bg6);
     box-shadow:var(--box-shadow4) var(--bg5);
     border-radius:var(--radius1);
     pointer-events:auto;
-    opacity:0;
-    z-index:8000;
+
     transition:0.2s;
+    z-index:8000;
     animation:containerFadeOut 0.2s ease-in;
 }
 
@@ -641,7 +650,8 @@
     }
 }
 
-.ins-base-title{
+.ins-base-title,
+.search-settings-title{
     width:100%;
     padding-bottom:5px;
     position:relative;
@@ -649,7 +659,7 @@
     text-align:center;
 }
 
-.ins-base-title:after{
+:is(.ins-base-title, .search-settings-title):after{
     content:"";
     width:100%;
     height:2px;
@@ -660,17 +670,8 @@
     border-radius:3px;
 }
 
-.ins-input{
-    width:calc(100% - 16px);
-    height:20px;
-    padding:4px 8px;
-    border:none;
-    background-color:var(--bg1);
-    box-shadow:var(--box-shadow3) var(--bg5);
-    border-radius:var(--radius2);
-    color:var(--txt1);
-    font-size:16px;
-    transition:0.15s;
+.search-settings-title{
+    margin-top:14px;
 }
 
 .ins-input{
@@ -700,7 +701,69 @@
     box-shadow:var(--box-shadow3) var(--color1);
 }
 
-    /* Insulin base - media */
+.search-box-item{
+    width:100%;
+    display:flex;
+    align-items:center;
+
+    & label{
+        padding-left:14px;
+        cursor:pointer;
+    }
+
+    & .search-box{
+        width:24px;
+        height:24px;
+        
+        display:grid;
+        place-content:center;
+
+        appearance:none;
+        background-color:var(--bg1);
+        box-shadow: var(--box-shadow3) var(--bg5);
+        border-radius:6px;
+
+        transition:0.15s;
+        cursor:pointer;
+
+        &:hover{
+            box-shadow:var(--box-shadow3) var(--color1);
+        }
+
+        &:before{
+            content:"";
+            width:16px;
+            height:16px;
+            transform:scale(0);
+            background-color:var(--color1);
+            border-radius:4px;
+            transition:0.12s;
+        }
+
+        &:checked:before{
+            transform:scale(1);
+        }
+
+    }
+    
+}
+
+.search-box-logo{
+    width:100%;
+    height:48px;
+    background:url("../Images/nutritionix-dark.svg");
+    background-size:contain;
+    background-position:center;
+    background-repeat:no-repeat;
+    filter:grayscale(1);
+
+    .dark-mode &{
+        background:url("../Images/nutritionix-light.svg");
+    }
+
+}
+
+        /* Insulin base - media */
 
 @media screen and (max-width:768px){
     
@@ -809,7 +872,7 @@
 .calculator{
     display:flex;
     align-items:flex-start;
-    overflow-y:hidden;
+    overflow-x:clip;
     transition:0.25s;
     gap:5px;
     padding:3px;
@@ -897,7 +960,7 @@
     cursor:pointer;
 }
 
-.calculator .attention-toggle{
+.calculator .calc-input.attention-toggle{
     width:28px;
     height:28px;
     margin-left:8px;
@@ -1091,7 +1154,7 @@
 
             /* Inputs */
 
-.calc input{
+.calc-input{
     width:calc(100% - 16px);
     height:20px;
     padding:4px 8px;
@@ -1104,17 +1167,18 @@
     transition:0.15s;
 }
 
-.calc input:-webkit-autofill{
+.calc-input:-webkit-autofill{
     -webkit-box-shadow:0 0 0 100px var(--bg1) inset, var(--box-shadow2) var(--color1a);
     -webkit-text-fill-color:var(--txt1);
 }
 
-.calc input:-webkit-autofill:focus{
+.calc-input:-webkit-autofill:focus{
     -webkit-box-shadow:0 0 0 100px var(--bg1) inset, var(--box-shadow3) var(--color1a);
     -webkit-text-fill-color:var(--txt1);
 } 
 
-.calculator input:focus{
+.calculator .calc-input:focus,
+.calculator .calc-input:has(input:focus){
     box-shadow:var(--box-shadow3) var(--color1);
 }
 
@@ -1138,6 +1202,213 @@
 
 .bottom-pointer{
     display:none;
+}
+
+            /* Name Element & Search Elements */
+
+.calc .name-elem{
+    width:100%;
+    height:28px;
+    padding:0;
+    position:relative;
+
+    & input{
+        width:calc(100% - 28px - 16px);
+        min-width:0;
+        height:calc(100% - 8px);
+        padding:4px 8px;
+
+        font-size:16px;
+        color:var(--txt1);
+        background-color:transparent;
+        border:none;
+        border-radius:inherit;
+    }
+
+    & .search-btn{
+        height:100%;
+        aspect-ratio:1/1;
+
+        position:absolute;
+        top:0;
+        right:0;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        cursor:pointer;
+
+        &::selection{
+            background-color:transparent;
+        }
+
+        & .search-icon{
+            width:calc(100% - 8px);
+            aspect-ratio:1/1;
+            pointer-events:none;
+
+            & *{
+                fill:none;
+                stroke-linecap:round;
+                transition:0.15s;
+            }
+
+            &.mag-glass-icon *{
+                stroke-width:10px;
+                stroke:var(--txt-faded4);
+            }
+
+            &.loading-icon *{
+                stroke-width:6px;
+
+                &.loading-loader{
+                    stroke:var(--txt1);
+                    stroke-dasharray:242.6;
+                    animation:loadingAnimation 0.6s linear infinite;
+                }
+
+                &.loading-bg{
+                    stroke:var(--bg5);
+                }
+
+            }
+
+        }
+
+        &.btn-active .mag-glass-icon *{
+            stroke:var(--txt-faded);
+        }
+
+        &.btn-error .mag-glass-icon *{
+            stroke:var(--warnColor);
+        }
+
+    }
+
+    & .search-list-outer{
+        width:max(100%, 256px);
+        max-width:calc(100vw - (var(--wrapperPadding1) * 2));
+        padding:4px 0;
+
+        background-color:var(--bg6);
+        box-shadow:var(--box-shadow1) var(--wrapperColor1), var(--box-shadow2) var(--wrapperColor1);
+        border-radius:var(--radius1);
+
+        position:absolute;
+        top:calc(100% + 4px);
+        left:0;
+
+        display:none;
+        transition:0.15s;
+        z-index:100;
+    }
+
+    &.search-open:has(.list-elem) .search-list-outer{
+        display:block;
+    }
+
+    & .search-list{
+        width:100%;
+        max-height:min(512px, calc(90vh - 48px));
+
+        display:flex;
+        flex-direction:column;
+
+        border-radius:var(--radius1);
+        overflow:auto;
+
+        & .list-elem{
+            padding:4px 8px;
+            display:grid;
+            align-items:center;
+            grid-template-columns:auto 1fr;
+            grid-template-rows:1fr 1fr;
+            column-gap:8px;
+
+            background-color:transparent;
+            border:none;
+            cursor:pointer;
+
+            &:has(.list-error){
+                min-height:80px;
+                padding:8px;
+
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+
+                & .error-code{
+                    color:var(--warnColor);
+                }
+
+                & .list-error{
+                    height:auto;
+                    text-align:center;
+                    text-wrap:balance;
+                }
+
+            }
+
+            & .list-img{
+                grid-column:auto;
+                grid-row:span 2;
+
+                height:56px;
+                aspect-ratio:3/2;
+                object-fit:contain;
+
+                background-color:#FFF;
+                box-shadow:var(--box-shadow3) var(--bg5);
+                border-radius:var(--radius2);
+            }
+
+            & p{
+                padding:0;
+                text-align:left;
+            }
+
+            & .list-name{
+                text-transform:capitalize;
+                text-overflow:ellipsis;
+                white-space:nowrap;
+                overflow:hidden;
+            }
+
+            &:hover p{
+                color:var(--color1b);
+            }
+
+            &:focus{
+                
+                & p{
+                    color:var(--color1);
+                }
+
+                & .list-img{
+                    box-shadow:var(--box-shadow3) var(--color1);
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+@keyframes loadingAnimation{
+    0%{
+        stroke-dasharray:40 242.6;
+        stroke-dashoffset:0;
+    }
+    50%{
+        stroke-dasharray:141.3;
+        stroke-dashoffset:141.3;
+    }
+    100%{
+        stroke-dasharray:40 242.6;
+        stroke-dashoffset:282.6;
+    }
 }
 
         /* Calculator break line (cb-line) */
@@ -1199,7 +1470,28 @@
     .calc-header h2{
         font-size:7vw;
     }
+
+    .calc .name-elem{
+
+        & .search-list{
+
+            & .list-elem{
+
+                & .list-img{
+                    height:44px;
+                    aspect-ratio:1/1;
+                }
     
+                & p{
+                    font-size:16px;
+                }
+    
+            }
+    
+        }
+    
+    }
+
 }
 
     /* Insulin calculator */
@@ -1364,28 +1656,33 @@ body .calc-readonly{
     cursor:pointer;
 }
 
-.calc-reset:hover{
-    box-shadow:var(--box-shadow3) var(--color1);
-}
+.calc:has(.calc-reset:hover){
 
-.calc:has(.calc-reset:hover) :is(div h5, .list-calc-col p, .ins-div p){
-    color:var(--warnColor);
-}
+    & .calc-reset{
+        box-shadow:var(--box-shadow3) var(--color1);
+    }
 
-.calc:has(.calc-reset:hover) input:not(.ins-calc input){
-    box-shadow:var(--box-shadow3) var(--warnColor);
-}
+    & :is(div h5, .list-calc-col p, .ins-div p){
+        color:var(--warnColor);
+    }
 
-.calc:has(.calc-reset:hover) .attention-toggle{
-
-    &:focus{
+    & .calc-input,
+    & .ins-calc select{
         box-shadow:var(--box-shadow3) var(--warnColor);
     }
 
-    &:after{
-        color:var(--warnColor);
-    }
+    & .attention-toggle{
+
+        &:focus{
+            box-shadow:var(--box-shadow3) var(--warnColor);
+        }
     
+        &:after{
+            color:var(--warnColor);
+        }
+        
+    }
+
 }
 
 .calc-reset-hold:before{
