@@ -594,7 +594,10 @@ echo $cos;
         
             /* Slide-in */
 
+        let wasScBtnClicked = false;
+
         scBtn.on("click", function(e){
+            insertCalcNames();
             scContainer.toggleClass(scOpen);
             e.stopPropagation();
         });
@@ -628,6 +631,37 @@ echo $cos;
 
         }
 
+        // Append the calculator buttons
+        function insertCalcButtons(){
+
+            for (let sc = 1; sc <= $(".calc").length; sc++){
+
+                const calcName = $("."+sc+"-calc-header h2").html();
+
+                calcLinks.append(
+                    "<div class='cs-elem'>" +
+                        "<div class='cs-scroll-div'>" +
+                            `<p class='${scScrollBtn} ${scScrollBtn + sc}'` +
+                            `container='.${sc}-calc-header'></p>` +
+                        "</div>" +
+
+                        `<input type='checkbox' class='cs-scroll-check' data-link='${sc}' aria-label='Calculate the total nutritional values - calculator${sc}'>` +
+                    "</div>"
+                );
+
+            }
+
+            insertCalcNames();
+
+        }
+
+        function insertCalcNames(){
+            for (let sc = 1; sc <= $(".calc").length; sc++){
+                const calcName = $("."+sc+"-calc-header h2").html();
+                $(`.${scScrollBtn + sc}`).html(calcName)
+            }
+        }
+
         $(document).ready(function(){
 
 
@@ -636,25 +670,7 @@ echo $cos;
 
             $(document).ready(function(){
 
-                // Append the calculator buttons
-                for (let sc = 1; sc <= $(".calc").length; sc++){
-
-                    const calcName = $("."+sc+"-calc-header h2").html();
-
-                    calcLinks.append(
-                        "<div class='cs-elem'>" +
-                            "<div class='cs-scroll-div'>" +
-                                `<p class='${scScrollBtn} ${scScrollBtn + sc}'` +
-                                `container='.${sc}-calc-header'>` +
-                                    calcName +
-                                "</p>" +
-                            "</div>" +
-
-                            `<input type='checkbox' class='cs-scroll-check' data-link='${sc}' aria-label='Calculate the total nutritional values - calculator${sc}'>` +
-                        "</div>"
-                    );
-
-                }
+                insertCalcButtons();
 
                 // Add a class to the button related to the closest calc
                 requestAnimationFrame(detectClosestSection);
@@ -665,10 +681,8 @@ echo $cos;
 
                 // Smooth scrolling
                 $("."+scScrollBtn).on("click", function(){
-
                     let scrollToElem = $(this).attr("container");
                     $('html,body').animate({scrollTop: $(scrollToElem).offset().top - 50}, scrollTime);
-
                 });
 
                     /* Merge Calculator Results */
