@@ -80,6 +80,12 @@ function inputCalc(chngName){
     }
 
     $("."+c+"-"+chngName+"-result").val(Math.round(result * 10) / 10);
+
+    // Dispatch a custom event for the merged results
+    const mergeCalc = new CustomEvent('mergeCalc');
+    document.dispatchEvent(mergeCalc);
+
+
 }
     
     // Sum the column values - function calls

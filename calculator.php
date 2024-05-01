@@ -776,6 +776,7 @@ echo $cos;
                             const weightWidth = Math.round((value / totalWeight) * 100 * 10) / 10;
 
                             totalWeightRatio.find(`.ratio-values ${nutriElems[i]} p`).html(`${nutriNamesPl[index]} ${Math.round(value * 10) / 10}g`);
+
                             totalWeightRatio.find(`.ratio-bar ${nutriElems[i]}`).css("width", `${weightWidth}%`);
 
                             // Calorie Percentage
@@ -805,6 +806,7 @@ echo $cos;
                             }
 
                             totalCalorieRatio.find(`.ratio-values ${nutriElems[i]} p`).html(`${nutriNamesPl[index]} ${calorieValPercent}%`);
+                            
                             totalCalorieRatio.find(`.ratio-bar ${nutriElems[i]}`).css("width", `${calorieValPercent}%`);
                     
                         } else {
@@ -831,12 +833,16 @@ echo $cos;
 
                 // On checkbox click
                 $(".cs-scroll-check").on("click", chooseCalcData);
-
+                
                 // When fetching API data
                 $(document).on('fetchedSearch', chooseCalcData);
 
-                // Changing the input values
-                $(".calculator input, .select-calculator").on("input", mergeCalcResults);
+                // When the user inputs a new value
+                // calculator-calc.js - line ~100 (calculating columns)
+                $(document).on('mergeCalc', chooseCalcData);
+
+                // Changing the calculator (select dropdown)
+                $(".select-calculator").on("input", mergeCalcResults);
 
                 // Clicking buttons
                 $(".multi-change, .reset-calc-row").on("click", mergeCalcResults);

@@ -2,7 +2,7 @@
 
 
 // Cookbook version
-const appVersion = "v1.3.2";
+const appVersion = "v1.3.3";
 
 
 
