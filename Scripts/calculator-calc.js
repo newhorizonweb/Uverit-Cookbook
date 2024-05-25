@@ -1454,15 +1454,23 @@ $(".ins-adjust").on("click", function(){
 // Toggle the attention checkbox & mark the row
 function attentionShortcut(e){
 
-    if ($(".calculator div input").is(":focus") &&
+    if (($(".calc-input").is(":focus") || $(".name-calc").is(":focus")) &&
         e.key === 'q' && e.ctrlKey){
         
+        // Focused input
         const eTarget = e.currentTarget;
-        const inputParent = $(eTarget).parent();
-        const index = inputParent.children('input').index($(eTarget));
 
+        // The parent column element of the focused input
+        const inputParent = $(eTarget).closest(".calc-col");
+        
+        // Index of the direct child of the column
+        const index = inputParent.find($(eTarget)).closest(".calc-col > *").index() - 1 ?? -1;
+        
+        // Attention toggle checkbox from the same row as the focused input
         const thisAttToggle =
             inputParent.siblings(".attention-calc-col").children('.attention-toggle:eq('+index+')');
+
+        // Toggle the checked state
         const toggleState = thisAttToggle.prop("checked");
 
         // Set the new state

@@ -330,7 +330,7 @@ $cos .=         "<div class='cb-line-div'>".
             "</div>".
     
             // Generate calculator multiplier inputs / buttons
-            "<div class='multi-calc-col'>".
+            "<div class='multi-calc-col calc-col'>".
                 "<h5>Mnożnik</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
                     $cos .= "<div class='multi-calc-div'>".
@@ -347,7 +347,7 @@ $cos .=         "<div class='cb-line-div'>".
             "</div>".
 
             // Generate calculator weight inputs
-            "<div class='weight-calc-col'>".
+            "<div class='weight-calc-col calc-col'>".
                 "<h5 title='Waga w gramach (puste pole = 100g)'>Waga</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
                     $cos .= "<input type='tel' name='$c-weight-calc".$x."' class='calc-input weight-calc $c-weight-calc".$x." calc-num' aria-label='Weight Input'>";
@@ -358,7 +358,7 @@ $cos .=         "<div class='cb-line-div'>".
             "</div>".
 
             // Generate calculator name inputs & search buttons
-            "<div class='name-calc-col'>".
+            "<div class='name-calc-col calc-col'>".
                 "<h5>Nazwa</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
                     $cos .= "<div class='calc-input name-elem'>".
@@ -379,7 +379,7 @@ $cos .=         "<div class='cb-line-div'>".
             "</div>".
 
             // Generate calculator kcal inputs
-            "<div class='kcal-calc-col'>".
+            "<div class='kcal-calc-col calc-col'>".
                 "<h5 title='Kcal / 100g'>Kcal</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
                     $cos .= "<input type='tel' name='$c-kcal-calc".$x."' class='calc-input kcal-calc $c-kcal-calc".$x." calc-num' aria-label='Kcal Input'>";
@@ -389,7 +389,7 @@ $cos .=         "<input class='calc-input calc-result kcal-result $c-kcal-result
             "</div>".
 
             // Generate calculator fat inputs
-            "<div class='fat-calc-col'>".
+            "<div class='fat-calc-col calc-col'>".
                 "<h5 title='W gramach / 100g'>Tłuszcz</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
                     $cos .= "<input type='tel' name='$c-fat-calc".$x."' class='calc-input fat-calc $c-fat-calc".$x." calc-num' aria-label='Fat Input'>";
@@ -399,7 +399,7 @@ $cos .=         "<input class='calc-input calc-result fat-result $c-fat-result'
             "</div>".
 
             // Generate calculator carb inputs
-            "<div class='carb-calc-col'>".
+            "<div class='carb-calc-col calc-col'>".
                 "<h5 title='W gramach / 100g'>Węgle</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
                     $cos .= "<input type='tel' name='$c-carb-calc".$x."' class='calc-input carb-calc $c-carb-calc".$x." calc-num' aria-label='Carbs Input'>";
@@ -409,7 +409,7 @@ $cos .=         "<input class='calc-input calc-result carb-result $c-carb-result
             "</div>".
 
             // Generate calculator fiber inputs
-            "<div class='fiber-calc-col'>".
+            "<div class='fiber-calc-col calc-col'>".
                 "<h5 title='W gramach / 100g'>Błonnik</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
                     $cos .= "<input type='tel' name='$c-fiber-calc".$x."' class='calc-input fiber-calc $c-fiber-calc".$x." calc-num' aria-label='Fiber Input'>";
@@ -419,7 +419,7 @@ $cos .=         "<input class='calc-input calc-result fiber-result $c-fiber-resu
             "</div>".
 
             // Generate calculator protein inputs
-            "<div class='protein-calc-col'>".
+            "<div class='protein-calc-col calc-col'>".
                 "<h5 title='W gramach / 100g'>Białko</h5>";
                 for ($x = 1; $x <= $inpColLen; $x++){
                     $cos .= "<input type='tel' name='$c-protein-calc".$x."' class='calc-input protein-calc $c-protein-calc".$x." calc-num' aria-label='Protein Input'>";
